@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE directory SYSTEM "directory.dtd">
+<directory name="project">
+    <directory name="src">
+        <directory name="main">
+            <directory name="java">
+                <file name="Main.java" size="2048"/>
+                <file name="Util.java" size="1024"/>  
+            </directory>
+        </directory>
+        <directory name="test"/>
+    </directory>
+    <file name="LINECSE.txt" size="11358"/>
+    <file name="pom.xml" size="1024"/>
+    <file name="README.txt" size="512"/>
+</directory>

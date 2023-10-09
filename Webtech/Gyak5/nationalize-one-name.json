@@ -1,0 +1,27 @@
+{
+    "$schema": "nationalize-osszes.json",
+    "count": 62,
+    "name": "ubul",
+    "country": [
+        {
+            "country_id": "HU",
+            "probability": 0.794
+        },
+        {
+            "country_id": "JP",
+            "probability": 0.052
+        },
+        {
+            "country_id": "GI",
+            "probability": 0.033
+        },
+        {
+            "country_id": "SD",
+            "probability": 0.033
+        },
+        {
+            "country_id": "SK",
+            "probability": 0.033
+        }
+    ]
+}

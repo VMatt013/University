@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % name-attr "name CDATA #REQUIRED">
+
+<!ELEMENT directory (directory | file)*>
+<!ATTLIST directory %name-attr;>
+<!ELEMENT file EMPTY>
+<!ATTLIST file %name-attr; size CDATA #REQUIRED>

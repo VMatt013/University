@@ -1,0 +1,33 @@
+
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Schema for nationalize API",
+    "definitions": {
+        "countryCode": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$"
+        },
+        "probability": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "response": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            },
+            "name": {"type": "string"},
+            "country": {
+                "type": "array",
+                "properties": {
+                    "country_id": {"$ref": "#/definitions/countryCode"},
+                    "probability": {"$ref": "#/definitions/probability"}
+                }
+            }
+        }
+    }
+}
