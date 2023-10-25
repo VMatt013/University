@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!ENTITY % name-attr "name CDATA #REQUIRED">
-
-<!ELEMENT directory (directory | file)*>
-<!ATTLIST directory %name-attr;>
+<!ELEMENT directory (directory*,file*)>
+<!ATTLIST directory name NMTOKEN #REQUIRED>
 <!ELEMENT file EMPTY>
-<!ATTLIST file %name-attr; size CDATA #REQUIRED>
+<!ATTLIST file name NMTOKEN #REQUIRED>
+<!ATTLIST file size NMTOKEN #REQUIRED>

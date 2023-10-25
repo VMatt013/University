@@ -1,0 +1,12 @@
+<!ELEMENT research (alcohol*)>
+<!ELEMENT alcohol (name,brands,alcohol_content,coctails)>
+<!ATTLIST alcohol id NMTOKEN #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT brands (brand+)>
+<!ELEMENT brand (#PCDATA)>
+<!ELEMENT alcohol_content EMPTY>
+<!ATTLIST alcohol_content percent CDATA #REQUIRED>
+<!ELEMENT coctails (coctail*)>
+<!ATTLIST coctails drinks NMTOKEN #REQUIRED>
+<!ELEMENT coctail (#PCDATA)>
+<!ATTLIST coctail count NMTOKEN #REQUIRED>

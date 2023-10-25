@@ -2,6 +2,6 @@
 <!ELEMENT book (author,title,chapter*)>
 <!ELEMENT author (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
-<!ELEMENT chapter (title | para)*>
+<!ELEMENT chapter (title, para*)>
 <!ELEMENT para (#PCDATA | footnote)*>
 <!ELEMENT footnote (#PCDATA)>
