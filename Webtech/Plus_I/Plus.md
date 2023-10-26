@@ -36,3 +36,6 @@ Theropoda (from Ancient Greek 'wild beast', and 'foot'), whose members are known
 
 #### Sources
 [CK-12](https://flexbooks.ck12.org/cbook/ck-12-biology-flexbook-2.0/section/12.16/primary/lesson/reptile-classification-bio/)
+
+By: Vass Máté
+Neptun Code: HU85BK
