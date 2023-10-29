@@ -36,12 +36,12 @@ Modern turtles are placed into one of two suborders within the Testudines *Peuro
 
 Theropoda (from Ancient Greek 'wild beast', and 'foot'), whose members are known as theropods, is a dinosaur clade that is characterized by hollow bones and three toes and claws on each limb. Theropods are generally classed as a group of saurischian dinosaurs. They were ancestrally carnivorous, although a number of theropod groups evolved to become herbivores and omnivores. Theropods first appeared during the Carnian age of the late Triassic period 231.4 million years ago and included the majority of large terrestrial carnivores from the Early Jurassic until at least the close of the Cretaceous, about 66 Ma. In the Jurassic, birds evolved from small specialized coelurosaurian theropods, and are today represented by about 10,500 living species. 
 
-[^1]: You can identify by it's V-shaped snout.
-[^2]: You can identify by it's U-shaped snout.
-
 #### Sources
 [CK-12](https://flexbooks.ck12.org/cbook/ck-12-biology-flexbook-2.0/section/12.16/primary/lesson/reptile-classification-bio/)
 
 By: Vass Máté
 
 Neptun Code: HU85BK
+
+[^1]: You can identify by it's V-shaped snout.
+[^2]: You can identify by it's U-shaped snout.
