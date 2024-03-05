@@ -1,0 +1,152 @@
+# 1. Feladat - Basic router settings
+
+banner motd #Authorized access only!#
+enable secret cisco
+line console 0
+password cisco
+login
+ext
+line vty 0 15
+password cisco
+login
+ext
+service password-encryption
+ip domain-name cisco.com
+crypto key generate rsa
+username admin secret cisco
+line vty 0 15
+transport input ssh
+login local
+ip ssh version 2
+ext
+copy running-config startup-config
+
+
+# 2. Feladat - VLan
+
+vlan 50
+name EDUROAM
+vlan 60
+name TO
+vlan 70
+name OKTATO
+
+int f0/24
+sw m access
+sw access vlan 70
+
+int f0/23
+sw m access
+sw access vlan 60
+
+int f0/22
+sw m access
+sw access vlan 50
+
+
+# 3. Feladat - Ether channel
+
+int range f0/1-2
+channel-group 1 mode active
+int port-channel 1
+sw m tr
+sw tr allowed vlan 50,60,70
+
+int range f0/3-4
+channel-group 2 mode active
+int port-channel 2
+sw m tr
+sw tr allowed vlan 50,60,70
+
+int range f0/5-6
+channel-group 3 mode desirable
+int port-channel 3
+sw m tr
+sw tr allowed vlan 50,60,70
+
+int range f0/1-2, f0/5-6
+sw m tr
+no sh
+
+int range f0/1-4
+sw m tr
+no sh
+
+int range f0/3-6
+sw m tr
+no sh
+
+
+# 4. Feladat - RSTP
+spanning-tree mode rapid-pvst
+spanning-tree vlan 50,60,70 root primary
+
+
+# 5-7. Feladat - Router on a stick
+(SW1)
+int g0/1
+sw m tr
+no shut
+
+(R1)
+int g0/2.50
+encapsulation dot1Q 50
+ip add 10.10.50.1 255.255.255.0
+
+int g0/2.60
+encapsulation dot1Q 60
+ip add 10.10.60.1 255.255.255.0
+
+int g0/2.70
+encapsulation dot1Q 70
+ip add 10.10.70.1 255.255.255.0
+
+
+# 8. Feladat
+(R1)
+ip dhcp pool D50
+network 10.10.50.0 255.255.255.0
+default-router 10.10.50.1
+dns-server 8.8.8.8
+domain-name cisco.com
+
+ip dhcp pool D60
+network 10.10.60.0 255.255.255.0
+default-router 10.10.60.1
+dns-server 8.8.8.8
+domain-name cisco.com
+
+ip dhcp pool D70
+network 10.10.70.0 255.255.255.0
+default-router 10.10.70.1
+dns-server 8.8.8.8
+domain-name cisco.com
+
+# 9. Feladat
+(R2)
+int g0/0
+ip add 10.10.200.11 255.255.255.0
+no shut
+
+# 10. Feladat
+(R1)
+int g0/1
+ip address 172.16.50.5 255.255.255.252
+no shut
+
+(R2)
+int g0/1
+ip add 172.16.50.6 255.255.255.252
+no shut
+
+
+# 11. Feladat
+(R1)
+ip route 0.0.0.0 0.0.0.0 172.16.50.5
+(R2)
+ip route 0.0.0.0 0.0.0.0 172.16.50.6
+
+# 12. Feladat
+(R2)
+int g0/0
+ip add 10.10.200.11

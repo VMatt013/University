@@ -1,0 +1,32 @@
+form.fancy-form{
+    background-color: mintcream;
+    width: 25%;
+    overflow: auto;
+}
+
+form.fancy-form div{
+    margin: 1em;
+}
+
+form.fancy-form label{
+    display: block;
+}
+
+form.fancy-form input[type=checkbox]:not(:checked) + fieldset.conditional{
+    display: none;
+}
+
+form.fancy-form > div:has(button){
+    text-align: center;
+}
+
+form.fancy-form button[type=submit]{
+    background-color: darkslateblue;
+    color: white;
+}
+
+form.fancy-form :is(input, select, textarea){
+    border-radius: 0.25em;
+    border: medium solid darkslateblue;
+    width: 100%;
+}

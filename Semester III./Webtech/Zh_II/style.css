@@ -1,0 +1,63 @@
+#main{
+    margin-top: 3em;
+    margin-inline: auto;
+    text-align: center;
+    background-color: cadetblue;
+    border: medium black solid;
+    border-radius: 0.5em;
+    width: fit-content;
+    padding: 2em;
+}
+
+
+table{
+    margin: auto;    
+    border: thin solid black;
+}
+
+td{
+    width: 2em;
+    height: 2em;
+    background-color: blanchedalmond;
+}
+
+td.wall{
+    background-color: dimgray;
+}
+
+td.rat::after{
+    content: "\1F400";
+}
+td.trap::after{
+    content: "\1FAA4";
+}
+td.trap:hover::after, td.rat:hover::after{
+    content: "\1F480";
+}
+
+td.food::after{
+    content: "\1F9C0";
+}
+td.food:hover::after{
+    content: "\1F42D";
+}
+
+
+
+td:not([class]):hover::after{
+    content: "\1F401";
+}
+
+#controll{
+    background-color: darkcyan;
+    border: thin solid black;
+    padding: 2em;
+}
+
+
+button{
+    margin-inline: 1em;
+    background-color: darkseagreen;
+    border-radius: 0.25EM;
+    padding: 0.5em;
+}

@@ -1,0 +1,5 @@
+<!ELEMENT directory (directory*,file*)>
+<!ATTLIST directory name NMTOKEN #REQUIRED>
+<!ELEMENT file EMPTY>
+<!ATTLIST file name NMTOKEN #REQUIRED>
+<!ATTLIST file size NMTOKEN #REQUIRED>

@@ -1,0 +1,16 @@
+pre{
+    background-color: cornsilk;
+    padding: 0.5em;
+    counter-reset: line-number;
+}
+
+pre > span::before{
+    counter-increment: line-number;
+    display: inline-block;
+    width: 2em;
+    content: counter(line-number);
+    border-right: medium solid purple;
+    padding-right: 0.5em;
+    margin-right: 0.5em;
+    text-align: right;
+}

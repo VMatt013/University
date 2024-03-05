@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>European Countries</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="countries4.css">
+      <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+      <script>
+         $.getJSON('https://restcountries.com/v3.1/region/europe', function(countries) {
+            countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+            $.each(countries, function(index, country) {
+               const card = `
+                  <div class="card border-dark shadow">
+                     <img src="${country.flags.png}" class="card-img-top" alt="Flag of ${country.name.common}">
+                     <div class="card-header">${country.cca2}</div>
+                     <div class="card-body">
+                        <h5 class="card-title">${country.name.common}</h5>
+                        <p class="card-text">${country.name.official} is located in ${country.subregion}.</p>
+                        <ul class="list-group">
+                           <li class="list-group-item">
+                              <div class="fw-bold">Capital</div>
+                              ${country.capital}
+                           </li>
+                           <li class="list-group-item">
+                              <div class="fw-bold">Timezones</div>
+                              ${country.timezones.join(', ')}
+                           </li>
+                           <li class="list-group-item">
+                              <div class="fw-bold">Area</div>
+                              ${country.area.toLocaleString('en-US')} km<sup>2</sup>
+                           </li>
+                           <li class="list-group-item">
+                              <div class="fw-bold">Population</div>
+                              ${country.population.toLocaleString('en-US')}
+                           </li>
+                           <li class="list-group-item">
+                              <div class="fw-bold">Internet TLD</div>
+                              ${country.tld ? country.tld.map(s => `<span class="tld">${s}</span>`).join(', ') : '&lt;NA&gt;'}</span>
+                           </li>
+                        </ul>
+                        <div class="hstack m-1 justify-content-around">
+                           <a href="${country.maps.googleMaps}" class="card-link">Google Maps</a>
+                           <a href="${country.maps.openStreetMaps}" class="card-link">OpenStreetMap</a>
+                        </div>
+                     </div>
+                  </div>`;
+               console.log(card);
+               $('main > div').append(card);
+            });
+         });
+      </script>
+   </head>
+   <body>
+      <div>
+         <main>
+            <h1>European Countries</h1>
+            <div>
+            </div>
+         </main>
+         <footer>
+            <p>Powered by <a href="https://getbootstrap.com/">Bootstrap</a>.
+               Data is taken from <a href="https://restcountries.com/">REST Countries</a>.</p>
+         </footer>
+      </div>
+   </body>
+</html>

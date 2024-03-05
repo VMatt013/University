@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roxforti regisztrációs űrlap</title>
+    <link rel="stylesheet" href="hogwarts-form.css" class="css">
+</head>
+<body>
+    <h1>Roxforti regisztrációs űrlap</h1>
+    <form class="fancy-form" action="https://webhook.site/#!/f7fc8bd6-0307-42d7-9e47-6de7dd1d0a7c" method="post">
+        <div>
+            <label for="name">Név</label>
+            <input type="text" placeholder="pl. Harry James Potter" required name="name" id="name">
+        </div>
+        <div>
+            <label for="dob">Születési Dátum</label>
+            <input type="date" name="dob" id="dob">
+        </div>
+        <div>
+            <label for="house">Ház</label>
+            <select name="house" id="house">
+                <option value="">--Válassz egy házat--</option>
+                <option value="gryffindor" data-color="red">Griffendél</option>
+                <option value="hufflepuff" data-color="yellow">Ugrabug</option>
+                <option value="ravenclaw" data-color="blue">Hollóhát</option>
+                <option value="slytherin" data-color="green">Mardekár</option>
+            </select>
+        </div>
+        <div>
+            <label for="has-pet">Jelentem, hogy van kisállatom!</label>
+            <input type="checkbox" name="has-pet" id="has-pet">
+            <fieldset class="conditional">
+                <legend>Kisállat</legend>
+                <label>Faj <input type="text" name="pet-species" placeholder="pl. bagoly"></label>
+                <label>Név <input type="text" name="pet-name" placeholder="pl. Hedwig"></label>
+            </fieldset>
+        </div>
+        <div>
+            <label for="email">Email cím</label>
+            <input type="email" name="email" id="email" pattern=".+@hogwarts\.ac\.uk"
+            placeholder="pl. hjp@hogwarts.ac.uk" 
+            title="Egy @hogwarts.ac.uk végződésű email cím megadása kötelező">
+        </div>
+        <div>
+            <label for="comments">Megjegyzések</label>
+            <textarea name="comments" id="comments" rows="5" maxlength="200" 
+            placeholder="pl. Benne szeretnék lenni a kvidics csapatban"></textarea>
+        </div>
+        <div>
+            <label for="photo">Fotó</label>
+            <input type="file" name="photo", id="photo" accept="image/png, image/jpeg">
+        </div>
+        <div>
+            <button type="submit">Küldés</button>
+        </div>
+    </form>
+    <script>
+        document.getElementById("house").addEventListener("change", function(event){
+            const housecolor = event.target.options[event.target.selectedIndex].dataset.color;
+            console.log(`The selected color is ${housecolor}`);
+            document.body.style.backgroundColor=housecolor;
+        })
+    </script>
+</body>
+</html>

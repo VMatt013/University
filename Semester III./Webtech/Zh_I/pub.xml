@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE research SYSTEM "pub.dtd">
+<?xml-stylesheet href="pub.css" type="text/css"?>
+<research>
+    <alcohol id="00001">
+        <name>Gin</name>
+        <brands>
+            <brand>Bombay Sapphire</brand>
+            <brand>Kalumba</brand>
+        </brands>
+        <alcohol_content percent="37,5" />
+        <coctails drinks="20">
+            <coctail count="10">gin-tonik</coctail>
+            <coctail count="6">Martini</coctail>
+            <coctail count="4">Bronx</coctail>
+        </coctails>
+    </alcohol>
+    <alcohol id="00002">
+        <name>Almabor</name>
+        <brands>
+            <brand>Strongbow</brand>
+        </brands>
+        <alcohol_content percent="11" />
+        <coctails drinks="30"></coctails>
+    </alcohol>
+    <alcohol id="00003">
+        <name>Vodka</name>
+        <brands>
+            <brand>Roayal</brand>
+            <brand>Kalinka</brand>
+        </brands>
+        <alcohol_content percent="40"/>
+        <coctails drinks="10"></coctails>
+    </alcohol>
+    <alcohol id="00004">
+        <name>Whiskey</name>
+        <brands>
+            <brand>Jack Daniels</brand>
+        </brands>
+        <alcohol_content percent="40" />
+        <coctails drinks="15"></coctails>
+    </alcohol>
+    <alcohol id="00005">
+        <name>Sör</name>
+        <brands>
+            <brand>Kőbányai</brand>
+            <brand>Borsodi</brand>
+            <brand>Soproni</brand>
+        </brands>
+        <alcohol_content percent="4,3" />
+        <coctails drinks="5"></coctails>
+    </alcohol>
+</research>

@@ -1,0 +1,6 @@
+vlan 50
+name EDUROAM
+vlan 60
+name TO
+vlan 70
+name OKTATO

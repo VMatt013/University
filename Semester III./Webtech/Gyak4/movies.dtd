@@ -1,0 +1,9 @@
+<!ELEMENT movies (movie+)>
+<!ELEMENT movie (title+,year,genre+,rating,votes)>
+<!ATTLIST movie id NMTOKEN #REQUIRED>
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST title xml:lang NMTOKEN #REQUIRED>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT genre (#PCDATA)>
+<!ELEMENT rating (#PCDATA)>
+<!ELEMENT votes (#PCDATA)>
