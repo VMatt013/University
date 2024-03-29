@@ -1,5 +1,24 @@
 # ZH I.
-## Fogalmak:
+1. [Szoftverfejlesztés](#szoftverfejlesztés)
+2. [Java technológiai áttekintés](#java-technológiai-áttekintés)
+3. [Rendszerépítés](#rendszerépítés)
+4. [Apache Maven](#apache-maven)
+5. [Szoftver sebezhetőségek](#szoftver-sebezhetőségek)
+6. [Szoftver verziózás](#szoftver-verziózás)
+7. [Annotációk a java programozási nyelvben](#annotációk-a-java-programozási-nyelvben)
+8. [A java SE/JDK új lehetőségei](#a-java-sejdk-új-lehetőségei)
+9. [A java haladó szintű lehetőségei](#a-java-haladó-szintű-lehetőségei)
+10. [Git](#git)
+
+
+
+<div style='page-break-after: always;'></div>
+<u>
+
+ ## Szoftverfejlesztés
+
+ </u> 
+
 ### Programkönyvtár:
 Egy programkönyvtár szoftverek és kapcsolódó dokumentáció olyan együttese, melyet abból a célból terveztek, hogy a szoftverfejlesztést, használatot és karbantartást segítse.
 Egy könyvtár erőforrásokat tartalmaz, mint adatok és kód, és egy jól meghatározott interfésze (API-ja) van.
@@ -39,7 +58,13 @@ Kódszerkesztők (source-code editors) és IDE-k:
 - Például a Notepad++, a Sublime Text és a Visual Studio Code csupán kódszerkesztők.
 - Például az Apache NetBeans, az Eclipse IDE-k, az IntelliJ IDEA és a Visual Studio pedig IDE-k.
 
+<div style='page-break-after: always;'></div>
+<u>
+
 ## Java technológiai áttekintés
+
+</u>
+
 ### JVM
 Egy saját utasításkészlettel rendelkező és vezérelhető absztrakt számítógép, mely semmit sem tud a Java programozási nyelvről, hanem csak egy speciális bináris formátumot ismer, a class állományformátumot.
 Egy class állomány a virtuális gépnek szóló utasításokat (bájtkódokat), egy szimbólumtáblát valamint további járulékos információkat tartalmaz.
@@ -171,9 +196,14 @@ Az Oracle JDK LTS kiadásaihoz az Oracle legalább 8 évig biztosít frissítés
 Ezen frissítések üzleti célú felhasználásához üzleti licenc lehet szükséges!
 2021-ben az Oracle megváltoztatta a JDK LTS kiadások ütemét, három év helyett két évente érkeznek.
 
+<div style='page-break-after: always;'></div>
 
+<u>
 
 ## Rendszerépítés
+
+</u>
+
 ### Mi a rendszerépítés?
 A rendszerépítés az a folyamat, melynek során egy teljes végrehajtható rendszer kerül létrehozásra a rendszerkomponensek, külső könyvtárak, konfigurációs állományok és további információk lefordításával és összeszerkesztésével.
 
@@ -203,7 +233,13 @@ A DevOps a fejlesztők és az üzemeltetők összehozásáról szól a csapatokb
 A DevOps kifejezés gyakran összekapcsolódik a folyamatos integrációval (CI), a folyamatos szállítással (CD) és az infrastruktúra mint kód (Infrastructure as Code, IAC) gyakorlatával.
 A DevOps az agilis szoftverfejlesztési gyakorlatok kiterjesztése.
 
+<div style='page-break-after: always;'></div>
+<u>
+
 ## Apache Maven
+
+</u>
+
 ### Mi az Apache Maven?
 **Egy projektkezelő eszköz (software project management and comprehension tool) a következő célkitűzésekkel:**
 
@@ -213,7 +249,7 @@ A DevOps az agilis szoftverfejlesztési gyakorlatok kiterjesztése.
 - Irányelvek és legjobb gyakorlatok szolgáltatása a fejlesztéshez
 
 
-### A szabványos könyvtárszerkezet
+### A szabványos könyvtárszerkezet
 ![szabványos könyvtárszerkezet](./images/konyvtarszerkezet.png)
 
 ### Parancssori használat
@@ -773,7 +809,13 @@ Ha nincs alapértelmezett életciklus fázis, akkor a ```phase``` elem hiányáb
 </build>
 ```
 
+<div style='page-break-after: always;'></div>
+<u>
+
 ## Szoftver sebezhetőségek
+
+</u>
+
 ### Sebezhetőség és nulladik napi sebezhetőség fogalma
 #### Sebezhetőség
 Egy tökéletlenségből származó hiba egy szoftverben, firmware-ben, hardverben vagy szolgáltatás komponensben, mely kiaknázható az érintett komponens vagy komponensek titkosságára, integritására vagy rendelkezésre állására negatív hatást gyakoroló módon.
@@ -810,7 +852,13 @@ Fejlett keresési lehetőségeket is biztosít, mint például a keresés operá
 Az **NVD** a **Common Vulnerability Scoring System** (**CVSS**) (Egységes Sebezhetőség Pontozási Rendszer) segítségével rendel egy súlyossági pontszámot minden egyes sebezhetőséghez
 A súlyossági pontszámok 0 és 10 közöttiek
 
+<div style='page-break-after: always;'></div>
+<u>
+
 ## Szoftver verziózás
+
+</u>
+
 ### Verziózási fogalmak
 #### Verziózás
 Egyedi verziónevek vagy verziószámok hozzárendelése szoftver konfiguráció elemek egyedi állapotaihoz, általában egy bizonyos célra, mint például a szoftvertermék egy kiadása egy külső csoport számára vagy pedig egy bizonyos termékvonal azonosítása.
@@ -900,7 +948,13 @@ Példák:
 - ```docs: fix broken links in README.md```
 - ```feat(i18n): add Hungarian language support```
 
+<div style='page-break-after: always;'></div>
+<u>
+
 ## Annotációk a Java programozási nyelvben
+
+</u>
+
 ### Annotáció fogalma
 Egy programkonstrukcióra vonatkozó metaadat, melynek nincs közvetlen hatása a programvégrehajtásra.
 - Az annotációk gépi feldolgozásra alkalmasak, fordítási vagy futási időben érhetők el.
@@ -1155,8 +1209,13 @@ Például az alábbi @Foo annotáció lehet deklaráció annotáció, típus ann
 Lokális változó vagy lambda kifejezés formális paraméterének deklaráció annotációja soha nem kerül a class állományokban.
 Ezzel szemben lokális változó típusának vagy lambda kifejezés formális paraméter típusának annotációja tárolásra kerülhet a class állományokban.
 
+<div style='page-break-after: always;'></div>
+<u>
 
 ## A Java SE/JDK új lehetőségei
+
+</u>
+
 ### Boilerplate kód fogalma
 A “boilerplate kód” olyan láthatólag gyakran ismétlődő kód, mely újra és újra felbukkan valamilyen eredmény elérése céljából, és amelyről látszik, hogy sokkal egyszerűbbnek kellene lennie.
 
@@ -1572,7 +1631,13 @@ var s = STR."""
 System.out.println(s);
 ```
 
+<div style='page-break-after: always;'></div>
+<u>
+
 ## A Java haladó szintű lehetőségei
+
+</u>
+
 ### Nem absztrakt interfész metódusok
 #### Alapértelmezett
 Egy alapértelmezett metódus egy interfészben a default módosítóval deklarált példánymetódus.
@@ -2471,15 +2536,15 @@ A köztes műveletek mindig lusta kiértékelésűek.
 Egy köztes művelet végrehajtása ténylegesen nem eredményez semmiféle műveletvégzést.
 A csővezeték forrásának bejárása nem kezdődik el, míg a terminális művelet végrehajtásra nem kerül.
 Majdnem minden esetben mohó kiértékelésűek a terminális műveletek.
-Egy terminális művelet végrehajtása indítja el az adatforrás bejárását, a csővezeték feldolgozása a visszatérés előtt fejeződik be.
+Egy terminális művelet végrehajtása indítja el az a2datforrás bejárását, a csővezeték feldolgozása a visszatérés előtt fejeződik be.
 
 Példa:
 ```java
 Stream.of("banana", "apple", "pear", "orange")
-  .filter(s -> s.length() > 4) // köztes művelet
-  .map(String::toUpperCase) // köztes művelet
-  .sorted() // köztes művelet
-  .forEach(System.out::println);// terminális művelet
+  .filter(s -> s.length() > 4)    // köztes művelet
+  .map(String::toUpperCase)       // köztes művelet
+  .sorted()                       // köztes művelet
+  .forEach(System.out::println);  // terminális művelet
 // APPLE
 // BANANA
 // ORANGE
@@ -2507,13 +2572,27 @@ A köztes műveletek lusta kiértékelése lehetőséget kínál optimalizálás
 Köztes műveletek egy lánca végrehajtható az adatokon egyszer végighaladva minimális közbülső állapottal
 Kizárólag állapotmentes köztes műveleteket tartalmazó csővezetékek feldolgozhatók egyetlen menetben, szekvenciálisan és párhuzamosan is, minimális puffereléssel.
 
+<div style='page-break-after: always;'></div>
+<u>
+
 ## Git
+
+</u>
+
 Tároló létrehozása (```git init```)
+
 Állományok figyelmen kívül hagyása ```.gitignore``` állománnyal
+
 A munkakönyvtár állapotának vizsgálata (```git status```), nem véglegesített módosítások megjelenítése (```git diff```)
+
 Változások véglegesítése (```git commit```), állományok hozzáadása tárolóhoz (``git add``), állományok törlése tárolóból (```git rm```)
+
 Verziótörténet megjelenítése (```git log```) ágak használata: ág létrehozása (```git branch```), váltás ágak között (```git checkout```), ágak összefésülése (```git merge```), ágak törlése (```git branch -d```)
+
 Módosítások ”visszacsinálása”: az utolsó commit üzenet megváltoztatása (```git commit --amend```), nem véglegesített módosítások elvetése, véglegesített módosítások ”vissza- csinálása” (```git revert```)
+
 Címkék: címkék listázása és létrehozása (```git tag```), címkék mutatása (```git show```)
+
 A GitHub használata: tároló klónozás (```git clone```), létező tároló ”feltolása” (```git push```)
+
 A ```git rebase``` parancs
