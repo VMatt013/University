@@ -399,7 +399,7 @@ A site életciklus fázishoz alapértelmezésben a ```site:site``` cél, a ```si
 (2) initialize                  (14) process-test-classes
 (3) generate-sources            (15) test
 (4) process-sources             (16) prepare-package
-(5) generate-resources          (17) packageÖ
+(5) generate-resources          (17) package
 (6) process-resources           (18) pre-integration-test
 (7) compile                     (19) integration-test
 (8) process-classes             (20) post-integration-test
