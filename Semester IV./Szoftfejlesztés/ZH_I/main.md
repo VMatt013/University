@@ -34,10 +34,7 @@ Egy keretrendszer szoftvertermékek (például osztályok, és komponensek) olya
 
 Egy keretrendszer egy félkész alkalmazás. A fejlesztők a keretrendszer újrafelhasználható komponenseinek kiterjesztésével és testreszabásával alkotnak teljes alkalmazásokat. A keretrendszerek egy csontváz architektúrát biztosítanak az alkalmazásokhoz. A keretrendszerek jellemzően mintákon alapulnak, mint az architekturális minták és tervezési minták.
 
-Egy rendszer egy keretrendszerrel történő megvalósításához konkrét osztályokat hozunk létre, melyek a keretrendszer absztrakt osztályaitól örökölnek műveleteket. Emellett callback metódusokat definiálunk, melyek válaszként kerülnek meghívásra a keretrendszer által felismert eseményekre.
-
 Inkább a keretrendszer objektumok felelnek a rendszerben a vezérlésért, nem pedig az alkalmazás-specifikus objektumok.
-Ezt a vezérlés megfordításának (Inversion of Control, IoC) nevezik
 
 Hátrányuk, hogy természetüktől fogva bonyolultak és hónapokba telhet a megtanulásuk.
 Egy keretrendszer magában foglalhat máskeretrendszereket, ahol minden egyes keretrendszert abból a célból terveztek, hogy az alkalmazás egy részének fejlesztését támogassa.
@@ -413,8 +410,6 @@ Az alapértelmezett kötések **ejb**, **jar**, **rar** és
 ![default lifecycle](./images/default_lifecycle.png)
 
 ### Tulajdonságok, hivatkozás tulajdonságokra
-#### Tulajdonságok
-???
 #### hivatkozás tulajdonságokra
 A ```${x}``` formájú hivatkozások helyettesítése a POM-ban
 ```${env.név}``` formájú hivatkozások helyettesítése a megfelelő nevű környezeti változó értékével
