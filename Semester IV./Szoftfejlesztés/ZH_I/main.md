@@ -718,7 +718,7 @@ A plugin elemben rendelkezésre álló elemek:
 - **dependencies**: a bővítményhez szükséges függőségeket tartalmazza
   - A függőségek megadása a korábban tárgyalt formában történik.
 - **executions**: lehetővé teszi bővítmény-célok végrehajtásának hozzákötését életciklus fázisokhoz, így az összeállítási folyamat testreszabását (részletesen lásd később)
-- **extensions**: azt jelzi, hogy be kell-t tölteni a bővítmény kiterjesztéseit (alapértelmezés: ```false```)
+- **extensions**: azt jelzi, hogy be kell-e tölteni a bővítmény kiterjesztéseit (alapértelmezés: ```false```)
 - **inherited**: azt jelzi, hogy öröklés során át kell-e venni a bővítmény beállításait (alapértelmezés: ```true```)
 
 Az executions elem:
