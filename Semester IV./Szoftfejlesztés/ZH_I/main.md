@@ -956,7 +956,7 @@ Egy programkonstrukcióra vonatkozó metaadat, melynek nincs közvetlen hatása 
 - Dokumentációs célokat is szolgálnak: nagyon tömör dokumentációs formának tekinthetők.
 
 ### Lehetséges felhasználások
-Információk szolgáltatása a fordítónak: példáultekintsen el bizonyos figyelmeztetésektől, jelezzen bizonyos hibákat.
+Információk szolgáltatása a fordítónak: például tekintsen el bizonyos figyelmeztetésektől, jelezzen bizonyos hibákat.
 - Lásd például a @Deprecated és @Override annotációkat.
 
 Kódgenerálás: az annotációk alapján kód generálható.
