@@ -67,7 +67,17 @@ end
 ```
 
 #### 4. Feladat
-$a=2, t=3, k−=−3, k+=4$ esetén mi lesz a 0.15625 lebegőpontos szám jobboldali szomszédja? A választ tizedestört alakban adja meg. 
+$a=2, t=4, k−=−3, k+=4$ esetén mi lesz a  0.125 lebegőpontos szám jobboldali szomszédja?
+##### megoldás:
+Átírjuk a számot 2-es számrendszerbe majd megnézzük mennyi a $t$, hogy egyszerűbb legyen számolni normalizáljuk, majd a szomszéd típusától függően megnézzük a legelső 1-estől $t$ számjegyet és a legutolsó számjegy helyére hozzáadunk/kivonunk egyet
+
+$0.125 = 0.001$
+normalizálás : $0.001$ $\rArr$ $0.1000 \cdot 2^{-2}$
+t = 4 $\rArr$  $1000$ 
+jobb oldali szomszéd $\rArr$ 0.1001
+A kapott szám $0.001001$, vagyis $0.140625$
+
+
 
 #### 5. Feladat
 $a=2, t=3, k−=−3, k+=3$ esetén mi lesz a 0.4375 normalizált alakja? 
@@ -104,5 +114,3 @@ Megnézzük hogy $t$ esetén mi a $t+1$-ik számjegye, ha 0 akkor nem változik 
 Mivel a $t+1$-edik számjegy $0$, nem csinálunk vele semmit.
 Majd levágjuk  $t$-n felüli elemeket
 Az így kapott szám: $2^{-1} \cdot 0.11001$
-
-## 
