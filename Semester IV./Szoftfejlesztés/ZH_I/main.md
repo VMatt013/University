@@ -250,19 +250,16 @@ A DevOps az agilis szoftverfejlesztési gyakorlatok kiterjesztése.
 ![szabványos könyvtárszerkezet](./images/konyvtarszerkezet.png)
 
 ### Parancssori használat
-A használat módjáról és a megadható parancssori
-opciókról az ```mvn --help``` vagy ```mvn -h``` parancsok
-végrehajtásával kaphatunk leírást.
+A használat módjáról és a megadható parancssori opciókról az ```mvn --help``` vagy ```mvn -h``` parancsok végrehajtásával kaphatunk leírást.
 
 
-Parancssori argumentumként megadható **életciklus fázis**
-(pl:```mvn package```) és **előtag:cél** formában bővítmény-cél (pl:```mvn site:run```).
+Parancssori argumentumként megadható **életciklus fázis** (pl:```mvn package```) és **előtag:cél** formában bővítmény-cél (pl:```mvn site:run```).
 Tetszőleges sok ilyen argumentum adható.
 A végrehajtáshoz paramétereket rendszertulajdonságokkal adhatunk meg ```-Dnév=érték``` formában.
 
 Bővítmény-cél megadható **groupId:artifactId:verzió:cél** formában is.
 Akkor lehet szükséges így hivatkozni egy bővítmény-célt, ha a bővítmény adott számú verzióját kell használni, vagy a Maven nem tudja, hogy az előtag melyik bővítményhez tartozik.
-pl:```mvn org.codehaus.mojo:versions-maven- plugin:2.16.2:help```
+pl:```mvn org.codehaus.mojo:versions-maven-plugin:2.16.2:help```
 
 ### Alafogalmak:
 #### Termék

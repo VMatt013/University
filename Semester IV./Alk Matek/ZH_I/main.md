@@ -57,7 +57,7 @@ $b$ az a sorvektor legyen, amit úgy kapunk, hogy elhagyjuk az $y$ vektor $2.$, 
 
 ##### megoldás:
 ```matlab
-function [a,b]=fun(x,y,n)
+function fun(x,y,n)
     a=zeros(1,2*n);
     a(2:2:end)=x(1:n);
     a(1:2:end)=1:n;
@@ -114,3 +114,83 @@ Megnézzük hogy $t$ esetén mi a $t+1$-ik számjegye, ha 0 akkor nem változik 
 Mivel a $t+1$-edik számjegy $0$, nem csinálunk vele semmit.
 Majd levágjuk  $t$-n felüli elemeket
 Az így kapott szám: $2^{-1} \cdot 0.11001$
+
+## Mátrixok, lineáris egyenletrendszerek
+
+#### 1. Feladat
+
+$$x = \begin{pmatrix}
+a \\ b \\ c \\ d \\
+\end{pmatrix},$$
+
+##### megoldás:
+$\begin{Vmatrix}
+x
+\end{Vmatrix}_1 =  |a| + |b| + |c| +|d|$
+
+$\begin{Vmatrix}
+x
+\end{Vmatrix}_\infin = max(|a| , |b|, |c|, |d|)$
+
+$\begin{Vmatrix}
+x
+\end{Vmatrix}_2 = (|a|^2 + |b|^2 + |c|^2 + |d|^2)^{\frac{1}{2}}$
+
+#### 2. Feladat
+Írjon egy függvényt, mely adott t (n elemű)  vektor esetén az alábbi A mártixszal tér vissza
+
+$A= \begin{bmatrix}
+    1  & a(t_1) & b(t_1)\\ 
+    2  & a(t_2) & b(t_2) \\
+    \vdots \\
+    n  &  a(t_n) & b(t_n)
+\end{bmatrix}$
+
+##### megoldás:
+```matlab
+function fun(t)
+    n = 1:numel(t);
+    t = reshape(t,1,numel(t));
+    A = [n; a(t); b(t)]';
+end
+```
+
+#### 3. Feladat
+$A=\begin{bmatrix}
+x_1 & y_1 & z_1 \\
+x_2 & y_2 & z_2 \\
+x_3 & y_3 & z_3 \\
+\end{bmatrix}$
+
+##### megoldás:
+```matlab
+function fun(A)
+    B = A;
+    B(A>0) = 0;             % Pozitív számokat 0-ra cseréli
+    B(A<0) = 0;             % Negatív számokat 0-ra cseréli
+    B = [A sum((A<0),2)];  % A sorok végére a negatív számok darabszámát írja
+end
+```
+
+#### 3. Feladat
+Írjon egy függvényt, mely adott $n$ esetén kiszámolja az $x=(x_1,\dots,x_n)$ vektor  **adott** normáját, ahol $x_k= y$ függvény, ha $k=1,\dots,n$
+
+##### megoldás:
+$\begin{Vmatrix}
+x
+\end{Vmatrix}_1$ esetén  ```h = sum(abs(x));```
+
+$\begin{Vmatrix}
+x
+\end{Vmatrix}_\infin$ esetén  ```h = max(abs(x));```
+
+$\begin{Vmatrix}
+x
+\end{Vmatrix}_2$ esetén  ```h = (sum(abs(x).^2))^(1./2);```
+```matlab
+function fun(n)
+    k = 1:n;
+    x = y;
+    h = normál forma;
+end
+```
