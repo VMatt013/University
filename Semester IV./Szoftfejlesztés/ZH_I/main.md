@@ -1322,7 +1322,7 @@ var f = System::currentTimeMillis;
 var g = System.out::println;
 ```
 
-### switch kifejezések
+### Switch kifejezések
 A switch utasításként és kifejezésként is használható, mindkét formánál használhatók hagyományos case címkék (“áteséssel”) vagy az új case címkék (“átesés” nélkül). Rendelkezésre áll egy további új utasítás (yield) is, mellyel egy érték adható vissza a switch kifejezésből.
 Egy switch kifejezésnek vagy normális módon egy értékkel kell befejeződnie vagy váratlanul egy kivétel dobásával.
 A switch címke egy új formája (case ... ->) került bevezetésre, mely esetenként több vesszővel elválasztott konstanst is megenged.
@@ -2563,6 +2563,54 @@ supplier.get().count();                        // eredmény: 2
 A köztes műveletek lusta kiértékelése lehetőséget kínál optimalizálásra.
 Köztes műveletek egy lánca végrehajtható az adatokon egyszer végighaladva minimális közbülső állapottal
 Kizárólag állapotmentes köztes műveleteket tartalmazó csővezetékek feldolgozhatók egyetlen menetben, szekvenciálisan és párhuzamosan is, minimális puffereléssel.
+
+###  Version History
+
+- Java SE 10: lokális változó típus kikövetkeztetés
+- Java SE 11:
+  - HTTP Client
+  - Local-Variable Syntax for Lambda Parameters
+- Java SE 12/JDK 12
+  - Switch Expressions (Preview)
+- Java SE 13/JDK 13
+  - Switch Expressions (Second Preview)
+  - Text Blocks (Preview)
+- Java SE 14/JDK 14
+  - Pattern Matching for instanceof (Preview)
+  - Records (Preview)
+  - Switch Expressions
+  - Text Blocks (Second Preview)
+- Java SE 15/JDK 15
+  - Sealed Classes (Preview) 
+  - Pattern Matching for instanceof (Second Preview)
+  - Text Blocks 
+  - Records (Second Preview) 
+- Java SE 16/JDK 16
+  - Pattern Matching for instanceof
+  - Records
+  - Sealed Classes (Second Preview)
+- Java SE 17/JDK 17
+  - Pattern Matching for switch (Preview)
+  - Sealed Classes 
+- Java SE 18/JDK 18
+  - Pattern Matching for switch (Second Preview)
+- Java SE 19/JDK 19
+  - Record Patterns (Preview) 
+  - Pattern Matching for switch (Third Preview)
+- Java SE 20/JDK 20
+  - Record Patterns (Second Preview)
+  - Pattern Matching for switch (Fourth Preview)
+- Java SE 21/JDK 21
+  - JEP 430: String Templates (Preview)
+  - Sequenced Collections
+  - Record Patterns
+  - Pattern Matching for switch
+  - Unnamed Patterns and Variables (Preview)
+  - Virtual Threads
+  - Unnamed Classes and Instance Main Methods (Preview)
+  - Scoped Values (Preview)
+
+
 
 <div style='page-break-after: always;'></div>
 <u>
