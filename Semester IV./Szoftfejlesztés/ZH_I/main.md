@@ -1660,7 +1660,7 @@ System.out.println(s);
   - Record Patterns (Second Preview)
   - Pattern Matching for switch (Fourth Preview)
 - Java SE 21/JDK 21
-  - JEP 430: String Templates (Preview)
+  - String Templates (Preview)
   - Sequenced Collections
   - Record Patterns
   - Pattern Matching for switch
