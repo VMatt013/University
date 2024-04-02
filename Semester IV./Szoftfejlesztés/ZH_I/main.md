@@ -910,7 +910,7 @@ A normál verziószámok ```X.Y.Z``` formájúak, ahol *X* , *Y* és *Z* nemnega
 Nem visszafelé kompatibilis változás egy nyilvános *API*-ban.
 Az *API* kliensei számára fordításidejű, szerkesztésidejű vagy futásidejű hibákat okoz.
 
-#### verzió precedencia meghatározása
+#### Verzió precedencia meghatározása
 A verziószámok felbontása fő-, al- és patch verzióra. Az összeállítási metaadatok figyelmen kívül hagyása.
 Az első olyan komponens meghatározása balról jobbra haladva, ahol a verziószámok eltérnek, ez a komponens kerül összehasonlításra a verziószámokból.
 A fő-, al- és patch verziók összehasonlítása numerikusan történik:
