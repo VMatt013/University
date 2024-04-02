@@ -1626,49 +1626,49 @@ System.out.println(s);
 ###  Version History
 
 - Java SE 10: 
-  - Local-Variable Type Inference
+  - **Local-Variable Type Inference**
 - Java SE 11:
-  - HTTP Client
-  - Local-Variable Syntax for Lambda Parameters
+  - **HTTP Client**
+  - **Local-Variable Syntax for Lambda Parameters**
 - Java SE 12/JDK 12
-  - Switch Expressions (Preview)
+  - *Switch Expressions (Preview)*
 - Java SE 13/JDK 13
-  - Switch Expressions (Second Preview)
-  - Text Blocks (Preview)
+  - *Switch Expressions (Second Preview)*
+  - *Text Blocks (Preview)*
 - Java SE 14/JDK 14
-  - Pattern Matching for instanceof (Preview)
-  - Records (Preview)
-  - Switch Expressions
-  - Text Blocks (Second Preview)
+  - *Pattern Matching for instanceof (Preview)*
+  - *Records (Preview)*
+  - **Switch Expressions**
+  - *Text Blocks (Second Preview)*
 - Java SE 15/JDK 15
-  - Sealed Classes (Preview) 
-  - Pattern Matching for instanceof (Second Preview)
-  - Text Blocks 
-  - Records (Second Preview) 
+  - *Sealed Classes (Preview)* 
+  - *Pattern Matching for instanceof (Second Preview)*
+  - **Text Blocks** 
+  - *Records (Second Preview)*
 - Java SE 16/JDK 16
-  - Pattern Matching for instanceof
-  - Records
-  - Sealed Classes (Second Preview)
+  - **Pattern Matching for instanceof**
+  - **Records**
+  - *Sealed Classes (Second Preview)*
 - Java SE 17/JDK 17
-  - Pattern Matching for switch (Preview)
-  - Sealed Classes 
+  - *Pattern Matching for switch (Preview)*
+  - **Sealed Classes **
 - Java SE 18/JDK 18
-  - Pattern Matching for switch (Second Preview)
+  - *Pattern Matching for switch (Second Preview)*
 - Java SE 19/JDK 19
-  - Record Patterns (Preview) 
-  - Pattern Matching for switch (Third Preview)
+  - *Record Patterns (Preview) *
+  - *Pattern Matching for switch (Third Preview)*
 - Java SE 20/JDK 20
-  - Record Patterns (Second Preview)
-  - Pattern Matching for switch (Fourth Preview)
+  - *Record Patterns (Second Preview)*
+  - *Pattern Matching for switch (Fourth Preview)*
 - Java SE 21/JDK 21
-  - String Templates (Preview)
-  - Sequenced Collections
-  - Record Patterns
-  - Pattern Matching for switch
-  - Unnamed Patterns and Variables (Preview)
-  - Virtual Threads
-  - Unnamed Classes and Instance Main Methods (Preview)
-  - Scoped Values (Preview)
+  - *String Templates (Preview)*
+  - **Sequenced Collections**
+  - **Record Patterns**
+  - **Pattern Matching for switch**
+  - *Unnamed Patterns and Variables (Preview)*
+  - **Virtual Threads**
+  - *Unnamed Classes and Instance Main Methods (Preview)*
+  - *Scoped Values (Preview)*
 
 <div style='page-break-after: always;'></div>
 <u>
