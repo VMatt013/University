@@ -4,9 +4,11 @@
 ### 1. Feladat 
 #### Összeg:
 Írjon egy Matlab függvényt, amely tetszőleges n esetén megadja az alábbi összeg  értékét
+
 $$s=\sum_{k=1}^n  z$$
 
 $$1 \leq n \leq 33$$
+
 ##### megoldás:
 A képlet mindig tartalmaz egy összeget, amiben van egy $z$ képletet
 
@@ -124,6 +126,7 @@ a \\ b \\ c \\ d \\
 \end{pmatrix},$$
 
 ##### megoldás:
+
 $\begin{Vmatrix}
 x
 \end{Vmatrix}_1 =  |a| + |b| + |c| +|d|$
@@ -156,6 +159,7 @@ end
 ```
 
 #### 3. Feladat
+
 $A=\begin{bmatrix}
 x_1 & y_1 & z_1 \\
 x_2 & y_2 & z_2 \\
@@ -176,6 +180,7 @@ end
 Írjon egy függvényt, mely adott $n$ esetén kiszámolja az $x=(x_1,\dots,x_n)$ vektor  **adott** normáját, ahol $x_k= y$ függvény, ha $k=1,\dots,n$
 
 ##### megoldás:
+
 $\begin{Vmatrix}
 x
 \end{Vmatrix}_1$ esetén  ```h = sum(abs(x));```
