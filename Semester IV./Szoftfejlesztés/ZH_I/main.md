@@ -1625,7 +1625,8 @@ System.out.println(s);
 
 ###  Version History
 
-- Java SE 10: lokális változó típus kikövetkeztetés
+- Java SE 10: 
+  - lokális változó típus kikövetkeztetés
 - Java SE 11:
   - HTTP Client
   - Local-Variable Syntax for Lambda Parameters
