@@ -217,9 +217,9 @@ x
    <tr>
 <td>
     
-$\begin{Vmatrix}
+$$\begin{Vmatrix}
 x
-\end{Vmatrix}_2$
+\end{Vmatrix}_2$$
 
 </td>
 <td>
