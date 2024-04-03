@@ -117,6 +117,10 @@ Mivel a $t+1$-edik számjegy $0$, nem csinálunk vele semmit.
 Majd levágjuk  $t$-n felüli elemeket
 Az így kapott szám: $2^{-1} \cdot 0.11001$
 
+
+<div style='page-break-after: always;'></div>
+
+
 ## Mátrixok, lineáris egyenletrendszerek
 
 #### 1. Feladat
@@ -127,17 +131,17 @@ a \\ b \\ c \\ d \\
 
 ##### megoldás:
 
-$\begin{Vmatrix}
+$$\begin{Vmatrix}
 x
-\end{Vmatrix}_1 =  |a| + |b| + |c| +|d|$
+\end{Vmatrix}_1 =  |a| + |b| + |c| +|d|$$
 
-$\begin{Vmatrix}
+$$\begin{Vmatrix}
 x
-\end{Vmatrix}_\infin = max(|a| , |b|, |c|, |d|)$
+\end{Vmatrix}_\infin = max(|a| , |b|, |c|, |d|)$$
 
-$\begin{Vmatrix}
+$$\begin{Vmatrix}
 x
-\end{Vmatrix}_2 = (|a|^2 + |b|^2 + |c|^2 + |d|^2)^{\frac{1}{2}}$
+\end{Vmatrix}_2 = (|a|^2 + |b|^2 + |c|^2 + |d|^2)^{\frac{1}{2}}$$
 
 #### 2. Feladat
 Írjon egy függvényt, mely adott t (n elemű)  vektor esetén az alábbi A mártixszal tér vissza
@@ -176,22 +180,56 @@ function fun(A)
 end
 ```
 
-#### 3. Feladat
+#### 4. Feladat
 Írjon egy függvényt, mely adott $n$ esetén kiszámolja az $x=(x_1,\dots,x_n)$ vektor  **adott** normáját, ahol $x_k= y$ függvény, ha $k=1,\dots,n$
 
 ##### megoldás:
 
-$\begin{Vmatrix}
-x
-\end{Vmatrix}_1$ esetén  ```h = sum(abs(x));```
+<table>
+  <tr>
+<td>
 
-$\begin{Vmatrix}
+$$\begin{Vmatrix}
 x
-\end{Vmatrix}_\infin$ esetén  ```h = max(abs(x));```
+\end{Vmatrix}_1$$
 
+</td>
+<td>
+ 
+ ```h = sum(abs(x));```
+ 
+ </td>
+  </tr>
+  <tr>
+  <td>
+
+$$\begin{Vmatrix}
+x
+\end{Vmatrix}_\infin$$
+    
+</td>
+<td>
+
+```h = max(abs(x));```
+
+</td>
+  </tr>
+   <tr>
+<td>
+    
 $\begin{Vmatrix}
 x
-\end{Vmatrix}_2$ esetén  ```h = (sum(abs(x).^2))^(1./2);```
+\end{Vmatrix}_2$
+
+</td>
+<td>
+
+```h = (sum(abs(x).^2))^(1./2);```
+
+</td>
+  </tr>
+  </table>
+
 ```matlab
 function fun(n)
     k = 1:n;
