@@ -141,7 +141,7 @@ x
 
 $$\begin{Vmatrix}
 x
-\end{Vmatrix}_2 = (|a|^2 + |b|^2 + |c|^2 + |d|^2)^{\frac{1}{2}}$$
+\end{Vmatrix}_2 = \sqrt{(|a|^2 + |b|^2 + |c|^2 + |d|^2)}$$
 
 #### 2. Feladat
 Írjon egy függvényt, mely adott t (n elemű)  vektor esetén az alábbi A mártixszal tér vissza
