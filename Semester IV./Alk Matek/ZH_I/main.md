@@ -1,6 +1,12 @@
 # ZH I.
 
+<u>
+
 ## Lebegőpontos számok, Matlab alapok
+
+</u>
+
+
 ### 1. Feladat 
 #### Összeg:
 Írjon egy Matlab függvényt, amely tetszőleges n esetén megadja az alábbi összeg  értékét
@@ -120,8 +126,11 @@ Az így kapott szám: $2^{-1} \cdot 0.11001$
 
 <div style='page-break-after: always;'></div>
 
+<u>
 
 ## Mátrixok, lineáris egyenletrendszerek
+
+</u>
 
 #### 1. Feladat
 
@@ -137,11 +146,11 @@ x
 
 $$\begin{Vmatrix}
 x
-\end{Vmatrix}_\infin = max(|a| , |b|, |c|, |d|)$$
+\end{Vmatrix}_\infty = max(|a| , |b|, |c|, |d|)$$
 
 $$\begin{Vmatrix}
 x
-\end{Vmatrix}_2 = \sqrt{(|a|^2 + |b|^2 + |c|^2 + |d|^2)}$$
+\end{Vmatrix}_2 = \sqrt{(a^2 + b^2 + c^2 + d^2)}$$
 
 #### 2. Feladat
 Írjon egy függvényt, mely adott t (n elemű)  vektor esetén az alábbi A mártixszal tér vissza
@@ -157,18 +166,18 @@ $A= \begin{bmatrix}
 ```matlab
 function fun(t)
     n = 1:numel(t);
-    t = reshape(t,1,numel(t));
+    t = t(:)';
     A = [n; a(t); b(t)]';
 end
 ```
 
 #### 3. Feladat
 
-$A=\begin{bmatrix}
+$$A=\begin{bmatrix}
 x_1 & y_1 & z_1 \\
 x_2 & y_2 & z_2 \\
 x_3 & y_3 & z_3 \\
-\end{bmatrix}$
+\end{bmatrix}$$
 
 ##### megoldás:
 ```matlab
@@ -185,7 +194,16 @@ end
 
 ##### megoldás:
 
+
 <table>
+
+<tr>
+<td colspan=2; style="text-align:center">
+
+**normálformák**
+
+</td>
+</tr>
   <tr>
 <td>
 
@@ -205,7 +223,7 @@ x
 
 $$\begin{Vmatrix}
 x
-\end{Vmatrix}_\infin$$
+\end{Vmatrix}_\infty$$
     
 </td>
 <td>
@@ -224,7 +242,7 @@ x
 </td>
 <td>
 
-```h = (sum(abs(x).^2))^(1./2);```
+```h = sqrt(sum(x.^2));```
 
 </td>
   </tr>
@@ -237,3 +255,69 @@ function fun(n)
     h = normál forma;
 end
 ```
+#### 5. Feladat
+
+
+
+<div style='page-break-after: always;'></div>
+
+<u>
+
+## Legkisebb négyzetes közelítések
+
+</u>
+
+### 1. Feladat
+
+Adott $(t_1,f_1)$,...,(tm,fm) megfigyelésekre akarunk legkisebb négyzetes értelemben modellt illeszteni. Válassza ki azokat a modelleket, melyek az $x_1,x_2,x_3$ ismeretlen paraméterek lineáris függvényei.
+
+Egy függvény lineáris, ha az $x_1, x_2, x_3$ a következő formában vannak:
+
+
+<ul style="color:green">
+<li>
+
+$x_1 \cdot y$
+
+</li>
+<li>
+
+$\frac{x_1}{y}$
+
+</li>
+<li>
+
+$x_1 + x_2 + x_3$
+
+</li>
+
+</ul>
+
+Egy függvény  **NEM** lineáris , ha az $x_1, x_2, x_3$ a következő formában vannak:
+
+<ul style="color:red">
+<li>
+
+$x_1 \cdot x_2$
+
+</li>
+<li>
+
+$\frac{y}{x_1}$
+
+</li>
+<li>
+
+$sin(x_1) , cos(x_1) , log(x_1)$
+
+</li>
+
+</ul>
+
+### 2. Feladat
+
+Adott (t1,f1),…,(t8,f8) pontpárok esetén megadtuk a t=(t1,…,t8), f=(f1,…,f8) vektorokat és kiadtuk a következő Matlab parancsot:
+
+ p=polyfit(t,f,3)
+
+A kapott polinomot a pontpárokkal együtt ábrázoltuk, a lenti ábrák egyikét kaptuk. Melyik ez az ábra?
