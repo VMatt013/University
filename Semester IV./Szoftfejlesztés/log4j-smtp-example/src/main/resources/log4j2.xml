@@ -1,0 +1,27 @@
+<Configuration status="debug">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="STDOUT">
+            <PatternLayout pattern="%highlight{${LOG_PATTERN}}"/>
+        </Console>
+        <SMTP name="Mail"
+            smtpHost="${SMTPAppender.smtpHost}"
+            smtpPort="${SMTPAppender.smtpPort}"
+            smtpUsername="${SMTPAppender.smtpUsername}"
+            smtpPassword="${SMTPAppender.smtpPassword}"
+            to="${SMTPAppender.to}"
+            from="${SMTPAppender.from}"
+            subject="%logger{20} - %m"
+            smtpDebug="${SMTPAppender.smtpDebug}">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </SMTP>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="Mail"/>
+        </Root>
+    </Loggers>
+</Configuration>

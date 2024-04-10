@@ -1,0 +1,7 @@
+14:24:49.728 [main] FATAL pkg.Main - This is a FATAL message
+14:24:49.732 [main] ERROR pkg.Main - This is an ERROR message
+14:24:49.732 [main] WARN  pkg.Main - This is a WARN message
+14:24:49.748 [main] ERROR pkg.Main - An exception occurred
+java.lang.RuntimeException: Oops, something went wrong
+	at pkg.Main.main(Main.java:19) [classes/:?]
+14:24:49.763 [main] ERROR pkg.Main - This is an ERROR message that contains 'FAIL'
