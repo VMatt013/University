@@ -1,0 +1,33 @@
+Szeptember:
+- Információ gyűjtése a használni kívánt eszközökről
+- Alapvető elemek megtervezése, pl: pálya, játékos és alap ellenfelek
+- Játékos, valamint ellenfelek alapvető funkcióinak megtervezése és implementálása pl: mozgás és támadás
+- Alapvető menü tervezése és implementálása
+- I. játéktesztelések, majd esetleges észrevételek alapján javítások implementálása
+
+Október:
+- Különböző arénai elemek tervezése és implementálása, pl: felvehető tárgyak, felvehető gyógyítás
+- Inventory / Táska rendszer tervezése és implementálása, esetleges bolt rendszerrel
+- JUnit általi tesztek elkészítése
+
+November:
+- Különböző tárgyak tervezése és implementálása
+- Különböző ellenfelek tervezése és implementálása
+- Főellenség és speciális ellenfelek tervezése és implementálása
+- Ellenfelek viselkedésének finomítása, különböző támadási formák implementálása
+
+December:
+- Pontrendszer implementálása
+- Menü finomítása és véglegesítése
+
+Január:
+- II. játéktesztelések, majd esetleges észrevételek alapján javítások implementálása
+
+Február:
+- Hibák keresése manuálisan UI-ban, valamint a játék működésében
+
+Március:
+- A forráskód dokumentációjának elkészítése
+
+Április:
+- Szakdolgozat befejezése és a program véglegesítése
