@@ -1,0 +1,14 @@
+Neural network:
+
+import pandas as pd
+
+df = pd.read_csv(link)
+
+model = Sequential([
+        Dense(units=32, activation=\"relu\", input_shape=(1,))
+        Dropout(0.5)
+        Dense(units = 32, activation=\"relu\")
+        Dropout(0.5)
+        Dense(units = 32, activation=\"relu\")
+        Dense(units = 1)
+        ])

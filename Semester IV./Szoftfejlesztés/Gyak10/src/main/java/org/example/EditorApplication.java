@@ -6,6 +6,6 @@ import javafx.stage.Stage;
 
 public class EditorApplication {
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load()
+        Parent root = FXMLLoader.load(getClass().getResource("/fml/editor.fxml"));
     }
 }
