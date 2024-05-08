@@ -46,7 +46,7 @@ A tartalmazott elemekre csomagnév::elemnév formájú minősített nevekkel leh
 #### függőségek
 Modellelemek közötti szolgáltató-kliens kapcsolatot jelent, ahol egy szolgáltató módosításának hatása lehet a kliens modellelemekre.
 **Jelölésmód:** 
-![Függőségek](/images/fuggosegek.png)
+![Függőségek](images/fuggosegek.png)
 Két modellelem közötti szaggatott nyíl jelöli. A nyíl a függő (kliens) modellelemtől a szolgáltató modellelem felé mutat. A függőséghez megadható egy kulcsszó vagy sztereotípia.
 
 #### kulcsszavak
@@ -75,7 +75,7 @@ Nincs jelentése, a modell olvasója számára hordozhat hasznos információt.
 - Szaggatott vonal kapcsolja a magyarázandó elem(ek)hez. 
 - A vonal elhagyható, ha egyértelmű a környezetből vagy nem fontos a diagramon.
 
-![Megjegyzés](/images/megjegyzes.png)
+![Megjegyzés](images/megjegyzes.png)
 
 <div style='page-break-after: always;'></div>
 
@@ -142,18 +142,18 @@ Egy tulajdonság egy attribútumot vagy egy asszociációvéget ábrázol.
 ### Statikus attribútumok és műveletek
 A statikus attribútumokat és műveleteket **aláhúzás** jelöli.
 - Példa:
-![Statikus-attribútumok-és-műveletek](/images/statikus-attrib-muveletek.png)
+![Statikus-attribútumok-és-műveletek](images/statikus-attrib-muveletek.png)
 
 <div style='page-break-after: always;'></div>
 
 ### Absztrakt osztályok
 Nem példányosítható osztály (osztályozó).
 **Jelölésmód:** 
-- Szedjük az osztály (osztályozó) nevét dőlt betűvel és/vagy a név után vagy alatt adjuk meg az {abstract} szöveges annotációt.
+- Szedjük az osztály (osztályozó) nevét dőlt betűvel és/vagy a név után vagy alatt adjuk meg az *{abstract}* szöveges annotációt.
 - Az UML 2.5.1 nem rendelkezik az absztrakt műveletek jelölésmódjáról! 
 **(Személyes vélemény: ez valószínűleg hiba.)**
 
-![Absztrakt-osztályok](/images/absztrakt-osztaly.png)
+![Absztrakt-osztályok](images/absztrakt-osztaly.png)
 
 <div style='page-break-after: always;'></div>
 
@@ -171,7 +171,7 @@ Szemantikus viszonyt jelent, mely osztályozók példányai között állhat fen
 - Az asszociáció szimbólumához megadható név (ne legyen túl közel egyik véghez sem).
 - Folytonos vonallal ábrázolt bináris asszociáció neve mellett vagy helyén elhelyezhető egy tömör háromszög, mely a vonal mentén az egyik vég felé mutat és az olvasási irányt jelzi. *Ez a jelölés csupán dokumentációs célokat szolgál.*
 
-![Asszociációk1](/images/asszociaciok_1.png)
+![Asszociációk1](images/asszociaciok_1.png)
 
 **Asszociáció vég:** az asszociációt ábrázoló vonal és egy osztályozót ábrázoló ikon (gyakran egy doboz) kapcsolata.
 A vonal végének közelében elhelyezhető (egyik sem kötelező):
@@ -185,13 +185,13 @@ A vonal végén egy **nyílt nyílhegy** azt jelzi, hogy a vég navigálható, e
 Egy asszociáció vég számosságának jelentése:
 - A példányok számát adja meg a végen arra az esetre, amikor a többi (n - 1) vég mindegyikén egy- egy értéket rögzítünk.
 
-![Asszociációk2](/images/asszociaciok_2.png)
+![Asszociációk2](images/asszociaciok_2.png)
 
 Az osztályozó és a vonal érintkezési pontjában elhelyezhető egy kis tömör kör (a továbbiakban pontnak nevezzük).
 - A pont azt mutatja, hogy a modell tartalmaz egy tulajdonságot, melynek típusát a pont által érintett osztályozó ábrázolja. Ez a tulajdonság a másik végen lévő osztályozóhoz tartozik. Ebben az esetben szokás a tulajdonságot elhagyni az osztályozó attribútum rekeszéből.
 - A pont hiánya azt jelzi, hogy a vég magához az asszociációhoz tartozik.
 
-![Asszociációk3](/images/asszociaciok_3.png)
+![Asszociációk3](images/asszociaciok_3.png)
 
 <div style='page-break-after: always;'></div>
 
@@ -201,11 +201,11 @@ A navigálhatóság azt jelenti, hogy a kapcsolatokban résztvevő példányok f
 
 -|-
 -|- 
-Mindkét vég navigálható.| ![Asszociáció-cell-1](/images/asszociaciok_table_1.png)
-Egyik vég sem navigálható. | ![Asszociáció-cell-1](/images/asszociaciok_table_2.png)
-A navigálhatóság nem meghatározott.   | ![Asszociáció-cell-1](/images/asszociaciok_table_3.png)
-Az egyik vég navigálható, a másik nem. | ![Asszociáció-cell-1](/images/asszociaciok_table_4.png)
-Az egyik vég navigálható, a másik nem. | ![Asszociáció-cell-1](/images/asszociaciok_table_5.png)
+Mindkét vég navigálható.| ![Asszociáció-cell-1](images/asszociaciok_table_1.png)
+Egyik vég sem navigálható. | ![Asszociáció-cell-1](images/asszociaciok_table_2.png)
+A navigálhatóság nem meghatározott.   | ![Asszociáció-cell-1](images/asszociaciok_table_3.png)
+Az egyik vég navigálható, a másik nem. | ![Asszociáció-cell-1](images/asszociaciok_table_4.png)
+Az egyik vég navigálható, a másik nem. | ![Asszociáció-cell-1](images/asszociaciok_table_5.png)
 
 <div style='page-break-after: always;'></div>
 
@@ -217,15 +217,15 @@ A bináris asszociációk egész-rész kapcsolatot kifejező fajtái:
 Egy bináris asszociáció egyik vége jelölhető meg csak aggregációként vagy kompozícióként.
 
 **Jelölésmód:** 
-![Egész-rész-kapcsolat-1](/images/egesz-resz-kapcsolat_1.png)
+![Egész-rész-kapcsolat-1](images/egesz-resz-kapcsolat_1.png)
 
 <div style='page-break-after: always;'></div>
 
 **Példa aggregációra:**
-![Egész-rész-kapcsolat-2](/images/egesz-resz-kapcsolat_2.png)
+![Egész-rész-kapcsolat-2](images/egesz-resz-kapcsolat_2.png)
 
 **Példa kompozícióra:**
-![Egész-rész-kapcsolat-3](/images/egesz-resz-kapcsolat_3.png)
+![Egész-rész-kapcsolat-3](images/egesz-resz-kapcsolat_3.png)
 
 <div style='page-break-after: always;'></div>
 
@@ -237,14 +237,14 @@ A közvetlen általánosításokat a speciális osztályozó szülőjének nevez
 Egy osztályozó egy példánya minden általánosításának példánya.
 A speciális osztályozó örökli az általános osztályozó bizonyos tagjait.
 **Jelölésmód:** 
-![Általánosítás-1](/images/altalonositas_1.png)
+![Általánosítás-1](images/altalonositas_1.png)
 
 <div style='page-break-after: always;'></div>
 
 **Példa:**
-|![Általánosítás-2](/images/altalonositas_2.png)|
+|![Általánosítás-2](images/altalonositas_2.png)|
 |-|
-|![Általánosítás-3](/images/altalonositas_3.png)|
+|![Általánosítás-3](images/altalonositas_3.png)|
 
 <div style='page-break-after: always;'></div>
 
@@ -253,11 +253,11 @@ Az interfész egy olyan fajta osztályozó, mely nyilvános jellemzőket és kö
 Az interfészek nem példányosíthatók. Osztályozók implementálják vagy az interfész specifikációnak megfelelő nyilvános felületet nyújtanak.
 
 **Jelölésmód:** 
-![Interfészek-1](/images/interfesz_1.png)
-![Interfészek-2](/images/interfesz_2.png)
+![Interfészek-1](images/interfesz_1.png)
+![Interfészek-2](images/interfesz_2.png)
 
 **Példa:**
-![Interfészek-3](/images/interfesz_3.png)
+![Interfészek-3](images/interfesz_3.png)
 
 
 ## 2. Szoftvertesztelés
