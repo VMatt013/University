@@ -146,6 +146,7 @@ Egy tulajdonság egy attribútumot vagy egy asszociációvéget ábrázol.
 
 ### Statikus attribútumok és műveletek
 A statikus attribútumokat és műveleteket **aláhúzás** jelöli.
+
 Példa:
   
 ![Statikus-attribútumok-és-műveletek](images/statikus-attrib-muveletek.png)
