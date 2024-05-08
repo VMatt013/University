@@ -36,8 +36,11 @@ Az osztályozó egy modellelem, mely közös jellemzőkkel műveletekkel rendelk
 #### csomagok
 A csomag egy modellelemek csoportosítására szolgáló konstrukció, mely egy névteret határoz meg a tagjai számára.
 **Jelölésmód:** 
+
 ![Jelölésmód](images/csomagok_1.png)
+
 A tartalmazott elemekre csomagnév::elemnév formájú minősített nevekkel lehet hivatkozni (például ```pkg::Point```, ```pkg::Shape```).
+
 ![Csomagok3](images/csomagok_3.png) | ![Csomagok4](images/csomagok_4.png)
  -|-|
 
@@ -46,7 +49,9 @@ A tartalmazott elemekre csomagnév::elemnév formájú minősített nevekkel leh
 #### függőségek
 Modellelemek közötti szolgáltató-kliens kapcsolatot jelent, ahol egy szolgáltató módosításának hatása lehet a kliens modellelemekre.
 **Jelölésmód:** 
+
 ![Függőségek](images/fuggosegek.png)
+
 Két modellelem közötti szaggatott nyíl jelöli. A nyíl a függő (kliens) modellelemtől a szolgáltató modellelem felé mutat. A függőséghez megadható egy kulcsszó vagy sztereotípia.
 
 #### kulcsszavak
@@ -217,14 +222,17 @@ A bináris asszociációk egész-rész kapcsolatot kifejező fajtái:
 Egy bináris asszociáció egyik vége jelölhető meg csak aggregációként vagy kompozícióként.
 
 **Jelölésmód:** 
+
 ![Egész-rész-kapcsolat-1](images/egesz-resz-kapcsolat_1.png)
 
 <div style='page-break-after: always;'></div>
 
 **Példa aggregációra:**
+
 ![Egész-rész-kapcsolat-2](images/egesz-resz-kapcsolat_2.png)
 
 **Példa kompozícióra:**
+
 ![Egész-rész-kapcsolat-3](images/egesz-resz-kapcsolat_3.png)
 
 <div style='page-break-after: always;'></div>
@@ -237,6 +245,7 @@ A közvetlen általánosításokat a speciális osztályozó szülőjének nevez
 Egy osztályozó egy példánya minden általánosításának példánya.
 A speciális osztályozó örökli az általános osztályozó bizonyos tagjait.
 **Jelölésmód:** 
+
 ![Általánosítás-1](images/altalonositas_1.png)
 
 <div style='page-break-after: always;'></div>
@@ -253,10 +262,12 @@ Az interfész egy olyan fajta osztályozó, mely nyilvános jellemzőket és kö
 Az interfészek nem példányosíthatók. Osztályozók implementálják vagy az interfész specifikációnak megfelelő nyilvános felületet nyújtanak.
 
 **Jelölésmód:** 
+
 ![Interfészek-1](images/interfesz_1.png)
 ![Interfészek-2](images/interfesz_2.png)
 
 **Példa:**
+
 ![Interfészek-3](images/interfesz_3.png)
 
 
