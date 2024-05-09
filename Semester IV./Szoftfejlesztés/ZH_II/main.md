@@ -591,7 +591,7 @@ void testMiddle() {
 ```
 
 Vegyük észre, hogy az utasítás/sor lefedettség 100%, noha hibás a ```middle()``` metódus implementációja.
-
+,
 <div style='page-break-after: always;'></div>
 
 #### ág lefedettség
@@ -724,14 +724,593 @@ Leginkább új szoftverek kifejlesztéséhez alkalmas.
 
 ## 3. Objektumorientált tervezési alapelvek
 ### Statikus kódelemzés fogalma, példák statikus kódelemző eszközökre
+A statikus kódelemzés (static code analysis)
+a programkód elemzésének folyamata, mely a
+kód végrehajtása nélkül történik.
+– Az elemezés irányulhat hibák észlelésére; annak
+ellenőrzésére, hogy a kód megfelel-e egy kódolási
+szabványnak, …
+● Statikus kódelemző (eszköz) (static code
+analyzer, static code analysis tool): statikus
+kódelemzést végző automatikus eszköz.
+
+C#:
+– InferSharp (programozási nyelv: C#; licenc: MIT License)
+https://github.com/microsoft/infersharp
+– Roslyn Analyzers (programozási nyelv: C#; licenc: MIT License)
+https://github.com/dotnet/roslyn-analyzers
+– Roslynator (programozási nyelv: C#; licenc: Apache License
+2.0) https://github.com/dotnet/roslynator
+● C++:
+– Cppcheck
+
+ECMAScript/JavaScript:
+– ESLint (programozási nyelv: JavaScript; licenc: MIT License)
+https://eslint.org/ https://github.com/eslint/eslint
+– JSHint (programozási nyelv: JavaScript; licenc: MIT License)
+https://jshint.com/ https://github.com/jshint/jshint
+– JSLint (programozási nyelv: JavaScript; licenc: Unlicense)
+https://www.jslint.com/ https://github.com/jslint-org/jslint
+– RSLint (programozási nyelv: Rust;
+
+Java:
+– Checkstyle (programozási nyelv: Java; licenc: LGPLv2.1)
+https://checkstyle.org/ https://github.com/checkstyle/checkstyle
+– Error Prone (programozási nyelv: Java; licenc: Apache License
+2.0) https://errorprone.info/
+https://github.com/google/error-prone
+– NullAway (programozási nyelv: Java; licenc: MIT License)
+https://github.com/uber/NullAway
+– SpotBugs (programozási nyelv: Java
+
+Python:
+– Prospector (programozási nyelv: Python; licenc:
+GPLv2) http://prospector.landscape.io/
+https://github.com/landscapeio/prospector
+– Pylint (programozási nyelv: Python
+
+Több nyelvet támogató eszközök:
+– Coala (programozási nyelv: Python; licenc: AGPLv3)
+https://coala.io/ https://github.com/coala/coala
+– Infer (programozási nyelv: OCaml; licenc: MIT License)
+https://fbinfer.com/ https://github.com/facebook/infer
+– PMD (programozási nyelv: Java; licenc: BSD License)
+https://pmd.github.io/ https://github.com/pmd/pmd
+– Semgrep (programozási nyelv: OCaml
+
+További eszközökért lásd:
+– Analysis Tools and Linters to Improve Code Quality
+and Avoid Bugs
+
 ### A DRY elv
+Ne ismételd magad (Don't Repeat Yourself)
+– „Every piece of knowledge must have a single,
+unambiguous, authoritative representation within a
+system.”
+– A tudás minden darabkájának egyetlen, egyértelmű,
+hiteles reprezentációja kell, hogy legyen egy
+rendszerben.
+● Az ellenkezője a WET.
+– „We enjoy typing”, „write everything twice”, „waste
+everyone's time”, …
+
+Az ismétlések fajtái:
+– Kényszerített ismétlés (imposed duplication): a fejlesztők úgy érzik,
+hogy nincs választásuk, a környezet láthatólag megköveteli az ismétlést.
+– Nem szándékos ismétlés (inadvertent duplication): a fejlesztők nem
+veszik észre, hogy információkat duplikálnak.
+– Türelmetlen ismétlés (impatient duplication): a fejlesztők
+lustaságából fakad, az ismétlés látszik a könnyebb útnak.
+– Fejlesztők közötti ismétlés (interdeveloper duplication): egy
+csapatban vagy különböző csapatokban többen duplikálnak egy
+információt.
+● Kapcsolódó fogalom: kódismétlés (code duplication, duplicate
+code), copy-and-paste programming
+
+A kódismétlés (duplicate code) azonos (vagy
+nagyon hasonló) forráskódrész, mely egynél
+többször fordul elő egy programban.
+● Nem minden kódismétlés információ ismétlés!
+
+PMD támogatás: Copy/Paste Detector (CPD)
+– Finding duplicated code with CPD
+https://docs.pmd-code.org/latest/pmd_userdocs_cpd.html
+– Támogatott programozási nyelvek: C/C++, C#,
+ECMAScript (JavaScript), Java, Kotlin, Python, Scala, …
+● Lásd:
+https://docs.pmd-code.org/latest/pmd_userdocs_cpd.html#supp
+orted-languages
+● IntelliJ IDEA:
+– Analyze duplicates
+
+A DRY elv megsértései nem mindig kódismétlés
+formájában jelennek meg.
+– A DRY elv az információk megismétléséről szól. A
+tudás egy darabkája két teljesen eltérő módon is
+kifejezhető két különböző helyen.
+– Példa (Thomas & Hunt, 2019):
+
+```java
+class Line {
+Point start;
+Point end;
+double length; // a DRY elv megsértése
+}
+```
+
+Az elv megsértése kiküszöbölhető a length
+adattag egy metódusra való kicserélésével:
+
+```java
+class Line {
+Point start;
+Point end;
+double length() {
+return start.distanceTo(end);
+}
+}
+```
+
+A jobb teljesítmény érdekében választható a DRY
+elv megsértése.
+● Ilyenkor az elv megszegését ajánlott a külvilág elől
+elrejteni.
+
+```java
+class Line {
+private Point start;
+private Point end;
+private double length;
+public Line(Point start, Point end) {
+this.start = start;
+this.end = end;
+calculateLength();
+}
+public void setStart(Point p) {
+this.start = p;
+calculateLength();
+}
+public void setEnd(Point p) {
+this.end = p;
+calculateLength();
+}
+public Point getStart() { return start; }
+public Point getEnd() { return end; }
+public double getLength() { return length; }
+private void calculateLength() { this.length = start.distanceTo(end); }
+}
+```
+
+Reprezentációs ismétlés (Thomas & Hunt,
+2019):
+– A kód gyakran függ a külvilágtól: például API-kon
+keresztül más programkönyvtáraktól, külső
+adatforrások adataitól, mely mindig a DRY elv
+valamiféle megsértését vonja maga után: a kódnak
+olyan tudással kell rendelkeznie, mely a külső
+dologban is ott van.
+● Ismernie kell az API-t, a sémát, vagy a hibakódok
+jelentését.
+
+Reprezentációs ismétlés (Thomas & Hunt,
+2019):
+– Ez az ismétlés elkerülhetetlen.
+– Eszközök, melyek segítenek megbirkózni az ilyen
+fajta ismétlésekkel:
+● Sémákból kódot generáló eszközök (például JAXB, JPA)
+● OpenAPI
+
 ### A KISS elv
+Keep it simple, stupid
+– 1960-as évek, amerikai haditengerészet.
+– Kelly Johnson (1910–1990) repülőmérnöknek tulajdonítják a kifejezést.
+● Az egyszerűségre való törekvés:
+– Leonardo da Vinci (1452–1519): „Az egyszerűség a kifinomultság
+csúcsa.”
+– Ludwig Mies van der Rohe (1886–1969): „A kevesebb több.”
+– Albert Einstein (1879–1955):
+● „Everything should be made as simple as possible, but not simpler.”
+● „Mindent olyan egyszerűen kell csinálni, amennyire csak lehetséges, de
+semmivel sem egyszerűbben.
+
 ### A YAGNI elv
+A „You Aren't Gonna Need It” („nem lesz rá
+szükséged”) rövidítése.
+● Az extrém programozás (XP) egy alapelve.
+
+„Mindig akkor implementálj valamit, amikor
+tényleg szükséged van rá, soha ne akkor,
+amikor csak sejted, hogy kell.”
+
+Egy olyan lehetőség kifejlesztésének költségei,
+mely jelenleg nem szükséges
+
+![Yagni](images/yagni.png)
+
+A YAGNI alapelv csak azon képességekre
+vonatkozik, melyek egy feltételezett lehetőség
+támogatásához kerülnek beépítésre a
+szoftverbe, nem vonatkozik a szoftver
+módosítását könnyítő törekvésekre.
+● A YAGNI csak akkor járható stratégia, ha a kód
+könnyen változtatható.
+
 ### Csatoltság, laza és szoros csatoltság
+Csatoltság (coupling): egy szoftvermodul
+függésének mértéke egy másik szoftvermodultól.
+– Más szóval, a szoftvermodulok közötti csatoltság
+annak mértéke, hogy mennyire szoros a kapcsolatuk.
+– A csatoltság laza vagy szoros lehet.
+
+Szoros csatoltság:
+– A bonyolultságot növeli, mely megnehezíti a kód
+módosítását, tehát a karbantarthatóságot csökkenti.
+– Az újrafelhasználhatóságot is csökkenti.
+
+Laza csatoltság:
+– Lehetővé teszi a fejlesztők számára a nyitva zárt
+elvnek megfelelő kód írását, azaz a kódot
+kiterjeszthetővé teszi.
+– Kiterjeszthetővé teszi a kódot, a kiterjeszthetőség
+pedig karbantarthatóvá.
+– Lehetővé teszi a párhuzamos fejlesztést.
+
 ### GoF alapelvek
-### SOLID alapelvek: egyszeres felelősség elve, nyitva zárt elv, Liskov-féle helyettesítési
-### elv, interfész szétválasztási elv, függőség megfordítási elv
+A két GoF alapelv:
+– Interfészre programozzunk, ne implementációra.
+● „Program to an interface, not an implementation.”
+● Lásd például a létrehozási mintákat.
+– Részesítsük előnyben az objektum-összetételt
+az öröklődéssel szemben.
+● „Favor object composition over class inheritance.”
+
+### SOLID alapelvek
+Single Responsibility Principle (SRP) – Egyszeres felelősség elve
+● Open/Closed Principle (OCP) – Nyitva zárt elv
+● Liskov Substitution Principle (LSP) – Liskov-féle helyettesítési elv
+● Interface Segregation Principle (ISP) – Interfész szétválasztási elv
+● Dependency Inversion Principle (DIP) – Függőség megfordítási elv
+
+#### egyszeres felelősség elve
+Egy osztálynak csak egy oka legyen a változásra.
+
+Egy felelősség egy ok a változásra.
+● Minden felelősség a változás egy tengelye. Amikor a
+követelmények változnak, a változás a felelősségben
+történő változásként nyilvánul meg.
+● Ha egy osztálynak egynél több felelőssége van, akkor
+egynél több oka van a változásra.
+● Egynél több felelősség esetén a felelősségek csatolttá
+válnak. Egy felelősségben történő változások
+gyengíthetik vagy gátolhatják az osztály azon
+képességét, hogy eleget tegyen a többi felelősségének.
+
+Példa az elv megsértésére:
+– A Rectangle osztály két felelőssége:
+● Egy téglalap geometriájának matematikai modellezése.
+● Téglalap megjelenítése a grafikus felhasználói felületen.
+
+![SOLID-S-1](images/solid-s_1.png)
+
+Példa az elv megsértésére: (folytatás)
+– Problémák:
+● A számítógépes geometriai alkalmazásnak tartalmaznia
+kell a grafikus felhasználói felületet.
+● Ha a grafikus alkalmazás miatt változik a Rectangle
+osztály, az szükségessé teheti a számítógépes
+geometriai alkalmazás összeállításának, tesztelésének
+és telepítésének megismétlését (rebuild, retest,
+redeploy).
+
+Az előbbi példa az elvnek megfelelő változata:
+
+![SOLID-S-2](images/solid-s_2.png)
+
+Az elv megfogalmazásának finomodása:
+– „A class should have only one reason to change.”
+● Robert C. Martin. Agile Software Development: Principles, Patterns,
+and Practices. Pearson Education, 2002. p. 95.
+– „… a class or module should have one, and only one,
+reason to change.”
+● Robert C. Martin. Clean Code: A Handbook of Agile Software
+Craftsmanship. Prentice Hall, 2008. p. 138.
+– „A module should be responsible to one, and only one, actor.”
+
+A szoftverek aktorok kielégítése céljából
+változnak.
+– Az „aktor” kifejezést itt emberek (például
+felhasználók) egy olyan csoportjára használjuk, akik
+azt akarják, hogy a szoftver ugyanúgy változzon.
+● Az elv tehet így fogalmazható újra:
+– Egy modul egy, és csak egyetlen aktornak van
+alárendelve.
+
+Példa (Robert C. Martin):
+– Az alábbi Employee osztály megszegi az
+egyszeres felelősség elvét, mivel a három metódus
+nagyon különböző aktoroknak van alávetve:
+● calculatePay(): a bérosztály határozza meg
+● reportHours(): a munkaügyi osztály határozza meg
+● save(): az adatbázis adminisztrátorok határozzák meg
+
+![SOLID-S-3](images/solid-s_3.png)
+
+#### nyitva zárt elv
+A szoftver entitások (osztályok, modulok,
+függvények, …) legyenek nyitottak a bővítésre,
+de zártak a módosításra.
+
+Az elvnek megfelelő modulnak két fő jellemzője
+van:
+– Nyitott a bővítésre: azt jelenti, hogy a modul
+viselkedése kiterjeszthető.
+– Zárt a módosításra: azt jelenti, hogy a modul
+viselkedésének kiterjesztése nem eredményezi a
+modul forrás- vagy bináris kódjának változását.
+
+Példa az elv megsértésére:
+– A Client és a Server konkrét osztályok. A
+Client osztály a Server osztályt használja. Ha
+azt szeretnénk, hogy egy Client objektum egy
+különböző szerver objektumot használjon, a
+Client osztályban meg kell változtatni a szerver
+osztály nevét.
+
+![SOLID-O-1](images/solid-o_1.png)
+
+Az előbbi példa az elvnek megfelelő változata:
+
+![SOLID-O-1](images/solid-o_2.png)
+
+#### Liskov-féle helyettesítési elv
+Ha az S típus a T típus altípusa, nem változhat
+meg egy program működése, ha benne a T
+típusú objektumokat S típusú objektumokkal
+helyettesítjük.
+
+#### interfész szétválasztási elv
+Nem szabad arra kényszeríteni az osztályokat,
+hogy olyan metódusoktól függjenek, melyeket nem
+használnak.
+
+Vastag interfész (fat interface) (Bjarne
+Stroustrup)
+https://www.stroustrup.com/glossary.html#Gfat-i
+nterface
+– „An interface with more member functions and
+friends than are logically necessary.”
+– Az ésszerűen szükségesnél több tagfüggvénnyel és
+baráttal rendelkező interfész.
+
+Az interfész szétválasztási elv a vastag interfészekkel
+foglalkozik.
+● A vastag interfészekkel rendelkező osztályok
+interfészei nem koherensek, melyekben a
+metódusokat olyan csoportokra lehet felosztani,
+melyek különböző klienseket szolgálnak ki.
+● Az ISP elismeri azt, hogy vannak olyan objektumok,
+melyekhez nem koherens interfészek szükségesek,
+de azt javasolja, hogy a kliensek ne egyetlen
+osztályként ismerjék őket.
+
+Interfész szennyezés (interface pollution):
+– Egy interfész szennyezése szükségtelen
+metódusokkal.
+
+Amikor egy kliens egy olyan osztálytól függ,
+melynek vannak olyan metódusai, melyeket a
+kliens nem használ, más kliensek azonban
+igen, akkor a többi kliens által az osztályra
+kényszerített változások hatással lesznek arra a
+kliense is.
+● Ez a kliensek közötti nem szándékos
+csatoltságot eredményez.
+
+Példa: ATM (Robert C. Martin)
+
+![SOLID-I-1](images/solid-i_1.png)
+
+![SOLID-I-2](images/solid-i_2.png)
+
+#### függőség megfordítási elv
+Magas szintű modulok ne függjenek alacsony
+szintű moduloktól. Mindkettő absztrakcióktól
+függjön.
+– Az absztrakciók ne függjenek a részletektől. A
+részletek függjenek az absztrakcióktól.
+
+Az elnevezés onnan jön, hogy a hagyományos
+szoftverfejlesztési módszerek hajlamosak olyan
+felépítésű szoftvereket létrehozni, melyekben a
+magas szintű modulok függenek az alacsony
+szintű moduloktól.
+
+A magas szintű modulok tartalmazzák az alkalmazás
+üzleti logikáját, ők adják az alkalmazás identitását.
+Ha ezek a modulok alacsony szintű moduloktól
+függenek, akkor az alacsony szintű modulokban
+történő változásoknak közvetlen hatása lehet a
+magas szintű modulokra, szükségessé tehetik azok
+változását is.
+● Ez abszurd! A magas szintű modulok azok, melyek
+meg kellene, hogy határozzák az alacsony szintű
+modulokat.
+
+A magas szintű modulokat szeretnénk
+újrafelhasználni. Az alacsony szintű modulok
+újrafelhasználására elég jó megoldást jelentenek a
+programkönyvtárak.
+● Ha magas szintű modulok alacsony szintű moduloktól
+függenek, akkor nagyon nehéz az újrafelhasználásuk
+különféle helyzetekben.
+● Ha azonban a magas szintű modulok függetlenek az
+alacsony szintű moduloktól, akkor elég egyszerűen
+újrafelhasználhatók.
+
+Példa a rétegek architekturális minta
+hagyományos alkalmazására:
+
+![SOLID-D-1](images/solid-d_1.png)
+
+Az előbbi példa az elvnek megfelelő változata:
+– Minden egyes magasabb szintű interfész deklarál
+az általa igényelt szolgáltatásokhoz egy interfészt.
+– Az alacsonyabb szintű rétegek realizálása ezekből
+az interfészekből történik.
+– Ilyen módon a felsőbb rétegek nem függenek az
+alsóbb rétegektől, hanem pont fordítva.)
+
+![SOLID-D-2](images/solid-d_2.png)
+
+Az előbbi példa az elvnek megfelelő változata:
+(folytatás)
+– Nem csupán a függőségek kerültek megfordításra,
+hanem az interfész tulajdonlás is (inversion of
+ownership).
+● Hollywood elv: Ne hívj, majd mi hívunk. (Don't call us,
+we'll call you.)
+
+Függés absztrakcióktól:
+– Ne függjön a program konkrét osztályoktól, hanem inkább
+csak absztrakt osztályoktól és interfészektől.
+● Egyetlen változó se hivatkozzon konkrét osztályra.
+● Egyetlen osztály se származzon konkrét osztályból.
+● Egyetlen metódus se írjon felül valamely ősosztályában
+implementált metódust.
+– A fenti heurisztikát a legtöbb program legalább egyszer
+megsérti.
+– Nem túl gyakran változó konkrét osztályok esetén (például
+String) megengedhető a függés.
+
+Példa az elv megsértésére:
+
+![SOLID-D-3](images/solid-d_3.png)
+
+Az előbbi példa az elvnek megfelelő változata:
+
+![SOLID-D-4](images/solid-d_4.png)
+
 ### Függőség befecskendezés
+A függőség befecskendezés (DI – dependency
+injection) kifejezés Martin Fowlertől származik.
+
+A vezérlés megfordítása (IoC – inversion of control)
+nevű architekturális minta alkalmazásának egy
+speciális esete.
+
+Definíció (Seemann):
+– „Dependency Injection is a set of software design
+principles and patterns that enable us to develop
+loosely coupled code.”
+– A függőség befecskendezés olyan szoftvertervezési
+elvek és minták összessége, melyek lazán csatolt kód
+fejlesztését teszik lehetővé.
+● A lazán csatoltság kiterjeszthetővé teszi a kódot,
+a kiterjeszthetőség pedig karbantarthatóvá.
+
+Egy objektumra egy olyan szolgáltatásként
+tekintünk, melyet más objektumok kliensként
+használnak.
+● Az objektumok közötti kliens-szolgáltató
+kapcsolatot függésnek nevezzük. Ez a
+kapcsolat tranzitív
+
+Függőség (dependency): egy kliens által igényelt
+szolgáltatást jelent, mely a feladatának ellátásához
+szükséges.
+● Függő (dependent): egy kliens objektum, melynek egy
+függőségre vagy függőségekre van szüksége a
+feladatának ellátásához.
+● Objektum gráf (object graph): függő objektumok és
+függőségeik egy összessége.
+● Befecskendezés (injection): egy kliens függőségeinek
+megadását jelenti.
+
+DI konténer (DI container): függőség
+befecskendezési funkcionalitást nyújtó
+programkönyvtár.
+– Az Inversion of Control (IoC) container kifejezést
+is használják rájuk.
+● A függőség befecskendezés alkalmazható DI
+konténer nélkül.
+● Tiszta DI: függőség befecskendezés
+alkalmazásának gyakorlata DI konténer nélkül.
+
+A függőség befecskendezés objektum gráfok
+hatékony létrehozásával, ennek mintáival és
+legjobb gyakorlataival foglalkozik.
+● A DI keretrendszerek lehetővé teszik, hogy a
+kliensek a függőségeik létrehozását és azok
+befecskendezését külső kódra bízzák.
+
+Példa: nincs függőség befecskendezés
+
+```java
+public interface SpellChecker {
+boolean check(String text);
+}
+public class TextEditor {
+private SpellChecker spellChecker;
+public TextEditor() {
+spellChecker = new HungarianSpellChecker();
+}
+// ...
+}
+```
+
+Példa: függőség befecskendezés konstruktorral
+(constructor injection):
+
+```java
+public class TextEditor {
+private SpellChecker spellChecker;
+public TextEditor(SpellChecker spellChecker) {
+this.spellChecker = spellChecker;
+}
+// ...
+}
+```
+
+Példa: függőség befecskendezés beállító
+metódussal (setter injection):
+
+```java
+public class TextEditor {
+private SpellChecker spellChecker;
+public TextEditor() {}
+public void setSpellChecker(SpellChecker spellChecker) {
+this.spellChecker = spellChecker;
+}
+// ...
+}
+```
+
+Példa: függőség befecskendezés interfésszel
+(interface injection):
+
+```java
+public interface SpellCheckerSetter {
+void setSpellChecker(SpellChecker spellChecker);
+}
+public class TextEditor implements SpellCheckerSetter {
+private SpellChecker spellChecker;
+public TextEditor() {}
+@Override
+public void setSpellChecker(SpellChecker spellChecker) {
+this.spellChecker = spellChecker;
+}
+// ...
+}
+```
+
+A függőség befecskendezés előnyei:
+– Kiterjeszthetőség
+– Karbantarthatóság
+– Tesztelhetőség: a függőség befecskendezés
+támogatja az egységtesztelést.
+● Valós függőségek helyet a tesztelt rendszerbe
+befecskendezhetők „teszt dublőrök” (test doubles).
+
 
 ---
 <div style='page-break-after: always;'></div>
