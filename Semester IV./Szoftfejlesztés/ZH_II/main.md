@@ -272,23 +272,452 @@ Az interfészek nem példányosíthatók. Osztályozók implementálják vagy az
 
 ![Interfészek-3](images/interfesz_3.png)
 
+--- 
+
+<div style='page-break-after: always;'></div>
+
 
 ## 2. Szoftvertesztelés
 ### Mi a szoftvertesztelés?
+A szoftvertesztelés egy megoldás a szoftver minőségénekmegállapításához és a szoftver működés közbeni meghibásodási kockázatának csökkentésére.
+
 ### Verifikáció és validáció fogalma
+#### Verifikáció (verification):
+Annak ellenőrzése, hogy a szoftver megfelel-e a vele szemben támasztott (funkcionális és nem funkcionális) követelményeknek.
+
+#### Validáció (validation): 
+Annak ellenőrzése, hogy a szoftver megfelel-e az ügyefelek elvárásainak.
+
+<div style='page-break-after: always;'></div>
+
 ### Hibát leíró szakkifejezések: tévedés/tévesztés, hiba, meghibásodás
+#### Tévedés/tévesztés (error/mistake):
+Rossz eredményt adó emberi tevékenység.
+
+#### Hiba (defect/fault/bug):
+Tökéletlenség vagy hiányosság egy munkatermékben, melynél nem teljesülnek a követelmények vagy előírások.
+
+#### Meghibásodás (failure):
+Olyan esemény, melynél egy komponens vagy rendszer nem lát egy megkövetelt funkciót a megszabott határok között.
+
+Egy személy egy tévedést/tévesztést követ el, mely egy hibát vezethet be a szoftver kódjába vagy valamely más kapcsolódó munkatermékbe.
+Ha végrehajtásra kerül a hiba a kódban, akkor az egy meghibásodást okozhat, de nem szükségszerűen minden esetben.
+Például bizonyos hibák nagyon sajátos bemenetek vagy előfeltételek mellett váltanak ki meghibásodást, melyek nagyon ritkán vagy sohasem fordulnak elő.
+Nem minden meghibásodást a kódban lévő hibák okoznak, eredményezhetik őket környezeti feltételek is.
+
 ### Tesztelési alapelvek
+1. A tesztelés a hibák jelenlétét mutatja meg, nem a hiányukat
+2. Lehetetlen a kimerítő tesztelés
+3. A korai tesztelés időt és pénzt takarít meg
+4. A hibák csoportosulnak
+5. A tesztek elkopnak (óvakodj a kártevőírtó paradoxontól)
+6. A tesztelés környezetfüggő
+7. A hibamentesség egy tévhit
+
 ### Teszteset és tesztadat fogalma
+#### teszteset
+ISTQB: Tesztfeltételek alapján meghatározott előfeltételek,
+bemenetek, tevékenységek (adott esetben), elvárt eredmények és
+utófeltételek halmaza.
+
+**Tesztfeltétel:** Egy komponens vagy rendszer tesztelhető vontakozás, melyet a tesztelés alapjául választunk.
+
+**Magas szintű teszteset:** Teszteset, mely absztrakt előfeltételekkel, bemeneti adatokkal, elvárt eredményekkel, utófeltételekkel és (adott esetben) lépésekkel rendelkezik.
+
+**Alacsony szintű teszteset:** Teszteset, mely konkrét előfeltételekkel, bemeneti adatokkal, elvárt eredményekkel, utófeltételekkel és (adott esetben) a lépések részletes leírásával rendelkezik.
+
+#### tesztadat
+A tesztadatok a tesztvégrehajtáshoz szükséges adatokat jelentik.
+Az ilyen konkrét értékek a használatukra vonatkozó világos útmutatásokkal együt végrehajtható alacsony szintű tesztesetekké teszik a magas szintű teszteseteket.
+Ugyanaz a magas szintű teszteset különböző tesztadatokat használhat különböző végrehajtásoknál.
+
+<div style='page-break-after: always;'></div>
+
 ### Tesztelési szintek: egységtesztelés, integrációs tesztelés, rendszertesztelés, elfogadási
+#### Egységtesztelés/komponens tesztelés (unit testing/componenttesting)
+A függetlenül tesztelhető komponensekre összpontosít.
+Az egységtesztelést általában az a fejlesztő végzi, aki a kódot írja, de legalább a tesztelt kódhoz való hozzáférés szükséges.
+A fejlesztők gyakran egy komponens kódjának megírása után írnak és hajtanak végre egységteszteket.
+Azonban az automatikus egységtesztek megírása megelőzheti az alkalmazáskód megírását, lásd például a tesztvezérelt fejlesztést (TDD).
+
+#### Integrációs tesztelés (integration testing)
+Komponensek vagy rendszerek közötti kommunikációra összpontosít.
+Az integrációs teszteknek magára az integrációra kell koncentrálnia, nem pedig az egyes komponensek/rendszerek működésére.
+
+**Komponens integrációs tesztelés:** 
+Az integrált komponensek közötti kommunikációra és interfészekre összpontosít. Az egységtesztelés után végzik és általában automatizált. A komponens integrációs tesztelés gyakran a fejlesztők felelősége.
+
+**Rendszerintegrációs tesztelés:**
+Rendszerek közötti kommunikációra és interfészekre összpontosít.
+Kiterjedhet külső szervezetekkel és általuk szolgáltatott interfészekkel (például webszolgáltatásokkal) való interakciókra. Történhet a rendszertesztelés után vagy a folyamatban lévő rendszertesztelési tevékenységekkel párhuzamosan. A rendszerintegrációs tesztelés általában a tesztelők felelősége.
+
+#### Rendszertesztelés (system testing)
+A rendszer egészének (funkcionális és nem funkcionális) viselkedésére összpontosít.
+Jellemzően független tesztelők végzik jelentős mértékben specifikációkra támaszkodva.
+
+#### Elfogadási tesztelés (acceptance testing)
+Annak meghatározására összpontosít, hogy a rendszer kész-e a telepítésre és az ügyfél (végfelhasználó) általi használatra.
+Gyakran az ügyfél vagy a rendszerüzemeltetők felelőssége, de más érintettek is bevonhatók.
+A szoftver kiadása előtt azt néha odaadják potenciális felhasználok egy kis kiválasztott csoportjának kipróbálásra (alfa tesztelés) és/vagy reprezentatív felhasználók egy nagyobb halmazának (béta tesztelés).
+
 ### tesztelés (alfa és béta tesztelés)
-### Teszttípusok: funkcionális tesztelés, nem funkcionális tesztelés, fehér dobozos tesz-
-### telés, változással kapcsolatos tesztelés
+#### Alfa tesztelés:
+Felhasználók és fejlesztők együtt dolgoznak egy rendszer tesztelésén a fejlesztés közben.
+A fejlesztő szervezet telephelyén történik.
+
+#### Béta tesztelés:
+Akkor történik, amikor egy szoftverrendszer egy korai, néha befejezetlen kiadását elérhetővé teszik kipróbálásra ügyfelek és felhasználók egy nagyobb csoportjának.
+A felhasználók helyén történik.
+Főleg olyan szoftvertermékekhez alkalmazzák, melyeket sok különböző környezetben használnak.
+A marketing egy formája is.
+
+<div style='page-break-after: always;'></div>
+
+### Teszttípusok
+#### funkcionális tesztelés
+A rendszer által nyújtott funkciók tesztelése.
+Más szóval annak tesztelése, amit a rendszer csinál.
+Funkcionális teszteket minden tesztelési szinten ajánlott végezni.
+
+#### nem funkcionális tesztelés
+Rendszerek olyan jellemzőinek értékelése, mint például ahasználhatóság, teljesítmény vagy biztonság.
+Más szóval annak tesztelése, hogy a rendszer mennyire jól teszi adolgát.
+
+#### fehér dobozos tesztelés
+A rendszer belső felépítésén vagy megvalósításán alapuló teszek.
+A belső szerkezetbe beleérthető kód, architektúra vagy a rendszeren belüli munkafolyamatok.
+
+#### változással kapcsolatos tesztelés
+Teszteket kell végezni, amikor módosítások történnek egy rendszerben egy hiba kijavításához vagy új funkcionalitás hozzáadásához/létező funkcionalitás módosításához.
+
+**Megerősítő tesztelés:** 
+Célja annak megerősítése, hogy az eredeti hiba sikeresen kijavításra került.
+
+**Regressziós tesztelés:** 
+Lehetséges, hogy egy változás a kód egy részében, akár egy javítás vagy másfajta módosítás, véletlenül hatással van a kód más részeinek viselkedésére. A regressziós tesztelés célja a változások által okozott akartalan mellékhatások érzékelése.
+
+
 ### A jó egységtesztek ismertetőjegyei: FIRST
+#### Gyors (Fast): 
+A tesztek gyorsak kell, hogy legyenek. Gyorsan kell, hogy lefussanak.
+
+#### Független (Independent):
+A tesztek nem függhetnek egymástól.
+
+#### Megismételhető (Repeatable):
+A tesztek bármely környezetben megismételhetők kell, hogy legyenek.
+
+#### Önérvényesítő (Self-Validating):
+A teszeknek logikai kimenete kell, hogy legyen. Vagy átmennek, vagy megbuknak.
+
+#### Jól időzített (Timely):
+A teszteket kellő időben kell megírni, közvetlenül a tesztelendő kód előtt.
+
 ### Egységtesztek szervezése: az AAA minta
-### JUnit: tesztosztályok és tesztmetódusok, teszt végrehajtási életciklus, teszteredmények
-### Kódlefedettségi metrikák: utasítás lefedettség/sor lefedettség, ág lefedettség, mi az
-### ésszerű lefedettségi szám?
+#### Elrendez (Arrange):
+Ez a rész felelős a tesztelt rendszer és függőségei egy kívánt állapotba állításáért.
+
+#### Cselekszik (Act):
+Ez a rész szolgál a tesztelt rendszer metódusainak meghívására, az előkészített függőségek átadására és a kimeneti érték elkapására (ha van).
+
+#### Kijelent (Assert):
+Ez a szakasz szolgál a kimenetel ellenőrzésére. A kimenetel ábrázolható a visszatérési értékkel vagy a tesztelt rendszer végső állapotával
+
+<div style='page-break-after: always;'></div>
+
+**Példa:**
+
+```java
+@Test
+public void testPairOfMapEntry() {
+    // Arrange:
+    final HashMap<Integer, String> map = new HashMap<>();
+    map.put(0, "foo");
+    final Entry<Integer, String> entry = map.entrySet().iterator().next();
+
+    // Act:
+    final Pair<Integer, String> pair = MutablePair.of(entry);
+
+    // Assert:
+    assertEquals(entry.getKey(), pair.getLeft());
+    assertEquals(entry.getValue(), pair.getRight());
+}
+```
+
+<div style='page-break-after: always;'></div>
+
+### JUnit
+#### tesztosztályok és tesztmetódusok
+**Tesztosztály:**
+Bármely felsőszintű osztály, statikus tagosztály vagy ```@Nested``` osztály, mely legalább egy tesztmetódust tartalmaz. Nem lehet absztrakt és egyetlen konstruktora kell, hogy legyen.
+
+**Tesztmetódus:**
+A ```@Test```, ```@RepeatedTest```, ```@ParameterizedTest```, ```@TestFactory``` vagy ```@TestTemplate``` annotációval megjelölt bármely példánymetódus.
+
+**Életciklus metódus:**
+A ```@BeforeAll```, ```@AfterAll```, ```@BeforeEach``` vagy ```@AfterEach``` annotációval megjelölt bármely metódus. A ```@BeforeAll``` és ```@AfterAll``` annotációkkal jelölt metódusok statikusak kell, hogy legyenek (kivéve azt az esetet, amikor az ```@TestInstance(Lifecycle.PER_CLASS)``` annotációt használjuk).
+
+Nem szükséges, hogy a tesztosztályok, tesztmetódusok és életciklus metódusok nyilvánosak legyenek, de nem lehetnek privát láthatóságúak.
+
+**Tesztmetódusok és életciklus metódusok:**
+Deklarálhatók az aktuális tesztosztályon belül lokálisan, örökölhetők ősosztályból vagy interfészektől.
+Nem lehetnek absztraktak és nem adhatnak vissza értéket.
+
+A tesztosztály konstruktoroknak és metódusoknak is meg van engedve, hogy paramétereik legyenek, mely lehetővé teszi a függőség befecskendezést.
+
+#### teszt végrehajtási életciklus
+Alapértelmezésben a *JUnit* egy új példányt hoz létre minden egyes tesztosztályból az egyes tesztmetódusok végrehajtás előtt, mely lehetővé teszi a tesztmetódusok izoláltan történő végrehajtását.
+
+Ez a viselkedés megváltoztatható, az összes tesztmetódus ugyanazon a tesztpéldányon történő végrehajtásához a tesztosztályt a ```@TestInstance(Lifecycle.PER_CLASS)``` annotációval kell megjelölni.
+
+```java
+import org.junit.jupiter.api.*;
+
+public class LifeCycleTest {
+
+  LifeCycleTest() {
+    System.out.printf("Constructor creates %s\n", this);
+  }
+
+  @BeforeAll
+  static void beforeAll() { System.out.println("@BeforeAll static method invoked"); }
+
+  @AfterAll
+  static void afterAll() { System.out.println("@AfterAll static method invoked"); }
+
+  @BeforeEach
+  void beforeEach() { System.out.printf("@BeforeEach method invoked on %s\n", this); }
+
+  @AfterEach
+  void afterEach() { System.out.printf("@AfterEach method invoked on %s\n", this); }
+
+  @Test
+  void testMethod1() { System.out.printf("testMethod1() method invoked on %s\n", this); }
+
+  @Test
+  void testMethod2() { System.out.printf("testMethod2() method invoked on %s\n", this); }
+
+  }
+```
+
+```
+@BeforeAll static method invoked
+Constructor creates LifeCycleTest@2145433b
+  @BeforeEach method invoked on LifeCycleTest@2145433b
+  testMethod1() method invoked on LifeCycleTest@2145433b
+  @AfterEach method invoked on LifeCycleTest@2145433b
+Constructor creates LifeCycleTest@fdefd3f
+  @BeforeEach method invoked on LifeCycleTest@fdefd3f
+  testMethod2() method invoked on LifeCycleTest@fdefd3f
+  @AfterEach method invoked on LifeCycleTest@fdefd3f
+@AfterAll static method invoked
+```
+
+#### teszteredmények
+**Siker (success):**
+Amikor a teszt végrehajtásakor minden tényleges eredmény megegyezik a várt végeredménnyekkel. Ekkor azt mondjuk, hogy a teszt átmegy (passes).
+
+**Bukás (failure):**
+Amikor a teszt végrehajtásakor a tényleges eredmény nem egyezik meg a várt végeredménnyel. A bukást egy elbukó állítás okozza. Ekkor azt mondjuk, hogy a teszt megbukik (fails).
+
+**Hiba (error ):**
+Amikor a teszt végrehajtásakor egy hiba következik be, mely megakadályozza a befejeződést. A hibát egy váratlan kivétel vagy hiba okozza
+
+### Kódlefedettségi metrikák
+#### utasítás lefedettség/sor lefedettség
+A leggyakrabban használt lefedettségi metrikák az utasítás lefedettség (*statement coverage*) és a sor lefedettség (*line coverage*)
+
+**Utasítás lefedettség** = Végrehajtott utasítások / Összes utasítás száma
+**Sor lefedettség** = Végrehajtott kódsorok / Összes sor száma
+
+Minden egyes végrehajtott utasítást/sort egyszer számolunk.
+A sor lefedettség meghatározásakor csak a végrehajtható kódot tartalmazó sorok kerülnek számolásra.
+Vegyük észre, hogy a sor lefedettség függ a forráskód formázástól.
+
+<div style='page-break-after: always;'></div>
+
+**Példa:**
+
+```java
+public static boolean isLongString(String s) {
+  if (s.length() > 5) {
+    return true;
+}
+  return false;
+}
+
+@Test
+void testIsLongString() {
+  assertFalse(isLongString("abc"));
+}
+```
+
+A kódlefedettség 2/4 = 0,5 = 50%
+
+**Példa:**
+
+```java
+public static boolean isLongString(String s) {
+  return s.length() > 5;
+}
+
+@Test
+void testIsLongString() {
+  assertFalse(isLongString("abc"));
+}
+```
+
+A kódlefedettség 1/1 = 1 = 100%.
+
+Minél tömörebb a kód, annál jobb az utasítás/sor lefedettség, mivel az utasítások/sorok nyers számán alapul.
+
+<div style='page-break-after: always;'></div>
+
+**Példa:**
+
+```java
+public static String middle(String s) {
+  int i = -1;
+  if ((s.length() & 1) == 1) {
+    i = s.length() / 2;
+  }
+  return s.substring(i, i + 1);
+}
+
+@Test
+void testMiddle() {
+  assertEquals("e", middle("voldemort"));
+}
+```
+
+Vegyük észre, hogy az utasítás/sor lefedettség 100%, noha hibás a ```middle()``` metódus implementációja.
+
+<div style='page-break-after: always;'></div>
+
+#### ág lefedettség
+Az ág lefedettség (*branch coverage*) egy lefedettségi mérték, mely az olyan vezérlési szerkezeteken alapul, mint az ```if``` és a ```switch```.
+A végrehajtott ágak arányát méri egy tesztkészlet futtatásakor az összes ág számához viszonyítva.
+
+**Ág lefedettség** = Végrehajtott ágak / Összes ág száma
+
+
+
+**Példa:**
+
+```java
+public static boolean isLongString(String s) {
+  if (s.length() > 5) {
+    return true;
+  }
+  return false;
+}
+
+@Test
+void testIsLongString() {
+  assertFalse(isLongString("abc"));
+}
+```
+
+Az ág lefedettség 1/2 = 0,5 = 50%
+
+**Példa:**
+
+```java
+public static boolean isLongString(String s) {
+  return s.length() > 5;
+}
+
+@Test
+void testIsLongString() {
+  assertFalse(isLongString("abc"));
+}
+```
+
+Az ág lefedettség 1/2 = 0,5 = 50%.
+
+<div style='page-break-after: always;'></div>
+
+**Példa:**
+Az ág lefedettség becsapása (az ág lefedettség 100%!)
+
+```java
+public static int someMethod(int a, int b) {
+  int x = 0, y = 0;
+  if (a != 0) {
+    x = a + 10;
+  }
+  if (b > 0) {
+    y = b / x;
+  }
+  return y;
+}
+
+@Test
+void testSomeMethod() {
+  assertEquals(2, someMethod(1, 22));
+  assertEquals(0, someMethod(0, -15));
+}
+```
+
+**Példa:**
+Az ág lefedettség becsapása (az ág lefedettség 100%!)
+
+```java
+public static int someMethod(int a, int b) {
+  int x = 0, y = 0;
+  if (a != 0) {
+    x = a + 10;
+  }
+  if (b > 0) {
+    y = b / x;
+  }
+  return y;
+}
+```
+
+Vegyük észre, hogy a someMethod(0, 10) metódushívás egy ```ArithmeticException``` kivételt eredményez.
+
+#### mi az ésszerű lefedettségi szám?
+Veszélyes egy bizonyos érték elérésének megcélzása egy lefedettségi metrikánál, mivel könnyen ez válhat a fő céllá.
+Inkább a megfelelő egységtesztelésre kell koncentrálni.
+
+**Ökölszabályok:**
+Jó, ha egy rendszer fő részeinél nagy a lefedettség.
+Nem jó ezt magas szintű követelménnyé tenni.
+
 ### Mi a tesztvezérelt fejlesztés (TDD)?
+A tesztvezérelt fejlesztés (*test driven development*, *TDD*) egy szoftverfejlesztési folyamat, mely az automatikus tesztek megírását bármiféle kód megírása elé helyezi.
+
+Egy iteratív megközelítés, mely egy automatizált teszt keretrendszer (például *JUnit*) használatán és a következő rövid fejlesztési ciklus ismétlésén alapul:
+1. Írj egy tesztet (Write a test)
+2. Érd el, hogy működjön (Make it run)
+3. Javítsd ki (Make it right)
+
+#### A TDD mantrája:
+1. Vörös: írj egy nem működő kis tesztet, mely elsőre talán le sem fordul.
+2. Zöld: gyorsan javítsd ki a tesztet, közben bármilyen bűnt elkövethetsz, ami szükséges.
+3. Refaktorálj: távolíts el minden ismétlődést, mely azért jött létre, hogy a teszt működjön.
+
+A cél működő tiszta kód.
+
+#### A TDD folyamat
+
+![TDD-Folyamata](images/tdd.png)
+
+#### A TDD előnyei
+**Megkönnyíti a kód írását:**
+A TDD segíti a programozót abban, hogy tisztázza a gondolatait arról, hogy mit kellene, hogy csináljon egy kódrész. Egy teszt írásához a feladat megértése szükséges, a megértés pedig könnyebbé teszi a szükséges kód megírását.
+
+**Kódlefedettség:**
+Minden kódrésznek kell, hogy legyen tesztje.
+
+**Könnyebb hibakeresés:**
+Amikor egy teszt sikertelen, nyilvánvaló kell, hogy legyen a probléma forrása.
+
+**Dokumentálás:**
+A tesztek maguk is egyfajta dokumentációnak tekinthetők, mely leírja, hogy mit kellene, hogy csináljon a kód.
+
+Leginkább új szoftverek kifejlesztéséhez alkalmas.
 
 ---
 <div style='page-break-after: always;'></div>

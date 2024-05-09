@@ -1,0 +1,704 @@
+<!DOCTYPE html><html><head>
+      <title>main</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/matt/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.13/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 style="text-align:center">Szoftverfejlesztés</h1>
+<h2 style="text-align:center"> II. Zárthelyi Dolgozat</h2>
+<h2 id="tartalom">Tartalom </h2>
+<ul>
+<li><a href="#1-unified-modeling-language-uml">Unified Modeling Language</a>
+<ul>
+<li><a href="#uml-modellelemek-oszt%C3%A1lyoz%C3%B3k-csomagok-f%C3%BCgg%C5%91s%C3%A9gek-kulcsszavak-megjegyz%C3%A9sek">UML modellelemek</a></li>
+<li><a href="#oszt%C3%A1lydiagramok-oszt%C3%A1lydiagramok-fajt%C3%A1i">Osztálydiagramok</a></li>
+<li><a href="#oszt%C3%A1lyok">Osztályok</a></li>
+<li><a href="#sz%C3%A1moss%C3%A1g">Számosság</a></li>
+<li><a href="#tulajdons%C3%A1gok">Tulajdonságok</a></li>
+<li><a href="#m%C5%B1veletek">Műveletek</a></li>
+<li><a href="#statikus-attrib%C3%BAtumok-%C3%A9s-m%C5%B1veletek">Statikus attribútumok és műveletek</a></li>
+<li><a href="#absztrakt-oszt%C3%A1lyok">Absztrakt osztályok</a></li>
+<li><a href="#asszoci%C3%A1ci%C3%B3k">Asszociációk</a></li>
+<li><a href="#eg%C3%A9sz-r%C3%A9sz-kapcsolat">Egész-rész kapcsolat</a></li>
+<li><a href="#%C3%A1ltal%C3%A1nos%C3%ADt%C3%A1s">Általánosítás</a></li>
+<li><a href="#interf%C3%A9szek">Interfészek</a></li>
+</ul>
+</li>
+<li><a href="#2-szoftvertesztel%C3%A9s">Szoftvertesztelés</a></li>
+<li><a href="#3-objektumorient%C3%A1lt-tervez%C3%A9si-alapelvek">Objektumorientált tervezési alapelvek</a></li>
+<li><a href="#4-mint%C3%A1k-a-szoftverfejleszt%C3%A9sben">Minták a szoftverfejlesztésben</a></li>
+<li><a href="#5-tiszta-k%C3%B3d">Tiszta kód</a></li>
+</ul>
+<hr>
+<div style="page-break-after: always;"></div>
+<h2 id="1-unified-modeling-language-uml">1. Unified Modeling Language (UML) </h2>
+<h3 id="uml-modellelemek-osztályozók-csomagok-függőségek-kulcsszavak-megjegyzések">UML modellelemek: osztályozók, csomagok, függőségek, kulcsszavak, megjegyzések </h3>
+<h4 id="osztályozók">osztályozók </h4>
+<p>Az osztályozó egy modellelem, mely közös jellemzőkkel műveletekkel rendelkező példányok egy halmazát ábrázolja.</p>
+<ul>
+<li><strong>Hierarchiába</strong> szervezhetők az általánosítás révén.</li>
+<li><strong>Specializációi:</strong> <em>DataType</em>, <em>Association</em>, <em>Interface</em>, <em>Class</em></li>
+<li><strong>Jelölésmód:</strong> mint az osztályoké, a nevük megjelenítéséhez félkövér betűtípust kell használni.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<h4 id="csomagok">csomagok </h4>
+<p>A csomag egy modellelemek csoportosítására szolgáló konstrukció, mely egy névteret határoz meg a tagjai számára.<br>
+<strong>Jelölésmód:</strong></p>
+<p><img src="images/csomagok_1.png" alt="Jelölésmód"></p>
+<p>A tartalmazott elemekre csomagnév::elemnév formájú minősített nevekkel lehet hivatkozni (például <code>pkg::Point</code>, <code>pkg::Shape</code>).</p>
+<table>
+<thead>
+<tr>
+<th><img src="images/csomagok_3.png" alt="Csomagok3"></th>
+<th><img src="images/csomagok_4.png" alt="Csomagok4"></th>
+</tr>
+</thead>
+</table>
+<div style="page-break-after: always;"></div>
+<h4 id="függőségek">függőségek </h4>
+<p>Modellelemek közötti szolgáltató-kliens kapcsolatot jelent, ahol egy szolgáltató módosításának hatása lehet a kliens modellelemekre.<br>
+<strong>Jelölésmód:</strong></p>
+<p><img src="images/fuggosegek.png" alt="Függőségek"></p>
+<p>Két modellelem közötti szaggatott nyíl jelöli. A nyíl a függő (kliens) modellelemtől a szolgáltató modellelem felé mutat. A függőséghez megadható egy kulcsszó vagy sztereotípia.</p>
+<h4 id="kulcsszavak">kulcsszavak </h4>
+<p>Az UML jelölésmód szerves részét képző fenntartott szó.<br>
+Szöveges annotációként jelenik meg egy UML grafikus elemhez kapcsolva vagy egy UML diagram egy szövegsorának részeként.</p>
+<ul>
+<li>Minden egyes kulcsszóhoz elő van írva, hogy hol jelenhet meg.</li>
+<li>Lehetővé teszi azonos grafikus jelölésű UML fogalmak (metaosztályok) megkülönböztetését.</li>
+<li>Lásd például az osztályokat és interfészeket (<code>«interface »</code>).</li>
+</ul>
+<p>Megadásuk francia idézőjelek, <code>«</code> és <code>»</code> karakterek között.</p>
+<ul>
+<li>Ha a használt betűkészletben nem állnak rendelkezésre a francia idézőjelek, akkor a <code>&gt;&gt;</code> és <code>&lt;&lt;</code> karakterekkel helyettesíthetők.</li>
+<li>Egy modellelemre több kulcsszó is vonatkozhat.</li>
+<li>A kulcsszavak felsorolhatók egymás után, mindegyik külön határolók közé zárva.</li>
+<li>Több kulcsszó is megadható a határolók között vessző karakterekkel elválasztva.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<h4 id="megjegyzések">megjegyzések </h4>
+<p>Nincs jelentése, a modell olvasója számára hordozhat hasznos információt.</p>
+<p><strong>Jelölésmód:</strong></p>
+<ul>
+<li>A jobb felső sarkában „szamárfüles” téglalap ábrázolja.</li>
+<li>A téglalap tartalmazza a megjegyzés törzsét.</li>
+<li>Szaggatott vonal kapcsolja a magyarázandó elem(ek)hez.</li>
+<li>A vonal elhagyható, ha egyértelmű a környezetből vagy nem fontos a diagramon.</li>
+</ul>
+<p><img src="images/megjegyzes.png" alt="Megjegyzés"></p>
+<div style="page-break-after: always;"></div>
+<h3 id="osztálydiagramok-osztálydiagramok-fajtái">Osztálydiagramok, osztálydiagramok fajtái </h3>
+<h4 id="osztálydiagramok">Osztálydiagramok </h4>
+<p>Egy osztálydiagram az objektumok típusait írja le egy rendszerben és a köztük fennálló különféle statikus kapcsolatokat. Az osztálydiagramok mutatják az osztályok tulajdonságait és műveleteit is, valamint azokat a megszorításokat, melyek az objektumok összekapcsolására vonatkoznak.</p>
+<h4 id="osztálydiagramok-fajtái">Osztálydiagramok fajtái </h4>
+<p><strong>Elemzési:</strong> Az elemzési szinten az osztályok az alkalmazási szakterület fogalmai, az osztálydiagram a szakterület felépítését modellezi.</p>
+<p><strong>Tervezési:</strong> Megjelennek az osztályokban a megvalósítás módjának technikai aspektusai.</p>
+<p><strong>Megvalósítási:</strong> Az osztályok egy implementációs nyelv (például <em>C++</em>, <em>Java</em>, …) konstrukcióival ekvivalensek.</p>
+<div style="page-break-after: always;"></div>
+<h3 id="osztályok">Osztályok </h3>
+<p><strong>Jelölésmód:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Név</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Atribútumok</strong></td>
+</tr>
+<tr>
+<td><strong>Műveletek</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="láthatóság">Láthatóság </h3>
+<table>
+<thead>
+<tr>
+<th>Jelölés</th>
+<th>Láthatóság</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>nyilvános</td>
+</tr>
+<tr>
+<td>-</td>
+<td>privát</td>
+</tr>
+<tr>
+<td>#</td>
+<td>védett</td>
+</tr>
+<tr>
+<td>~</td>
+<td>csomagszintű</td>
+</tr>
+</tbody>
+</table>
+<h3 id="számosság">Számosság </h3>
+<p>Megszorítást fejez ki egy kollekció elemeinek számára.</p>
+<ul>
+<li>Az elemek száma nem lehet kisebb az alsó, illetve nagyobb az felső korlátnál.</li>
+</ul>
+<p><strong>Jelölésmód:</strong><br>
+<code>[alsó_korlát] [..] felső_korlát</code></p>
+<ul>
+<li>Például <code>1..2</code></li>
+<li>A <code>0..*</code> számosság helyett használható a <code>*</code> jelölés.</li>
+</ul>
+<p>Az alsó korlát <strong>nemnegatív egész</strong>, a felső korlát <strong>nemnegatív egész</strong> vagy a <em>"korlátlan"</em> jelentésű <code>*</code>.<br>
+Ha az alsó és felső korlát egyenlő, akkor használható önmagában a felső korlát.</p>
+<ul>
+<li>Például <code>1..1</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <code>1</code> vagy <code>5..5</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <code>5</code></li>
+</ul>
+<h3 id="tulajdonságok">Tulajdonságok </h3>
+<p>Egy tulajdonság egy attribútumot vagy egy asszociációvéget ábrázol.<br>
+<strong>Jelölésmód:</strong><br>
+<code>[^] [láthatóság] [/] név [: típus] [ számosság ] [= alapérték] [{ módosító [, módosító]* }]</code></p>
+<ul>
+<li>A <code>^</code> azt jelzi, hogy a tulajdonság örökölt.</li>
+<li>A <code>/</code> azt jelzi, hogy a tulajdonság származtatott.</li>
+<li>A <code>számosság</code> elhagyásakor az alapértelmezés <em>1</em>.</li>
+<li><strong>Módosító:</strong> például readOnly, ordered, unordered, unique,</li>
+</ul>
+<h3 id="műveletek">Műveletek </h3>
+<p><strong>Jelölésmód:</strong><br>
+<code>[^] [láthatóság] név ([paraméterlista]) [: típus] [ számosság ] [{ tulajdonság [, tulajdonság]* }]</code></p>
+<ul>
+<li><strong>Tulajdonság:</strong> <em>nonunique</em>, <em>ordered</em>, <em>query</em>, <em>redefines név</em>, <em>seq</em> / <em>sequence</em>, <em>unique</em>, <em>unordered</em>, <em>megszorítás</em></li>
+<li><strong>query:</strong> azt jelenti, hogy a művelet nem változtatja meg a rendszer állapotát.</li>
+</ul>
+<h3 id="statikus-attribútumok-és-műveletek">Statikus attribútumok és műveletek </h3>
+<p>A statikus attribútumokat és műveleteket <strong>aláhúzás</strong> jelöli.</p>
+<p>Példa:</p>
+<p><img src="images/statikus-attrib-muveletek.png" alt="Statikus-attribútumok-és-műveletek"></p>
+<div style="page-break-after: always;"></div>
+<h3 id="absztrakt-osztályok">Absztrakt osztályok </h3>
+<p>Nem példányosítható osztály (osztályozó).<br>
+<strong>Jelölésmód:</strong></p>
+<ul>
+<li>Szedjük az osztály (osztályozó) nevét dőlt betűvel és/vagy a név után vagy alatt adjuk meg az <em>{abstract}</em> szöveges annotációt.</li>
+<li>Az UML 2.5.1 nem rendelkezik az absztrakt műveletek jelölésmódjáról!<br>
+<strong>(Személyes vélemény: ez valószínűleg hiba.)</strong></li>
+</ul>
+<p><img src="images/absztrakt-osztaly.png" alt="Absztrakt-osztályok"></p>
+<div style="page-break-after: always;"></div>
+<h3 id="asszociációk">Asszociációk </h3>
+<p>Szemantikus viszonyt jelent, mely osztályozók példányai között állhat fenn.</p>
+<ul>
+<li>Azt fejezi ki az asszociáció, hogy kapcsolatok lehetnek olyan példányok között, melyek megfelelnek az asszociált típusoknak vagy implementálják azokat.</li>
+<li>Legalább két végük van.</li>
+<li>Két végű asszociáció: bináris asszociáció.</li>
+<li>Egy kapcsolat (<em>link</em>) egy asszociáció egy példánya.</li>
+<li>Azaz egy olyan <em>n</em>-es, mely minden véghez a vég típusának egy példányát tartalmazza.</li>
+</ul>
+<p><strong>Jelölésmód:</strong></p>
+<ul>
+<li>Bármely asszociáció ábrázolható egy csúcsára állított rombusszal, melyet minden egyes vég esetén egy folytonos vonal köt össze azzal az osztályozóval, mely a vég típusa. Kettőnél több végű asszociáció csak így ábrázolható.</li>
+<li>Egy bináris asszociációt általában két osztályozót összekötő folytonos vonal ábrázol, vagy egy osztályozót önmagával összekötő folytonos vonal.</li>
+<li>Az asszociáció szimbólumához megadható név (ne legyen túl közel egyik véghez sem).</li>
+<li>Folytonos vonallal ábrázolt bináris asszociáció neve mellett vagy helyén elhelyezhető egy tömör háromszög, mely a vonal mentén az egyik vég felé mutat és az olvasási irányt jelzi. <em>Ez a jelölés csupán dokumentációs célokat szolgál.</em></li>
+</ul>
+<p><img src="images/asszociaciok_1.png" alt="Asszociációk1"></p>
+<p><strong>Asszociáció vég:</strong> az asszociációt ábrázoló vonal és egy osztályozót ábrázoló ikon (gyakran egy doboz) kapcsolata.<br>
+A vonal végének közelében elhelyezhető (egyik sem kötelező):</p>
+<ul>
+<li>Név (gyakran szerepkörnek nevezik)</li>
+<li>Számosság (ha nincs megadva, akkor semmilyen feltevéssel nem élhetünk a számosságról)</li>
+<li>Módosító (lásd a tulajdonságoknál)</li>
+<li>Láthatóság</li>
+</ul>
+<p>A vonal végén egy <strong>nyílt nyílhegy</strong> azt jelzi, hogy a vég navigálható, egy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span> pedig azt, hogy a vég nem navigálható</p>
+<p>Egy asszociáció vég számosságának jelentése:</p>
+<ul>
+<li>A példányok számát adja meg a végen arra az esetre, amikor a többi (n - 1) vég mindegyikén egy- egy értéket rögzítünk.</li>
+</ul>
+<p><img src="images/asszociaciok_2.png" alt="Asszociációk2"></p>
+<p>Az osztályozó és a vonal érintkezési pontjában elhelyezhető egy kis tömör kör (a továbbiakban pontnak nevezzük).</p>
+<ul>
+<li>A pont azt mutatja, hogy a modell tartalmaz egy tulajdonságot, melynek típusát a pont által érintett osztályozó ábrázolja. Ez a tulajdonság a másik végen lévő osztályozóhoz tartozik. Ebben az esetben szokás a tulajdonságot elhagyni az osztályozó attribútum rekeszéből.</li>
+<li>A pont hiánya azt jelzi, hogy a vég magához az asszociációhoz tartozik.</li>
+</ul>
+<p><img src="images/asszociaciok_3.png" alt="Asszociációk3"></p>
+<div style="page-break-after: always;"></div>
+<p>A navigálhatóság azt jelenti, hogy a kapcsolatokban résztvevő példányok futásidőben hatékonyan érhetők el az asszociáció többi végén lévő példányokból.</p>
+<ul>
+<li>Implementáció-specifikus azt a mechanizmus, mely révén hatékony elérés történik.</li>
+<li>Az osztályokhoz tartozó asszociációvégek mindig navigálhatók, az asszociációkhoz tartozók lehetnek navigálhatók és nem navigálhatók.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mindkét vég navigálható.</td>
+<td><img src="images/asszociaciok_table_1.png" alt="Asszociáció-cell-1"></td>
+</tr>
+<tr>
+<td>Egyik vég sem navigálható.</td>
+<td><img src="images/asszociaciok_table_2.png" alt="Asszociáció-cell-1"></td>
+</tr>
+<tr>
+<td>A navigálhatóság nem meghatározott.</td>
+<td><img src="images/asszociaciok_table_3.png" alt="Asszociáció-cell-1"></td>
+</tr>
+<tr>
+<td>Az egyik vég navigálható, a másik nem.</td>
+<td><img src="images/asszociaciok_table_4.png" alt="Asszociáció-cell-1"></td>
+</tr>
+<tr>
+<td>Az egyik vég navigálható, a másik nem.</td>
+<td><img src="images/asszociaciok_table_5.png" alt="Asszociáció-cell-1"></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<h3 id="egész-rész-kapcsolat">Egész-rész kapcsolat </h3>
+<p>A bináris asszociációk egész-rész kapcsolatot kifejező fajtái:</p>
+<ul>
+<li><strong>Aggregáció</strong> (<em>shared aggregation</em>, <em>aggregation</em>): Egy rész objektum egyidejűleg több aggregációs objektumhoz is tartozhat, a részek és az aggregációs objektum egymástól függetlenül is létezhetnek.</li>
+<li><strong>Kompozíció</strong> (<em>composite aggregation</em>, <em>composition</em>): Az aggregáció erősebb formája. Egy rész objektum legfeljebb egy kompozit objektumhoz tartozhat. A kompozit objektum törlésekor az összes rész objektum vele együtt törlődik.</li>
+</ul>
+<p>Egy bináris asszociáció egyik vége jelölhető meg csak aggregációként vagy kompozícióként.</p>
+<p><strong>Jelölésmód:</strong></p>
+<p><img src="images/egesz-resz-kapcsolat_1.png" alt="Egész-rész-kapcsolat-1"></p>
+<div style="page-break-after: always;"></div>
+<p><strong>Példa aggregációra:</strong></p>
+<p><img src="images/egesz-resz-kapcsolat_2.png" alt="Egész-rész-kapcsolat-2"></p>
+<p><strong>Példa kompozícióra:</strong></p>
+<p><img src="images/egesz-resz-kapcsolat_3.png" alt="Egész-rész-kapcsolat-3"></p>
+<div style="page-break-after: always;"></div>
+<h3 id="általánosítás">Általánosítás </h3>
+<p>Az általánosítás egy általánosítás/specializáció kapcsolatot határoz meg osztályozók között. Egy speciális osztályozót kapcsol össze egy általánosabb osztályozóval.<br>
+Az általánosítás/specializáció reláció tranzitív lezártja szerint értelmezzük egy osztályozó általánosításait és specializációit.<br>
+A közvetlen általánosításokat a speciális osztályozó szülőjének nevezzük, osztályok esetén ősosztálynak.</p>
+<p>Egy osztályozó egy példánya minden általánosításának példánya.<br>
+A speciális osztályozó örökli az általános osztályozó bizonyos tagjait.<br>
+<strong>Jelölésmód:</strong></p>
+<p><img src="images/altalonositas_1.png" alt="Általánosítás-1"></p>
+<div style="page-break-after: always;"></div>
+<p><strong>Példa:</strong></p>
+<table>
+<thead>
+<tr>
+<th><img src="images/altalonositas_2.png" alt="Általánosítás-2"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="images/altalonositas_3.png" alt="Általánosítás-3"></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<h3 id="interfészek">Interfészek </h3>
+<p>Az interfész egy olyan fajta osztályozó, mely nyilvános jellemzőket és kötelezettségeket deklarál Az interfész egy szerződést határoz meg.<br>
+Az interfészek nem példányosíthatók. Osztályozók implementálják vagy az interfész specifikációnak megfelelő nyilvános felületet nyújtanak.</p>
+<p><strong>Jelölésmód:</strong></p>
+<p><img src="images/interfesz_1.png" alt="Interfészek-1"><br>
+<img src="images/interfesz_2.png" alt="Interfészek-2"></p>
+<p><strong>Példa:</strong></p>
+<p><img src="images/interfesz_3.png" alt="Interfészek-3"></p>
+<hr>
+<div style="page-break-after: always;"></div>
+<h2 id="2-szoftvertesztelés">2. Szoftvertesztelés </h2>
+<h3 id="mi-a-szoftvertesztelés">Mi a szoftvertesztelés? </h3>
+<p>A szoftvertesztelés egy megoldás a szoftver minőségénekmegállapításához és a szoftver működés közbeni meghibásodási kockázatának csökkentésére.</p>
+<h3 id="verifikáció-és-validáció-fogalma">Verifikáció és validáció fogalma </h3>
+<h4 id="verifikáció-verification">Verifikáció (verification): </h4>
+<p>Annak ellenőrzése, hogy a szoftver megfelel-e a vele szemben támasztott (funkcionális és nem funkcionális) követelményeknek.</p>
+<h4 id="validáció-validation">Validáció (validation): </h4>
+<p>Annak ellenőrzése, hogy a szoftver megfelel-e az ügyefelek elvárásainak.</p>
+<div style="page-break-after: always;"></div>
+<h3 id="hibát-leíró-szakkifejezések-tévedéstévesztés-hiba-meghibásodás">Hibát leíró szakkifejezések: tévedés/tévesztés, hiba, meghibásodás </h3>
+<h4 id="tévedéstévesztés-errormistake">Tévedés/tévesztés (error/mistake): </h4>
+<p>Rossz eredményt adó emberi tevékenység.</p>
+<h4 id="hiba-defectfaultbug">Hiba (defect/fault/bug): </h4>
+<p>Tökéletlenség vagy hiányosság egy munkatermékben, melynél nem teljesülnek a követelmények vagy előírások.</p>
+<h4 id="meghibásodás-failure">Meghibásodás (failure): </h4>
+<p>Olyan esemény, melynél egy komponens vagy rendszer nem lát egy megkövetelt funkciót a megszabott határok között.</p>
+<p>Egy személy egy tévedést/tévesztést követ el, mely egy hibát vezethet be a szoftver kódjába vagy valamely más kapcsolódó munkatermékbe.<br>
+Ha végrehajtásra kerül a hiba a kódban, akkor az egy meghibásodást okozhat, de nem szükségszerűen minden esetben.<br>
+Például bizonyos hibák nagyon sajátos bemenetek vagy előfeltételek mellett váltanak ki meghibásodást, melyek nagyon ritkán vagy sohasem fordulnak elő.<br>
+Nem minden meghibásodást a kódban lévő hibák okoznak, eredményezhetik őket környezeti feltételek is.</p>
+<h3 id="tesztelési-alapelvek">Tesztelési alapelvek </h3>
+<ol>
+<li>A tesztelés a hibák jelenlétét mutatja meg, nem a hiányukat</li>
+<li>Lehetetlen a kimerítő tesztelés</li>
+<li>A korai tesztelés időt és pénzt takarít meg</li>
+<li>A hibák csoportosulnak</li>
+<li>A tesztek elkopnak (óvakodj a kártevőírtó paradoxontól)</li>
+<li>A tesztelés környezetfüggő</li>
+<li>A hibamentesség egy tévhit</li>
+</ol>
+<h3 id="teszteset-és-tesztadat-fogalma">Teszteset és tesztadat fogalma </h3>
+<h4 id="teszteset">teszteset </h4>
+<p>ISTQB: Tesztfeltételek alapján meghatározott előfeltételek,<br>
+bemenetek, tevékenységek (adott esetben), elvárt eredmények és<br>
+utófeltételek halmaza.</p>
+<p><strong>Tesztfeltétel:</strong> Egy komponens vagy rendszer tesztelhető vontakozás, melyet a tesztelés alapjául választunk.</p>
+<p><strong>Magas szintű teszteset:</strong> Teszteset, mely absztrakt előfeltételekkel, bemeneti adatokkal, elvárt eredményekkel, utófeltételekkel és (adott esetben) lépésekkel rendelkezik.</p>
+<p><strong>Alacsony szintű teszteset:</strong> Teszteset, mely konkrét előfeltételekkel, bemeneti adatokkal, elvárt eredményekkel, utófeltételekkel és (adott esetben) a lépések részletes leírásával rendelkezik.</p>
+<h4 id="tesztadat">tesztadat </h4>
+<p>A tesztadatok a tesztvégrehajtáshoz szükséges adatokat jelentik.<br>
+Az ilyen konkrét értékek a használatukra vonatkozó világos útmutatásokkal együt végrehajtható alacsony szintű tesztesetekké teszik a magas szintű teszteseteket.<br>
+Ugyanaz a magas szintű teszteset különböző tesztadatokat használhat különböző végrehajtásoknál.</p>
+<div style="page-break-after: always;"></div>
+<h3 id="tesztelési-szintek-egységtesztelés-integrációs-tesztelés-rendszertesztelés-elfogadási">Tesztelési szintek: egységtesztelés, integrációs tesztelés, rendszertesztelés, elfogadási </h3>
+<h4 id="egységteszteléskomponens-tesztelés-unit-testingcomponenttesting">Egységtesztelés/komponens tesztelés (unit testing/componenttesting) </h4>
+<p>A függetlenül tesztelhető komponensekre összpontosít.<br>
+Az egységtesztelést általában az a fejlesztő végzi, aki a kódot írja, de legalább a tesztelt kódhoz való hozzáférés szükséges.<br>
+A fejlesztők gyakran egy komponens kódjának megírása után írnak és hajtanak végre egységteszteket.<br>
+Azonban az automatikus egységtesztek megírása megelőzheti az alkalmazáskód megírását, lásd például a tesztvezérelt fejlesztést (TDD).</p>
+<h4 id="integrációs-tesztelés-integration-testing">Integrációs tesztelés (integration testing) </h4>
+<p>Komponensek vagy rendszerek közötti kommunikációra összpontosít.<br>
+Az integrációs teszteknek magára az integrációra kell koncentrálnia, nem pedig az egyes komponensek/rendszerek működésére.</p>
+<p><strong>Komponens integrációs tesztelés:</strong><br>
+Az integrált komponensek közötti kommunikációra és interfészekre összpontosít. Az egységtesztelés után végzik és általában automatizált. A komponens integrációs tesztelés gyakran a fejlesztők felelősége.</p>
+<p><strong>Rendszerintegrációs tesztelés:</strong><br>
+Rendszerek közötti kommunikációra és interfészekre összpontosít.<br>
+Kiterjedhet külső szervezetekkel és általuk szolgáltatott interfészekkel (például webszolgáltatásokkal) való interakciókra. Történhet a rendszertesztelés után vagy a folyamatban lévő rendszertesztelési tevékenységekkel párhuzamosan. A rendszerintegrációs tesztelés általában a tesztelők felelősége.</p>
+<h4 id="rendszertesztelés-system-testing">Rendszertesztelés (system testing) </h4>
+<p>A rendszer egészének (funkcionális és nem funkcionális) viselkedésére összpontosít.<br>
+Jellemzően független tesztelők végzik jelentős mértékben specifikációkra támaszkodva.</p>
+<h4 id="elfogadási-tesztelés-acceptance-testing">Elfogadási tesztelés (acceptance testing) </h4>
+<p>Annak meghatározására összpontosít, hogy a rendszer kész-e a telepítésre és az ügyfél (végfelhasználó) általi használatra.<br>
+Gyakran az ügyfél vagy a rendszerüzemeltetők felelőssége, de más érintettek is bevonhatók.<br>
+A szoftver kiadása előtt azt néha odaadják potenciális felhasználok egy kis kiválasztott csoportjának kipróbálásra (alfa tesztelés) és/vagy reprezentatív felhasználók egy nagyobb halmazának (béta tesztelés).</p>
+<h3 id="tesztelés-alfa-és-béta-tesztelés">tesztelés (alfa és béta tesztelés) </h3>
+<h4 id="alfa-tesztelés">Alfa tesztelés: </h4>
+<p>Felhasználók és fejlesztők együtt dolgoznak egy rendszer tesztelésén a fejlesztés közben.<br>
+A fejlesztő szervezet telephelyén történik.</p>
+<h4 id="béta-tesztelés">Béta tesztelés: </h4>
+<p>Akkor történik, amikor egy szoftverrendszer egy korai, néha befejezetlen kiadását elérhetővé teszik kipróbálásra ügyfelek és felhasználók egy nagyobb csoportjának.<br>
+A felhasználók helyén történik.<br>
+Főleg olyan szoftvertermékekhez alkalmazzák, melyeket sok különböző környezetben használnak.<br>
+A marketing egy formája is.</p>
+<div style="page-break-after: always;"></div>
+<h3 id="teszttípusok">Teszttípusok </h3>
+<h4 id="funkcionális-tesztelés">funkcionális tesztelés </h4>
+<p>A rendszer által nyújtott funkciók tesztelése.<br>
+Más szóval annak tesztelése, amit a rendszer csinál.<br>
+Funkcionális teszteket minden tesztelési szinten ajánlott végezni.</p>
+<h4 id="nem-funkcionális-tesztelés">nem funkcionális tesztelés </h4>
+<p>Rendszerek olyan jellemzőinek értékelése, mint például ahasználhatóság, teljesítmény vagy biztonság.<br>
+Más szóval annak tesztelése, hogy a rendszer mennyire jól teszi adolgát.</p>
+<h4 id="fehér-dobozos-tesztelés">fehér dobozos tesztelés </h4>
+<p>A rendszer belső felépítésén vagy megvalósításán alapuló teszek.<br>
+A belső szerkezetbe beleérthető kód, architektúra vagy a rendszeren belüli munkafolyamatok.</p>
+<h4 id="változással-kapcsolatos-tesztelés">változással kapcsolatos tesztelés </h4>
+<p>Teszteket kell végezni, amikor módosítások történnek egy rendszerben egy hiba kijavításához vagy új funkcionalitás hozzáadásához/létező funkcionalitás módosításához.</p>
+<p><strong>Megerősítő tesztelés:</strong><br>
+Célja annak megerősítése, hogy az eredeti hiba sikeresen kijavításra került.</p>
+<p><strong>Regressziós tesztelés:</strong><br>
+Lehetséges, hogy egy változás a kód egy részében, akár egy javítás vagy másfajta módosítás, véletlenül hatással van a kód más részeinek viselkedésére. A regressziós tesztelés célja a változások által okozott akartalan mellékhatások érzékelése.</p>
+<h3 id="a-jó-egységtesztek-ismertetőjegyei-first">A jó egységtesztek ismertetőjegyei: FIRST </h3>
+<h4 id="gyors-fast">Gyors (Fast): </h4>
+<p>A tesztek gyorsak kell, hogy legyenek. Gyorsan kell, hogy lefussanak.</p>
+<h4 id="független-independent">Független (Independent): </h4>
+<p>A tesztek nem függhetnek egymástól.</p>
+<h4 id="megismételhető-repeatable">Megismételhető (Repeatable): </h4>
+<p>A tesztek bármely környezetben megismételhetők kell, hogy legyenek.</p>
+<h4 id="önérvényesítő-self-validating">Önérvényesítő (Self-Validating): </h4>
+<p>A teszeknek logikai kimenete kell, hogy legyen. Vagy átmennek, vagy megbuknak.</p>
+<h4 id="jól-időzített-timely">Jól időzített (Timely): </h4>
+<p>A teszteket kellő időben kell megírni, közvetlenül a tesztelendő kód előtt.</p>
+<h3 id="egységtesztek-szervezése-az-aaa-minta">Egységtesztek szervezése: az AAA minta </h3>
+<h4 id="elrendez-arrange">Elrendez (Arrange): </h4>
+<p>Ez a rész felelős a tesztelt rendszer és függőségei egy kívánt állapotba állításáért.</p>
+<h4 id="cselekszik-act">Cselekszik (Act): </h4>
+<p>Ez a rész szolgál a tesztelt rendszer metódusainak meghívására, az előkészített függőségek átadására és a kimeneti érték elkapására (ha van).</p>
+<h4 id="kijelent-assert">Kijelent (Assert): </h4>
+<p>Ez a szakasz szolgál a kimenetel ellenőrzésére. A kimenetel ábrázolható a visszatérési értékkel vagy a tesztelt rendszer végső állapotával</p>
+<div style="page-break-after: always;"></div>
+<p><strong>Példa:</strong></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">testPairOfMapEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Arrange:</span>
+    <span class="token keyword keyword-final">final</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> map <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-final">final</span> <span class="token class-name">Entry</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> entry <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">entrySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Act:</span>
+    <span class="token keyword keyword-final">final</span> <span class="token class-name">Pair</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> pair <span class="token operator">=</span> <span class="token class-name">MutablePair</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Assert:</span>
+    <span class="token function">assertEquals</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> pair<span class="token punctuation">.</span><span class="token function">getLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assertEquals</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> pair<span class="token punctuation">.</span><span class="token function">getRight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div style="page-break-after: always;"></div>
+<h3 id="junit">JUnit </h3>
+<h4 id="tesztosztályok-és-tesztmetódusok">tesztosztályok és tesztmetódusok </h4>
+<p><strong>Tesztosztály:</strong><br>
+Bármely felsőszintű osztály, statikus tagosztály vagy <code>@Nested</code> osztály, mely legalább egy tesztmetódust tartalmaz. Nem lehet absztrakt és egyetlen konstruktora kell, hogy legyen.</p>
+<p><strong>Tesztmetódus:</strong><br>
+A <code>@Test</code>, <code>@RepeatedTest</code>, <code>@ParameterizedTest</code>, <code>@TestFactory</code> vagy <code>@TestTemplate</code> annotációval megjelölt bármely példánymetódus.</p>
+<p><strong>Életciklus metódus:</strong><br>
+A <code>@BeforeAll</code>, <code>@AfterAll</code>, <code>@BeforeEach</code> vagy <code>@AfterEach</code> annotációval megjelölt bármely metódus. A <code>@BeforeAll</code> és <code>@AfterAll</code> annotációkkal jelölt metódusok statikusak kell, hogy legyenek (kivéve azt az esetet, amikor az <code>@TestInstance(Lifecycle.PER_CLASS)</code> annotációt használjuk).</p>
+<p>Nem szükséges, hogy a tesztosztályok, tesztmetódusok és életciklus metódusok nyilvánosak legyenek, de nem lehetnek privát láthatóságúak.</p>
+<p><strong>Tesztmetódusok és életciklus metódusok:</strong><br>
+Deklarálhatók az aktuális tesztosztályon belül lokálisan, örökölhetők ősosztályból vagy interfészektől.<br>
+Nem lehetnek absztraktak és nem adhatnak vissza értéket.</p>
+<p>A tesztosztály konstruktoroknak és metódusoknak is meg van engedve, hogy paramétereik legyenek, mely lehetővé teszi a függőség befecskendezést.</p>
+<h4 id="teszt-végrehajtási-életciklus">teszt végrehajtási életciklus </h4>
+<p>Alapértelmezésben a <em>JUnit</em> egy új példányt hoz létre minden egyes tesztosztályból az egyes tesztmetódusok végrehajtás előtt, mely lehetővé teszi a tesztmetódusok izoláltan történő végrehajtását.</p>
+<p>Ez a viselkedés megváltoztatható, az összes tesztmetódus ugyanazon a tesztpéldányon történő végrehajtásához a tesztosztályt a <code>@TestInstance(Lifecycle.PER_CLASS)</code> annotációval kell megjelölni.</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>jupiter<span class="token punctuation">.</span>api<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">LifeCycleTest</span> <span class="token punctuation">{</span>
+
+  <span class="token class-name">LifeCycleTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Constructor creates %s\n"</span><span class="token punctuation">,</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@BeforeAll</span>
+  <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">beforeAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"@BeforeAll static method invoked"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@AfterAll</span>
+  <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">afterAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"@AfterAll static method invoked"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@BeforeEach</span>
+  <span class="token keyword keyword-void">void</span> <span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"@BeforeEach method invoked on %s\n"</span><span class="token punctuation">,</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@AfterEach</span>
+  <span class="token keyword keyword-void">void</span> <span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"@AfterEach method invoked on %s\n"</span><span class="token punctuation">,</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Test</span>
+  <span class="token keyword keyword-void">void</span> <span class="token function">testMethod1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"testMethod1() method invoked on %s\n"</span><span class="token punctuation">,</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Test</span>
+  <span class="token keyword keyword-void">void</span> <span class="token function">testMethod2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"testMethod2() method invoked on %s\n"</span><span class="token punctuation">,</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+</code></pre><pre data-role="codeBlock" data-info="" class="language-text"><code>@BeforeAll static method invoked
+Constructor creates LifeCycleTest@2145433b
+  @BeforeEach method invoked on LifeCycleTest@2145433b
+  testMethod1() method invoked on LifeCycleTest@2145433b
+  @AfterEach method invoked on LifeCycleTest@2145433b
+Constructor creates LifeCycleTest@fdefd3f
+  @BeforeEach method invoked on LifeCycleTest@fdefd3f
+  testMethod2() method invoked on LifeCycleTest@fdefd3f
+  @AfterEach method invoked on LifeCycleTest@fdefd3f
+@AfterAll static method invoked
+</code></pre><h4 id="teszteredmények">teszteredmények </h4>
+<p><strong>Siker (success):</strong><br>
+Amikor a teszt végrehajtásakor minden tényleges eredmény megegyezik a várt végeredménnyekkel. Ekkor azt mondjuk, hogy a teszt átmegy (passes).</p>
+<p><strong>Bukás (failure):</strong><br>
+Amikor a teszt végrehajtásakor a tényleges eredmény nem egyezik meg a várt végeredménnyel. A bukást egy elbukó állítás okozza. Ekkor azt mondjuk, hogy a teszt megbukik (fails).</p>
+<p><strong>Hiba (error ):</strong><br>
+Amikor a teszt végrehajtásakor egy hiba következik be, mely megakadályozza a befejeződést. A hibát egy váratlan kivétel vagy hiba okozza</p>
+<h3 id="kódlefedettségi-metrikák">Kódlefedettségi metrikák </h3>
+<h4 id="utasítás-lefedettségsor-lefedettség">utasítás lefedettség/sor lefedettség </h4>
+<p>A leggyakrabban használt lefedettségi metrikák az utasítás lefedettség (<em>statement coverage</em>) és a sor lefedettség (<em>line coverage</em>)</p>
+<p><strong>Utasítás lefedettség</strong> = Végrehajtott utasítások / Összes utasítás száma<br>
+<strong>Sor lefedettség</strong> = Végrehajtott kódsorok / Összes sor száma</p>
+<p>Minden egyes végrehajtott utasítást/sort egyszer számolunk.<br>
+A sor lefedettség meghatározásakor csak a végrehajtható kódot tartalmazó sorok kerülnek számolásra.<br>
+Vegyük észre, hogy a sor lefedettség függ a forráskód formázástól.</p>
+<div style="page-break-after: always;"></div>
+<p><strong>Példa:</strong></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-boolean">boolean</span> <span class="token function">isLongString</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+  <span class="token keyword keyword-return">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-void">void</span> <span class="token function">testIsLongString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">assertFalse</span><span class="token punctuation">(</span><span class="token function">isLongString</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>A kódlefedettség 2/4 = 0,5 = 50%</p>
+<p><strong>Példa:</strong></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-boolean">boolean</span> <span class="token function">isLongString</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-void">void</span> <span class="token function">testIsLongString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">assertFalse</span><span class="token punctuation">(</span><span class="token function">isLongString</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>A kódlefedettség 1/1 = 1 = 100%.</p>
+<p>Minél tömörebb a kód, annál jobb az utasítás/sor lefedettség, mivel az utasítások/sorok nyers számán alapul.</p>
+<div style="page-break-after: always;"></div>
+<p><strong>Példa:</strong></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token class-name">String</span> <span class="token function">middle</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    i <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-return">return</span> s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-void">void</span> <span class="token function">testMiddle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">,</span> <span class="token function">middle</span><span class="token punctuation">(</span><span class="token string">"voldemort"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Vegyük észre, hogy az utasítás/sor lefedettség 100%, noha hibás a <code>middle()</code> metódus implementációja.</p>
+<div style="page-break-after: always;"></div>
+<h4 id="ág-lefedettség">ág lefedettség </h4>
+<p>Az ág lefedettség (<em>branch coverage</em>) egy lefedettségi mérték, mely az olyan vezérlési szerkezeteken alapul, mint az <code>if</code> és a <code>switch</code>.<br>
+A végrehajtott ágak arányát méri egy tesztkészlet futtatásakor az összes ág számához viszonyítva.</p>
+<p><strong>Ág lefedettség</strong> = Végrehajtott ágak / Összes ág száma</p>
+<p><strong>Példa:</strong></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-boolean">boolean</span> <span class="token function">isLongString</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-return">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-void">void</span> <span class="token function">testIsLongString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">assertFalse</span><span class="token punctuation">(</span><span class="token function">isLongString</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Az ág lefedettség 1/2 = 0,5 = 50%</p>
+<p><strong>Példa:</strong></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-boolean">boolean</span> <span class="token function">isLongString</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-void">void</span> <span class="token function">testIsLongString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">assertFalse</span><span class="token punctuation">(</span><span class="token function">isLongString</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Az ág lefedettség 1/2 = 0,5 = 50%.</p>
+<div style="page-break-after: always;"></div>
+<p><strong>Példa:</strong><br>
+Az ág lefedettség becsapása (az ág lefedettség 100%!)</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-int">int</span> <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> a<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-int">int</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>a <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    x <span class="token operator">=</span> a <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>b <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    y <span class="token operator">=</span> b <span class="token operator">/</span> x<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-return">return</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword keyword-void">void</span> <span class="token function">testSomeMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p><strong>Példa:</strong><br>
+Az ág lefedettség becsapása (az ág lefedettség 100%!)</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-int">int</span> <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> a<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-int">int</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>a <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    x <span class="token operator">=</span> a <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>b <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    y <span class="token operator">=</span> b <span class="token operator">/</span> x<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-return">return</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Vegyük észre, hogy a someMethod(0, 10) metódushívás egy <code>ArithmeticException</code> kivételt eredményez.</p>
+<h4 id="mi-az-ésszerű-lefedettségi-szám">mi az ésszerű lefedettségi szám? </h4>
+<p>Veszélyes egy bizonyos érték elérésének megcélzása egy lefedettségi metrikánál, mivel könnyen ez válhat a fő céllá.<br>
+Inkább a megfelelő egységtesztelésre kell koncentrálni.</p>
+<p><strong>Ökölszabályok:</strong><br>
+Jó, ha egy rendszer fő részeinél nagy a lefedettség.<br>
+Nem jó ezt magas szintű követelménnyé tenni.</p>
+<h3 id="mi-a-tesztvezérelt-fejlesztés-tdd">Mi a tesztvezérelt fejlesztés (TDD)? </h3>
+<p>A tesztvezérelt fejlesztés (<em>test driven development</em>, <em>TDD</em>) egy szoftverfejlesztési folyamat, mely az automatikus tesztek megírását bármiféle kód megírása elé helyezi.</p>
+<p>Egy iteratív megközelítés, mely egy automatizált teszt keretrendszer (például <em>JUnit</em>) használatán és a következő rövid fejlesztési ciklus ismétlésén alapul:</p>
+<ol>
+<li>Írj egy tesztet (Write a test)</li>
+<li>Érd el, hogy működjön (Make it run)</li>
+<li>Javítsd ki (Make it right)</li>
+</ol>
+<h4 id="a-tdd-mantrája">A TDD mantrája: </h4>
+<ol>
+<li>Vörös: írj egy nem működő kis tesztet, mely elsőre talán le sem fordul.</li>
+<li>Zöld: gyorsan javítsd ki a tesztet, közben bármilyen bűnt elkövethetsz, ami szükséges.</li>
+<li>Refaktorálj: távolíts el minden ismétlődést, mely azért jött létre, hogy a teszt működjön.</li>
+</ol>
+<p>A cél működő tiszta kód.</p>
+<h4 id="a-tdd-folyamat">A TDD folyamat </h4>
+<p><img src="images/tdd.png" alt="TDD-Folyamata"></p>
+<h4 id="a-tdd-előnyei">A TDD előnyei </h4>
+<p><strong>Megkönnyíti a kód írását:</strong><br>
+A TDD segíti a programozót abban, hogy tisztázza a gondolatait arról, hogy mit kellene, hogy csináljon egy kódrész. Egy teszt írásához a feladat megértése szükséges, a megértés pedig könnyebbé teszi a szükséges kód megírását.</p>
+<p><strong>Kódlefedettség:</strong><br>
+Minden kódrésznek kell, hogy legyen tesztje.</p>
+<p><strong>Könnyebb hibakeresés:</strong><br>
+Amikor egy teszt sikertelen, nyilvánvaló kell, hogy legyen a probléma forrása.</p>
+<p><strong>Dokumentálás:</strong><br>
+A tesztek maguk is egyfajta dokumentációnak tekinthetők, mely leírja, hogy mit kellene, hogy csináljon a kód.</p>
+<p>Leginkább új szoftverek kifejlesztéséhez alkalmas.</p>
+<hr>
+<div style="page-break-after: always;"></div>
+<h2 id="3-objektumorientált-tervezési-alapelvek">3. Objektumorientált tervezési alapelvek </h2>
+<h3 id="statikus-kódelemzés-fogalma-példák-statikus-kódelemző-eszközökre">Statikus kódelemzés fogalma, példák statikus kódelemző eszközökre </h3>
+<h3 id="a-dry-elv">A DRY elv </h3>
+<h3 id="a-kiss-elv">A KISS elv </h3>
+<h3 id="a-yagni-elv">A YAGNI elv </h3>
+<h3 id="csatoltság-laza-és-szoros-csatoltság">Csatoltság, laza és szoros csatoltság </h3>
+<h3 id="gof-alapelvek">GoF alapelvek </h3>
+<h3 id="solid-alapelvek-egyszeres-felelősség-elve-nyitva-zárt-elv-liskov-féle-helyettesítési">SOLID alapelvek: egyszeres felelősség elve, nyitva zárt elv, Liskov-féle helyettesítési </h3>
+<h3 id="elv-interfész-szétválasztási-elv-függőség-megfordítási-elv">elv, interfész szétválasztási elv, függőség megfordítási elv </h3>
+<h3 id="függőség-befecskendezés">Függőség befecskendezés </h3>
+<hr>
+<div style="page-break-after: always;"></div>
+<h2 id="4-minták-a-szoftverfejlesztésben">4. Minták a szoftverfejlesztésben </h2>
+<h3 id="mi-a-minta">Mi a minta? </h3>
+<h3 id="architekturális-minták-a-modell-nézet-vezérlő-mvc-architekturális-minta">Architekturális minták, a modell-nézet vezérlő (MVC) architekturális minta </h3>
+<h3 id="tervezési-minták-tervezési-minták-osztályozása">Tervezési minták, tervezési minták osztályozása </h3>
+<h4 id="létrehozási-minták-elvont-gyár-abstract-factory-egyke-építő-objektumkészlet-object-pool-">Létrehozási minták: elvont gyár (abstract factory), egyke, építő, objektumkészlet (object pool ) </h4>
+<h4 id="szerkezeti-minták-díszítő-illesztő">Szerkezeti minták: díszítő, illesztő </h4>
+<h4 id="viselkedési-minták-sablonfüggvény-megfigyelő">Viselkedési minták: sablonfüggvény, megfigyelő </h4>
+<h3 id="programozási-idiómákimplementációs-minták">Programozási idiómák/implementációs minták </h3>
+<h3 id="antiminták-a-massza-és-a-spagetti-kód-antiminta">Antiminták, a massza és a spagetti kód antiminta </h3>
+<hr>
+<div style="page-break-after: always;"></div>
+<h2 id="5-tiszta-kód">5. Tiszta kód </h2>
+<h3 id="milyen-a-tiszta-kód">Milyen a tiszta kód? </h3>
+<h3 id="értelmes-nevek">értelmes nevek </h3>
+<h3 id="függvények">Függvények </h3>
+<h3 id="mi-a-baj-a-megjegyzésekkel-jó-és-rossz-megjegyzések-fajtái">Mi a baj a megjegyzésekkel? Jó és rossz megjegyzések fajtái </h3>
+<h3 id="forráskód-formázás-vízszintes-és-függőleges-formázás-az-újság-metafora">Forráskód formázás: vízszintes és függőleges formázás, az újság metafora </h3>
+<h3 id="hibakezelés-elenőrzött-és-nem-ellenőrzött-kivételek">Hibakezelés, elenőrzött és nem ellenőrzött kivételek </h3>
+<h3 id="null-átadása-függvényeknek-null-visszadása">null átadása függvényeknek, null visszadása </h3>
+<hr>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
