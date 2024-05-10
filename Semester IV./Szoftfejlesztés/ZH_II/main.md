@@ -1133,14 +1133,438 @@ public class TextEditor implements SpellCheckerSetter {
 
 ## 4. Minták a szoftverfejlesztésben
 ### Mi a minta?
+*„Minden minta olyan problémát ír le, ami újra és újra felbukkan a környezetünkben, s aztán leírja hozzá a megoldás magját, oly módon, hogy a megoldás milliószor felhasználható legyen, anélkül, hogy valaha is kétszer ugyanúgy csinálnánk.”*
+
+*„Minden minta egy három részből álló szabály, mely egy bizonyos környezet, egy probléma és egy megoldás közötti kapcsolatot fejez ki.”*
+
+*„A minta egy olyan ötlet, mely egy gyakorlati környezetben már hasznosnak bizonyult, és várhatóan más környezetekben is hasznos lesz.”*
+
+*„A minta egy gyakori probléma vagy kérdés általános megoldásának leírása, melyből meghatározható egy konkrét probléma részletes megoldása.”*
+
+<div style='page-break-after: always;'></div>
+
 ### Architekturális minták, a modell-nézet vezérlő (MVC) architekturális minta
+Az architekturális minták szoftverrendszerek alapvető szerkezeti felépítésére adnak sémákat. Ehhez előre definiált alrendszereket biztosítanak, meghatározzák ezek felelősségi köreit, valamint szabályokat és irányelveket tartalmaznak a köztük lévő kapcsolatok szervezésére vonatkozólag. [*POSA1*]
+- Példák: mikrokernel, modell-nézet-vezérlő
+
+**MVC:**
+
+**Név:** Modell-nézet vezérlő (Model-View-Controller)
+**Környezet:** Rugalmas ember-gép felülettel rendelkező interaktív alkalmazások.
+**Probléma:** Különösen gyakori az igény a felhasználói felületek változtatására.
+
+**Erők:**
+Ugyanaz az információ különböző módon jelenik meg különböző helyeken (például oszlop- vagy kördiagramon).
+Az alkalmazás megjelenítésének és viselkedésének azonnal tükröznie kell az adatokon végzett műveleteket.
+A felhasználói felület könnyen változtatható kell hogy legyen, akár futásidőben is.
+Különböző look and feel szabványok támogatása vagy a felhasználói felület portolása nem érintheti az alkalmazás magjának kódját.
+
+**Megoldás:** Az interaktív alkalmazás három részre osztása:
+- A modell komponens az adatokat és a funkcionalitást csomagolja be, független a kimenet ábrázolásmódjától vagy az input viselkedésétől.
+- A nézet komponensek jelenítik meg az információkat a felhasználónak.
+- A vezérlő fogadja a bemenetet, melyet szolgáltatáskérésekké alakít a modell vagy a nézet felé
+
+<div style='page-break-after: always;'></div>
+
+A modell elválasztása a nézet komponenstől több nézetet is lehetővé tesz ugyanahhoz a modellhez.
+Ugyanazok az adatok többféle módon is megjeleníthetők.
+A nézet elválasztása a vezérlő komponenstől kevésbé fontos.
+Lehetővé tesz ugyanahhoz a nézethez akár több vezérlőt is.
+A klasszikus példa ugyanahhoz a nézethez szerkeszthető és nem szerkeszthető viselkedés támogatása két vezérlővel.
+A gyakorlatban sokszor csak egy vezérlő van nézetenként.
+
+A modell a szakterületeit valamilyen információját ábrázoló objektum, mely adatokat csomagol be.
+- Rendelkezik alkalmazás-specifikus feldolgozást végző eljárásokkal, melyeket a vezérlők hívnak meg a felhasználó nevében.
+- Függvényeket biztosít az adatokhoz való hozzáféréshez, melyeket a nézetek használnak a megjelenítendő adatok eléréséhez.
+- Regisztrálja a függő objektumokat (nézeteket és vezérlőket), melyeket értesít az adatokban történő változásokról.
+
+![MVC](images/mvc.png)
+
+**Változatok:**
+- Hierarchikus modell-nézet-vezérlő (HMVC)
+- Model-view-presenter (MVP)
+- Model-view-viewmodel (MVVM)
+
+<div style='page-break-after: always;'></div>
+
 ### Tervezési minták, tervezési minták osztályozása
-#### Létrehozási minták: elvont gyár (abstract factory), egyke, építő, objektumkészlet (object pool )
+A tervezési minták középszintű minták, kisebb léptékűek az architekturális mintáknál.
+Alkalmazásuknak nincs hatása egy szoftverrendszer alapvető felépítésére, de nagyban meghatározhatják egy alrendszer felépítését.
+Függetlenek egy adott programozási nyelvtől vagy programozási paradigmától.
+
+- Elvont gyár (Abstract Factory)
+- Építő (Builder)
+- Gyártó metódus (Factory Method)
+- Prototípus (Prototype)
+- Egyke (Singleton)
+
+**GoF:**
+- A tervezési minták egymással együttműködő objektumok és osztályok leírásai, amelyek testreszabott formában valamilyen általános tervezési problémát oldanak meg egy bizonyos összefüggésben.
+
+**A minták osztályozása céljuk szerint (GoF):**
+- Létrehozási minták (creational patterns): az objektumok létrehozásával foglalkoznak.
+- Szerkezeti minták (structural patterns): azzal foglalkoznak, hogy hogyan alkotnak osztályok és objektumok nagyobb szerkezeteket.
+- Viselkedési minták (behavioral patterns): az osztályok vagy objektumok egymásra hatását valamint a felelősségek elosztását írják le.
+
+A GoF könyv 23 tervezési mintát ír le, időközben számos további tervezési minta született.
+- Például: függőség befecskendezés (dependency injection), tároló (repository), többke (multiton), iker (twin), folyékony interfész (fluent interface), …
+
+<div style='page-break-after: always;'></div>
+
+**Új kategória:** Konkurencia minták (Concurrency Patterns)
+- Például: aktív objektum (active object), őrzött felfüggesztés (guarded suspension), szálkészlet (thread pool), …
+
+**Mintasablon (GoF):**
+- Név és besorolás (Name and Classification):
+- Cél (Intent):
+- Más néven (Also Known As):
+- Indíték (Motivation):
+- Alkalmazhatóság (Applicability):
+- Szerkezet (Structure):
+- Résztvevők (Participants):
+- Együttműködés (Collaborations):
+- Következmények (Consequences):
+- Megvalósítás (Implementation):
+- Példakód (Sample Code):
+- Ismert felhasználások (Known Uses):
+- Kapcsolódó minták (Related Patterns):
+
+#### Létrehozási minták
+##### elvont gyár (abstract factory):
+**Cél:** Kapcsolódó vagy egymástól függő objektumok családjának létrehozására szolgáló felületet biztosít a konkrét osztályok megadása nélkül.
+
+**Ismert felhasználások:**
+- java.sql.Connection
+- javax.xml.datatype.DatatypeFactory
+- javax.xml.transform.TransformerFactory
+- javax.xml.stream.XMLInputFactory
+
+##### egyke:
+**Cél:** Egy osztályból csak egy példányt engedélyez, és ehhez globális hozzáférési pontot ad meg.
+
+**Ismert felhasználások:**
+- java.io.Console
+- java.lang.Runtime
+- java.time.chrono.IsoChronology
+
+##### építő:
+**Cél:**  Az összetett objektumok felépítését függetleníti az ábrázolásuktól, így ugyanazzal az építési folyamattal különböző ábrázolásokat hozhatunk létre.
+
+**Ismert felhasználások:**
+- A java.lang.Appendable interfész minden implementációja
+  - Például java.lang.StringBuilder
+- java.lang.ProcessBuilder
+- java.time.format.DateTimeFormatterBuilder
+
+**Példakód:** java.util.StringJoiner
+
+```java
+var s = new StringJoiner(",", "[", "]")
+      .add("John")
+      .add("Paul")
+      .add("George")
+      .add("Ringo")
+      .toString(); // "[John,Paul,George,Ringo]"
+```
+
+##### objektumkészlet (object pool ):
+**Cél:** Inicializált objektumok egy halmazát tartja nyilván az igények kiszolgálásához, ahelyett, hogy létrehozná és megsemmisítené az objektumokat.
+
+
+**Ismert felhasználások:**
+- Apache Commons Pool (licenc: Apache License 2.0)
+-  Vibur Object Pool (licenc: Apache License 2.0)
+- Adatbázis kapcsolatok gyorsítótárazása (connection pooling):
+  - Apache Commons DBCP (licenc: Apache License 2.0)
+  - Vibur DBCP (licenc: Apache License 2.0)
+
 #### Szerkezeti minták: díszítő, illesztő
+- Illesztő (Adapter)
+- Híd (Bridge)
+- Összetétel (Composite)
+- Díszítő (Decorator)
+- Homlokzat (Facade)
+- Pehelysúlyú (Flyweight)
+- Helyettes (Proxy)
+
+##### Illesztő
+**Cél:**
+- Az adott osztály interfészét az ügyfelek által igényelt interfésszé alakítja.
+- E módszerrel az egyébként összeférhetetlen interfészű osztályok együttműködését biztosíthatjuk.
+
+**Ismert felhasználások:**
+- java.io.InputStreamReader
+- java.io.OutputStreamWriter
+- jakarta.xml.bind.annotation.adapters.XmlAdapter
+
+**Példakód:** java.io.InputStreamReader *(OpenJDK 21)*
+
+```java
+public class InputStreamReader extends Reader {
+  private final StreamDecoder sd;
+
+  public InputStreamReader(InputStream in) {
+    super(in);
+    sd = StreamDecoder.forInputStreamReader(in, this,
+      Charset.defaultCharset()); // ## check lock object
+  }
+  // ...
+```
+
+<div style='page-break-after: always;'></div>
+
+##### Díszítő
+**Cél:**
+- Az objektumokhoz dinamikusan további felelősségi köröket rendel.
+- A kiegészítő szolgáltatások biztosítása terén e módszer rugalmas alternatívája az alosztályok létrehozásának.
+
+**Ismert felhasználások:**
+- java.io.InputStream
+- java.io.OutputStream
+- java.util.Collections#unmodifiableXXX()
+
 #### Viselkedési minták: sablonfüggvény, megfigyelő
+- Felelősséglánc (Chain of Responsibility)
+- Parancs (Command)
+- Értelmező (Interpreter)
+- Bejáró (Iterator)
+- Közvetítő (Mediator)
+- Emlékeztető (Memento)
+- Megfigyelő (Observer)
+- Állapot (State)
+- Stratégia (Strategy)
+- Sablonfüggvény (Template Method)
+- Látogató (Visitor)
+
+##### Megfigyelő
+**Cél:** Objektumok között egy sok-sok függőségi kapcsolatot létrehozni, így amikor az egyik objektum állapota megváltozik, minden tőle függő objektum értesül erről és automatikusan frissül.
+
+**Ismert felhasználások:**
+- java.util.EventListener
+- javafx.beans.Observable
+- java.util.concurrent.Flow
+
+##### Sablonfüggvény
+**Cél:**
+- Egy adott művelet algoritmusának vázát elkészíteni, amelynek egyes lépéseit alosztályokra ruházzuk át.
+- Így az alosztályok az algoritmus egyes lépéseit felülbírálhatják, anélkül, hogy az algoritmus szerkezete módosulna.
+
+**Ismert felhasználások:**
+- java.io.InputStream
+- java.io.OutputStream
+- java.util.AbstractList
+- java.util.AbstractMap
+- java.util.AbstractQueue
+
+<div style='page-break-after: always;'></div>
 
 ### Programozási idiómák/implementációs minták
+Egy idióma egy programozási nyelvre jellemző alacsony szintű minta. Az idiómák jelentik a legalacsonyabb szintű mintákat.
+Egy idióma leírja, hogy hogyan valósítsuk meg komponensek és kapcsolataik bizonyos vonatkozásait az adott nyelv eszközrendszerével.
+A legtöbb idióma nyelvspecifikus, létező programozási tapasztalatot hordoznak.
+
+**Példa:**
+
+```java
+import java.util.Objects;
+
+public final class Movie implements Cloneable {
+  private String title;
+  private int year;
+    
+  public Movie(String title, int year) {
+      if (year < 1878) {
+        throw new IllegalArgumentException();
+      }
+      this.title = title;
+      this.year = year;
+    }
+  @Override
+  public boolean equals(Object o) {
+      if (o == this) {
+        return true;
+    }
+      if (!(o instanceof Movie)) {
+        return false;
+    }
+    Movie m = (Movie) o;
+    return Objects.equals(title, m.title) && year == m.year;
+  }
+  // Error: no hashCode() and clone() methods are provided!
+}
+```
+
+<div style='page-break-after: always;'></div>
+
+**Példa:** mintaillesztés az instanceof operátorhoz (Java SE 16)
+
+```java
+import java.util.Objects;
+
+public final class Movie implements Cloneable {
+  private String title;
+  private int year;
+
+  public Movie(String title, int year) {
+      if (year < 1878) {
+        throw new IllegalArgumentException();
+      }
+      this.title = title;
+      this.year = year;
+    }
+  @Override
+  public boolean equals(Object o) {
+      if (o == this) {
+        return true;
+    }
+    return (o instanceof Movie m) && Objects.equals(title, m.title) && year == m.year;
+  }
+    // Error: no hashCode() and clone() methods are provided!
+}
+```
+
+<div style='page-break-after: always;'></div>
+
 ### Antiminták, a massza és a spagetti kód antiminta
+„Egy antiminta pont olyan, mint egy minta, kivéve azt, hogy megoldás helyet valami olyat ad, ami látszólag megoldásnak néz ki, de nem az.”
+
+Egy problémára adott általánosan előforduló megoldások, melyek kifejezetten negatív következményekkel járnak.
+Bármely szinten megjelenhetnek.
+
+**Nézőpont szerint az alábbi három kategória:**
+- Szoftverfejlesztési antiminták
+- Szoftver architekturális antiminták
+- Szoftverprojekt vezetési antiminták
+
+Egy nagyon hasonló fogalom a tervezési szag (*design smell*).
+- A tervezési szagok olyan struktúrák a tervezésben, melyek alapvető tervezési elvek megsértését jelzik és negatív hatással vannak a tervezés minőségére.
+
+<div style='page-break-after: always;'></div>
+
+**Antiminta sablon:**
+**Antiminta neve:** Az antiminta egyedi (pejoratív) neve.
+
+**Más néven:** Az antiminta más ismert elnevezései.
+
+**Leggyakoribb előfordulási szint:** A szoftvertervezési modell mely szintjén fordul elő jellemzően az antiminta. A következő kulcsszavak kerülhetnek ide: idióma, mikroarchitektúra, keretrendszer, alkalmazás, rendszer, vállalat, globális/ipar.
+
+**Újragyártott megoldás neve:** Az újragyártott megoldási sémát azonosítja.
+
+**Újragyártott megoldás típusa:** Azt jelzi, hogy milyen fajta tevékenységet jelent az antiminta megoldása. A következő kulcsszavak kerülhetnek ide: szoftver, technológia, folyamat, szerep
+
+**Kiváltó okok:** Az antiminta kiváltó okait megadó kulcsszavak, melyek a következők lehetnek: sietség, fásultság, szűklátókörűség, lustaság, fösvénység, tudatlanság, büszkeség, elhanyagolt felelősség.
+
+**Kiegyensúlyozatlan erők:** Azokat a tényezőket megadó kulcsszavak, melyeket figyelmen kívül hagytak, rosszul használtak vagy túl sokszor használtak a mintában. A választási lehetőségek közé tartoznak a következők: a funkcionalitás kezelése, a teljesítmény kezelése, a bonyolultság kezelése, a változás kezelése, az IT erőforrások kezelése, a technológia-transzfer kezelése.
+
+**Anekdotaszerű példa:** Opcionális rész, mely az antimintához kötődő ismert mondásokat tartalmaz.
+
+**Háttér:** Opcionális rész, mely további példákat tartalmazhat a probléma előfordulási helyeiről vagy további hasznos vagy érdekes általános háttérinformációkat.
+
+**Általános alak:** Az antiminta általános leírása, mely gyakran tartalmaz ábrát is. Nem egy példa, hanem egy általános változat.
+
+**Tünetek és következmények:** Az antiminta tüneteinek és az antiminta általa okozott következmények felsorolása.
+
+**Tipikus okok:** Az antiminta okainak felsorolása.
+
+**Ismert kivételek:** Azokat a kivételes eseteket írja le ez a rész, melyeknél az antiminta nem káros.
+
+**Újragyártott megoldás:** Az általános alaknál megfogalmazott antimintára adott megoldást ismerteti ez a rész lépésekre bontva.
+
+**Változatok:** Opcionális rész, mely az antiminta általános alakjának esetleges változatait sorolja fel és fejti ki.
+
+**Példa:** Ez a rész szemlélteti a megoldás a problémára való alkalmazását. Rendszerint megjelenik itt a probléma sematikus ábrája, a probléma leírása, a megoldás sematikus ábrája, a megoldás leírása.
+
+**Kapcsolódó megoldások:** Az adott antimintához szorosan kapcsolódó tervezési minták és antiminták kerülnek itt felsorolásra, valamint kifejtésre kerülnek a különbségek.
+
+**Alkalmazhatóság más nézőpontokra és szintekre:** Hogyan befolyásolja a minta a többi nézőpontot: vezetési, architekturális, fejlesztési. Ugyancsak itt kerül leírásra, hogy milyen mértékben releváns a minta más szintek szempontjából.
+
+<div style='page-break-after: always;'></div>
+
+#### massza
+**Antiminta neve:** a massza (The Blob)
+**Más néven:** Winnebago, az Isten osztály (The God Class)
+**Leggyakoribb előfordulási szint:** alkalmazás
+**Újragyártott megoldás neve:** a felelősségek újraosztása
+**Újragyártott megoldás típusa:** szoftver
+**Kiváltó okok:** lustaság, sietség
+**Kiegyensúlyozatlan erők:** a funkcionalitás, a teljesítmény és a bonyolultság kezelése
+**Anekdotaszerű példa:** *„Ez az osztály az architektúránk szíve.”*
+
+**Általános alak:**
+- A massza olyan tervezésnél fordul elő, ahol a feldolgozást egyetlen osztály sajátítja ki magának, a többi osztály pedig elsősorban adatokat zár egységbe.
+- Olyan osztálydiagram jellemzi, mely egyetlen bonyolult vezérlő osztályból és azt körülvevő egyszerű adat osztályokból áll.
+- A massza általában procedurális tervezésű, habár reprezentálható objektumokkal és implementálható objektumorientált nyelven.
+- Gyakran iteratív fejlesztés eredménye, ahol egy megvalósíthatósági példakódot (proof−of−concept code) fejlesztenek idővel egy prototípussá, végül pedig egy éles rendszerré.
+
+**Tünetek és következmények:**
+- Egyetlen osztály nagyszámú attribútummal, művelettel vagy mindkettővel. Általában a massza jelenlétét jelzi egy 60-nál több attribútummal és művelettel rendelkező osztály.
+- Egymáshoz nem kapcsolódó attribútumok és műveletek bezárása egyetlen osztályba.
+- Egy ilyen osztály túl bonyolult újrafelhasználáshoz vagy teszteléshez.
+- Költséges lehet egy ilyen osztály a memóriába való betöltése. Még egyszerű műveletekhez is sok erőforrást használ.
+
+<div style='page-break-after: always;'></div>
+
+**Tipikus okok:**
+- Az objektumorientált architektúra hiánya.
+- (Bármilyen) architektúra hiánya.
+- Az architektúra kikényszerítésének hiánya.
+- Túl korlátozott beavatkozás.
+- Kódolt katasztrófa (rossz követelmény specifikáció)
+
+**Ismert kivételek:**
+- A massza antiminta elfogadható kompatibilitási okokból megtartott korábbi rendszer becsomagolásakor.
+
+**Újragyártott megoldás:** 
+- A megoldás kódújraszervezéssel jár.
+- Összetartozó attribútumok és műveletek csoportjainak azonosítása.
+- Természetes helyet kell keresni ezen funkcionalitás- csoportok számára és oda kell áthelyezni őket.
+- A redundáns asszociációk eltávolítása.
+
+**Változatok:**
+- **Viselkedési forma:** osztály, mely tartalmaz egy központi folyamatot, mely interakcióban van a rendszer legtöbb más részével („központi agy osztály”).
+- **Adat forma:** osztály, mely tartalmaz olyan adatokat, melyeket a rendszer legtöbb más objektuma használ („globális adat osztály”).
+- **Alkalmazhatóság más nézőpontokra és szintekre:** Az architekturális és a vezetési nézőpontnak is kulcsszerepe van a massza antiminta megelőzésében.
+- **Alkalmazhatóság más nézőpontokra és szintekre:** Az architekturális és vezetői nézőpontok is kulcsszerepet játszanak a massza antiminta megelőzésében.
+
+<div style='page-break-after: always;'></div>
+
+#### spagetti kód
+**Antiminta neve:** spagetti kód (Spaghetti Code)
+**Leggyakoribb előfordulási szint:** alkalmazás
+**Újragyártott megoldás neve:** kódújraszervezés, kódtisztítás
+**Újragyártott megoldás típusa:** szoftver
+**Kiváltó okok:** tudatlanság, lustaság
+**Kiegyensúlyozatlan erők:** a bonyolultság, a változás kezelése
+**Anekdotaszerű példa:**
+- „Ó! Micsoda zűrzavar!”
+- „Könnyebb újraírni ezt a kódot, mint megpróbálni módosítani.”,
+
+**Háttér:** Klasszikus, a leghíresebb antiminta, mely egyidős a programozási nyelvekkel.
+
+**Általános alak:**
+- Strukturálatlan, nehezen átlátható programkódként jelenik meg.
+- Objektumorientált nyelvek esetén kevés osztály jellemzi, melyeknél a metódusok megvalósítása nagyon hosszú.
+
+**Tünetek és következmények:**
+- A metódusok nagyon folyamat-orientáltak, az objektumokat gyakran folyamatoknak nevezik.
+- A végrehajtást az objektum implementáció határozza meg, nem pedig az objektum kliensei.
+- Kevés kapcsolat van az objektumok között.
+- Sok a paraméter nélküli metódus, melyek osztályszintű és globális változókat használnak.
+- Nehéz a kód újrafelhasználása. Sok esetben nem is szempont az újrafelhasználhatóság.
+- Elvesznek az objektumorientáltság előnyei, nem kerül felhasználásra az öröklődés és a polimorfizmus.
+- A további karbantartási erőfeszítések csak súlyosbítják a problémát.
+- Költségesebb a létező kódbázis karbantartása, mint egy új megoldás kifejlesztése a semmiből.
+
+**Tipikus okok:**
+- Tapasztalatlanság az objektumorientált tervezés terén.
+- Nincs mentorálás, nem megfelelő a kódátvizsgálás.
+- Nincs az implementálást megelőző tervezés.
+- A fejlesztők elszigetelten dolgoznak.
+
+**Ismert kivételek:**
+- Ésszerűen elfogadható, ha az interfészek következetesek és csak az implementáció spagetti.
+- Újragyártott megoldás: A megoldás kódújraszervezés. Kapcsolódó megoldások: analízis-paralízis, lávafolyás
+
 
 ---
 <div style='page-break-after: always;'></div>

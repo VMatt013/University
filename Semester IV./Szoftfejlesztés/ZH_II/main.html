@@ -1055,13 +1055,413 @@ A DI keretrendszerek lehetővé teszik, hogy a kliensek a függőségeik létreh
 <div style="page-break-after: always;"></div>
 <h2 id="4-minták-a-szoftverfejlesztésben">4. Minták a szoftverfejlesztésben </h2>
 <h3 id="mi-a-minta">Mi a minta? </h3>
+<p><em>„Minden minta olyan problémát ír le, ami újra és újra felbukkan a környezetünkben, s aztán leírja hozzá a megoldás magját, oly módon, hogy a megoldás milliószor felhasználható legyen, anélkül, hogy valaha is kétszer ugyanúgy csinálnánk.”</em></p>
+<p><em>„Minden minta egy három részből álló szabály, mely egy bizonyos környezet, egy probléma és egy megoldás közötti kapcsolatot fejez ki.”</em></p>
+<p><em>„A minta egy olyan ötlet, mely egy gyakorlati környezetben már hasznosnak bizonyult, és várhatóan más környezetekben is hasznos lesz.”</em></p>
+<p><em>„A minta egy gyakori probléma vagy kérdés általános megoldásának leírása, melyből meghatározható egy konkrét probléma részletes megoldása.”</em></p>
+<div style="page-break-after: always;"></div>
 <h3 id="architekturális-minták-a-modell-nézet-vezérlő-mvc-architekturális-minta">Architekturális minták, a modell-nézet vezérlő (MVC) architekturális minta </h3>
+<p>Az architekturális minták szoftverrendszerek alapvető szerkezeti felépítésére adnak sémákat. Ehhez előre definiált alrendszereket biztosítanak, meghatározzák ezek felelősségi köreit, valamint szabályokat és irányelveket tartalmaznak a köztük lévő kapcsolatok szervezésére vonatkozólag. [<em>POSA1</em>]</p>
+<ul>
+<li>Példák: mikrokernel, modell-nézet-vezérlő</li>
+</ul>
+<p><strong>MVC:</strong></p>
+<p><strong>Név:</strong> Modell-nézet vezérlő (Model-View-Controller)<br>
+<strong>Környezet:</strong> Rugalmas ember-gép felülettel rendelkező interaktív alkalmazások.<br>
+<strong>Probléma:</strong> Különösen gyakori az igény a felhasználói felületek változtatására.</p>
+<p><strong>Erők:</strong><br>
+Ugyanaz az információ különböző módon jelenik meg különböző helyeken (például oszlop- vagy kördiagramon).<br>
+Az alkalmazás megjelenítésének és viselkedésének azonnal tükröznie kell az adatokon végzett műveleteket.<br>
+A felhasználói felület könnyen változtatható kell hogy legyen, akár futásidőben is.<br>
+Különböző look and feel szabványok támogatása vagy a felhasználói felület portolása nem érintheti az alkalmazás magjának kódját.</p>
+<p><strong>Megoldás:</strong> Az interaktív alkalmazás három részre osztása:</p>
+<ul>
+<li>A modell komponens az adatokat és a funkcionalitást csomagolja be, független a kimenet ábrázolásmódjától vagy az input viselkedésétől.</li>
+<li>A nézet komponensek jelenítik meg az információkat a felhasználónak.</li>
+<li>A vezérlő fogadja a bemenetet, melyet szolgáltatáskérésekké alakít a modell vagy a nézet felé</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<p>A modell elválasztása a nézet komponenstől több nézetet is lehetővé tesz ugyanahhoz a modellhez.<br>
+Ugyanazok az adatok többféle módon is megjeleníthetők.<br>
+A nézet elválasztása a vezérlő komponenstől kevésbé fontos.<br>
+Lehetővé tesz ugyanahhoz a nézethez akár több vezérlőt is.<br>
+A klasszikus példa ugyanahhoz a nézethez szerkeszthető és nem szerkeszthető viselkedés támogatása két vezérlővel.<br>
+A gyakorlatban sokszor csak egy vezérlő van nézetenként.</p>
+<p>A modell a szakterületeit valamilyen információját ábrázoló objektum, mely adatokat csomagol be.</p>
+<ul>
+<li>Rendelkezik alkalmazás-specifikus feldolgozást végző eljárásokkal, melyeket a vezérlők hívnak meg a felhasználó nevében.</li>
+<li>Függvényeket biztosít az adatokhoz való hozzáféréshez, melyeket a nézetek használnak a megjelenítendő adatok eléréséhez.</li>
+<li>Regisztrálja a függő objektumokat (nézeteket és vezérlőket), melyeket értesít az adatokban történő változásokról.</li>
+</ul>
+<p><img src="images/mvc.png" alt="MVC"></p>
+<p><strong>Változatok:</strong></p>
+<ul>
+<li>Hierarchikus modell-nézet-vezérlő (HMVC)</li>
+<li>Model-view-presenter (MVP)</li>
+<li>Model-view-viewmodel (MVVM)</li>
+</ul>
+<div style="page-break-after: always;"></div>
 <h3 id="tervezési-minták-tervezési-minták-osztályozása">Tervezési minták, tervezési minták osztályozása </h3>
-<h4 id="létrehozási-minták-elvont-gyár-abstract-factory-egyke-építő-objektumkészlet-object-pool-">Létrehozási minták: elvont gyár (abstract factory), egyke, építő, objektumkészlet (object pool ) </h4>
+<p>A tervezési minták középszintű minták, kisebb léptékűek az architekturális mintáknál.<br>
+Alkalmazásuknak nincs hatása egy szoftverrendszer alapvető felépítésére, de nagyban meghatározhatják egy alrendszer felépítését.<br>
+Függetlenek egy adott programozási nyelvtől vagy programozási paradigmától.</p>
+<ul>
+<li>Elvont gyár (Abstract Factory)</li>
+<li>Építő (Builder)</li>
+<li>Gyártó metódus (Factory Method)</li>
+<li>Prototípus (Prototype)</li>
+<li>Egyke (Singleton)</li>
+</ul>
+<p><strong>GoF:</strong></p>
+<ul>
+<li>A tervezési minták egymással együttműködő objektumok és osztályok leírásai, amelyek testreszabott formában valamilyen általános tervezési problémát oldanak meg egy bizonyos összefüggésben.</li>
+</ul>
+<p><strong>A minták osztályozása céljuk szerint (GoF):</strong></p>
+<ul>
+<li>Létrehozási minták (creational patterns): az objektumok létrehozásával foglalkoznak.</li>
+<li>Szerkezeti minták (structural patterns): azzal foglalkoznak, hogy hogyan alkotnak osztályok és objektumok nagyobb szerkezeteket.</li>
+<li>Viselkedési minták (behavioral patterns): az osztályok vagy objektumok egymásra hatását valamint a felelősségek elosztását írják le.</li>
+</ul>
+<p>A GoF könyv 23 tervezési mintát ír le, időközben számos további tervezési minta született.</p>
+<ul>
+<li>Például: függőség befecskendezés (dependency injection), tároló (repository), többke (multiton), iker (twin), folyékony interfész (fluent interface), …</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<p><strong>Új kategória:</strong> Konkurencia minták (Concurrency Patterns)</p>
+<ul>
+<li>Például: aktív objektum (active object), őrzött felfüggesztés (guarded suspension), szálkészlet (thread pool), …</li>
+</ul>
+<p><strong>Mintasablon (GoF):</strong></p>
+<ul>
+<li>Név és besorolás (Name and Classification):</li>
+<li>Cél (Intent):</li>
+<li>Más néven (Also Known As):</li>
+<li>Indíték (Motivation):</li>
+<li>Alkalmazhatóság (Applicability):</li>
+<li>Szerkezet (Structure):</li>
+<li>Résztvevők (Participants):</li>
+<li>Együttműködés (Collaborations):</li>
+<li>Következmények (Consequences):</li>
+<li>Megvalósítás (Implementation):</li>
+<li>Példakód (Sample Code):</li>
+<li>Ismert felhasználások (Known Uses):</li>
+<li>Kapcsolódó minták (Related Patterns):</li>
+</ul>
+<h4 id="létrehozási-minták">Létrehozási minták </h4>
+<h5 id="elvont-gyár-abstract-factory">elvont gyár (abstract factory): </h5>
+<p><strong>Cél:</strong> Kapcsolódó vagy egymástól függő objektumok családjának létrehozására szolgáló felületet biztosít a konkrét osztályok megadása nélkül.</p>
+<p><strong>Ismert felhasználások:</strong></p>
+<ul>
+<li>java.sql.Connection</li>
+<li>javax.xml.datatype.DatatypeFactory</li>
+<li>javax.xml.transform.TransformerFactory</li>
+<li>javax.xml.stream.XMLInputFactory</li>
+</ul>
+<h5 id="egyke">egyke: </h5>
+<p><strong>Cél:</strong> Egy osztályból csak egy példányt engedélyez, és ehhez globális hozzáférési pontot ad meg.</p>
+<p><strong>Ismert felhasználások:</strong></p>
+<ul>
+<li>java.io.Console</li>
+<li>java.lang.Runtime</li>
+<li>java.time.chrono.IsoChronology</li>
+</ul>
+<h5 id="építő">építő: </h5>
+<p><strong>Cél:</strong>  Az összetett objektumok felépítését függetleníti az ábrázolásuktól, így ugyanazzal az építési folyamattal különböző ábrázolásokat hozhatunk létre.</p>
+<p><strong>Ismert felhasználások:</strong></p>
+<ul>
+<li>A java.lang.Appendable interfész minden implementációja
+<ul>
+<li>Például java.lang.StringBuilder</li>
+</ul>
+</li>
+<li>java.lang.ProcessBuilder</li>
+<li>java.time.format.DateTimeFormatterBuilder</li>
+</ul>
+<p><strong>Példakód:</strong> java.util.StringJoiner</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-var">var</span> s <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">StringJoiner</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">,</span> <span class="token string">"["</span><span class="token punctuation">,</span> <span class="token string">"]"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"John"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"Paul"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"George"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"Ringo"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "[John,Paul,George,Ringo]"</span>
+</code></pre><h5 id="objektumkészlet-object-pool-">objektumkészlet (object pool ): </h5>
+<p><strong>Cél:</strong> Inicializált objektumok egy halmazát tartja nyilván az igények kiszolgálásához, ahelyett, hogy létrehozná és megsemmisítené az objektumokat.</p>
+<p><strong>Ismert felhasználások:</strong></p>
+<ul>
+<li>Apache Commons Pool (licenc: Apache License 2.0)</li>
+<li>Vibur Object Pool (licenc: Apache License 2.0)</li>
+<li>Adatbázis kapcsolatok gyorsítótárazása (connection pooling):
+<ul>
+<li>Apache Commons DBCP (licenc: Apache License 2.0)</li>
+<li>Vibur DBCP (licenc: Apache License 2.0)</li>
+</ul>
+</li>
+</ul>
 <h4 id="szerkezeti-minták-díszítő-illesztő">Szerkezeti minták: díszítő, illesztő </h4>
+<ul>
+<li>Illesztő (Adapter)</li>
+<li>Híd (Bridge)</li>
+<li>Összetétel (Composite)</li>
+<li>Díszítő (Decorator)</li>
+<li>Homlokzat (Facade)</li>
+<li>Pehelysúlyú (Flyweight)</li>
+<li>Helyettes (Proxy)</li>
+</ul>
+<h5 id="illesztő">Illesztő </h5>
+<p><strong>Cél:</strong></p>
+<ul>
+<li>Az adott osztály interfészét az ügyfelek által igényelt interfésszé alakítja.</li>
+<li>E módszerrel az egyébként összeférhetetlen interfészű osztályok együttműködését biztosíthatjuk.</li>
+</ul>
+<p><strong>Ismert felhasználások:</strong></p>
+<ul>
+<li>java.io.InputStreamReader</li>
+<li>java.io.OutputStreamWriter</li>
+<li>jakarta.xml.bind.annotation.adapters.XmlAdapter</li>
+</ul>
+<p><strong>Példakód:</strong> java.io.InputStreamReader <em>(OpenJDK 21)</em></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">InputStreamReader</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Reader</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-final">final</span> <span class="token class-name">StreamDecoder</span> sd<span class="token punctuation">;</span>
+
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    sd <span class="token operator">=</span> <span class="token class-name">StreamDecoder</span><span class="token punctuation">.</span><span class="token function">forInputStreamReader</span><span class="token punctuation">(</span>in<span class="token punctuation">,</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">,</span>
+      <span class="token class-name">Charset</span><span class="token punctuation">.</span><span class="token function">defaultCharset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ## check lock object</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// ...</span>
+</code></pre><div style="page-break-after: always;"></div>
+<h5 id="díszítő">Díszítő </h5>
+<p><strong>Cél:</strong></p>
+<ul>
+<li>Az objektumokhoz dinamikusan további felelősségi köröket rendel.</li>
+<li>A kiegészítő szolgáltatások biztosítása terén e módszer rugalmas alternatívája az alosztályok létrehozásának.</li>
+</ul>
+<p><strong>Ismert felhasználások:</strong></p>
+<ul>
+<li>java.io.InputStream</li>
+<li>java.io.OutputStream</li>
+<li>java.util.Collections#unmodifiableXXX()</li>
+</ul>
 <h4 id="viselkedési-minták-sablonfüggvény-megfigyelő">Viselkedési minták: sablonfüggvény, megfigyelő </h4>
+<ul>
+<li>Felelősséglánc (Chain of Responsibility)</li>
+<li>Parancs (Command)</li>
+<li>Értelmező (Interpreter)</li>
+<li>Bejáró (Iterator)</li>
+<li>Közvetítő (Mediator)</li>
+<li>Emlékeztető (Memento)</li>
+<li>Megfigyelő (Observer)</li>
+<li>Állapot (State)</li>
+<li>Stratégia (Strategy)</li>
+<li>Sablonfüggvény (Template Method)</li>
+<li>Látogató (Visitor)</li>
+</ul>
+<h5 id="megfigyelő">Megfigyelő </h5>
+<p><strong>Cél:</strong> Objektumok között egy sok-sok függőségi kapcsolatot létrehozni, így amikor az egyik objektum állapota megváltozik, minden tőle függő objektum értesül erről és automatikusan frissül.</p>
+<p><strong>Ismert felhasználások:</strong></p>
+<ul>
+<li>java.util.EventListener</li>
+<li>javafx.beans.Observable</li>
+<li>java.util.concurrent.Flow</li>
+</ul>
+<h5 id="sablonfüggvény">Sablonfüggvény </h5>
+<p><strong>Cél:</strong></p>
+<ul>
+<li>Egy adott művelet algoritmusának vázát elkészíteni, amelynek egyes lépéseit alosztályokra ruházzuk át.</li>
+<li>Így az alosztályok az algoritmus egyes lépéseit felülbírálhatják, anélkül, hogy az algoritmus szerkezete módosulna.</li>
+</ul>
+<p><strong>Ismert felhasználások:</strong></p>
+<ul>
+<li>java.io.InputStream</li>
+<li>java.io.OutputStream</li>
+<li>java.util.AbstractList</li>
+<li>java.util.AbstractMap</li>
+<li>java.util.AbstractQueue</li>
+</ul>
+<div style="page-break-after: always;"></div>
 <h3 id="programozási-idiómákimplementációs-minták">Programozási idiómák/implementációs minták </h3>
+<p>Egy idióma egy programozási nyelvre jellemző alacsony szintű minta. Az idiómák jelentik a legalacsonyabb szintű mintákat.<br>
+Egy idióma leírja, hogy hogyan valósítsuk meg komponensek és kapcsolataik bizonyos vonatkozásait az adott nyelv eszközrendszerével.<br>
+A legtöbb idióma nyelvspecifikus, létező programozási tapasztalatot hordoznak.</p>
+<p><strong>Példa:</strong></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Objects</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-final">final</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Movie</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">Cloneable</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> title<span class="token punctuation">;</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-int">int</span> year<span class="token punctuation">;</span>
+    
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Movie</span><span class="token punctuation">(</span><span class="token class-name">String</span> title<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> year<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>year <span class="token operator">&lt;</span> <span class="token number">1878</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-throw">throw</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>title <span class="token operator">=</span> title<span class="token punctuation">;</span>
+      <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>year <span class="token operator">=</span> year<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-boolean">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+      <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>o <span class="token keyword keyword-instanceof">instanceof</span> <span class="token class-name">Movie</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token class-name">Movie</span> m <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Movie</span><span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Objects</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>title<span class="token punctuation">,</span> m<span class="token punctuation">.</span>title<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> year <span class="token operator">==</span> m<span class="token punctuation">.</span>year<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Error: no hashCode() and clone() methods are provided!</span>
+<span class="token punctuation">}</span>
+</code></pre><div style="page-break-after: always;"></div>
+<p><strong>Példa:</strong> mintaillesztés az instanceof operátorhoz (Java SE 16)</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Objects</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-final">final</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Movie</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">Cloneable</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> title<span class="token punctuation">;</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-int">int</span> year<span class="token punctuation">;</span>
+
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Movie</span><span class="token punctuation">(</span><span class="token class-name">String</span> title<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> year<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>year <span class="token operator">&lt;</span> <span class="token number">1878</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-throw">throw</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>title <span class="token operator">=</span> title<span class="token punctuation">;</span>
+      <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>year <span class="token operator">=</span> year<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-boolean">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword keyword-return">return</span> <span class="token punctuation">(</span>o <span class="token keyword keyword-instanceof">instanceof</span> <span class="token class-name">Movie</span> m<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token class-name">Objects</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>title<span class="token punctuation">,</span> m<span class="token punctuation">.</span>title<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> year <span class="token operator">==</span> m<span class="token punctuation">.</span>year<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+    <span class="token comment">// Error: no hashCode() and clone() methods are provided!</span>
+<span class="token punctuation">}</span>
+</code></pre><div style="page-break-after: always;"></div>
 <h3 id="antiminták-a-massza-és-a-spagetti-kód-antiminta">Antiminták, a massza és a spagetti kód antiminta </h3>
+<p>„Egy antiminta pont olyan, mint egy minta, kivéve azt, hogy megoldás helyet valami olyat ad, ami látszólag megoldásnak néz ki, de nem az.”</p>
+<p>Egy problémára adott általánosan előforduló megoldások, melyek kifejezetten negatív következményekkel járnak.<br>
+Bármely szinten megjelenhetnek.</p>
+<p><strong>Nézőpont szerint az alábbi három kategória:</strong></p>
+<ul>
+<li>Szoftverfejlesztési antiminták</li>
+<li>Szoftver architekturális antiminták</li>
+<li>Szoftverprojekt vezetési antiminták</li>
+</ul>
+<p>Egy nagyon hasonló fogalom a tervezési szag (<em>design smell</em>).</p>
+<ul>
+<li>A tervezési szagok olyan struktúrák a tervezésben, melyek alapvető tervezési elvek megsértését jelzik és negatív hatással vannak a tervezés minőségére.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<p><strong>Antiminta sablon:</strong><br>
+<strong>Antiminta neve:</strong> Az antiminta egyedi (pejoratív) neve.</p>
+<p><strong>Más néven:</strong> Az antiminta más ismert elnevezései.</p>
+<p><strong>Leggyakoribb előfordulási szint:</strong> A szoftvertervezési modell mely szintjén fordul elő jellemzően az antiminta. A következő kulcsszavak kerülhetnek ide: idióma, mikroarchitektúra, keretrendszer, alkalmazás, rendszer, vállalat, globális/ipar.</p>
+<p><strong>Újragyártott megoldás neve:</strong> Az újragyártott megoldási sémát azonosítja.</p>
+<p><strong>Újragyártott megoldás típusa:</strong> Azt jelzi, hogy milyen fajta tevékenységet jelent az antiminta megoldása. A következő kulcsszavak kerülhetnek ide: szoftver, technológia, folyamat, szerep</p>
+<p><strong>Kiváltó okok:</strong> Az antiminta kiváltó okait megadó kulcsszavak, melyek a következők lehetnek: sietség, fásultság, szűklátókörűség, lustaság, fösvénység, tudatlanság, büszkeség, elhanyagolt felelősség.</p>
+<p><strong>Kiegyensúlyozatlan erők:</strong> Azokat a tényezőket megadó kulcsszavak, melyeket figyelmen kívül hagytak, rosszul használtak vagy túl sokszor használtak a mintában. A választási lehetőségek közé tartoznak a következők: a funkcionalitás kezelése, a teljesítmény kezelése, a bonyolultság kezelése, a változás kezelése, az IT erőforrások kezelése, a technológia-transzfer kezelése.</p>
+<p><strong>Anekdotaszerű példa:</strong> Opcionális rész, mely az antimintához kötődő ismert mondásokat tartalmaz.</p>
+<p><strong>Háttér:</strong> Opcionális rész, mely további példákat tartalmazhat a probléma előfordulási helyeiről vagy további hasznos vagy érdekes általános háttérinformációkat.</p>
+<p><strong>Általános alak:</strong> Az antiminta általános leírása, mely gyakran tartalmaz ábrát is. Nem egy példa, hanem egy általános változat.</p>
+<p><strong>Tünetek és következmények:</strong> Az antiminta tüneteinek és az antiminta általa okozott következmények felsorolása.</p>
+<p><strong>Tipikus okok:</strong> Az antiminta okainak felsorolása.</p>
+<p><strong>Ismert kivételek:</strong> Azokat a kivételes eseteket írja le ez a rész, melyeknél az antiminta nem káros.</p>
+<p><strong>Újragyártott megoldás:</strong> Az általános alaknál megfogalmazott antimintára adott megoldást ismerteti ez a rész lépésekre bontva.</p>
+<p><strong>Változatok:</strong> Opcionális rész, mely az antiminta általános alakjának esetleges változatait sorolja fel és fejti ki.</p>
+<p><strong>Példa:</strong> Ez a rész szemlélteti a megoldás a problémára való alkalmazását. Rendszerint megjelenik itt a probléma sematikus ábrája, a probléma leírása, a megoldás sematikus ábrája, a megoldás leírása.</p>
+<p><strong>Kapcsolódó megoldások:</strong> Az adott antimintához szorosan kapcsolódó tervezési minták és antiminták kerülnek itt felsorolásra, valamint kifejtésre kerülnek a különbségek.</p>
+<p><strong>Alkalmazhatóság más nézőpontokra és szintekre:</strong> Hogyan befolyásolja a minta a többi nézőpontot: vezetési, architekturális, fejlesztési. Ugyancsak itt kerül leírásra, hogy milyen mértékben releváns a minta más szintek szempontjából.</p>
+<div style="page-break-after: always;"></div>
+<h4 id="massza">massza </h4>
+<p><strong>Antiminta neve:</strong> a massza (The Blob)<br>
+<strong>Más néven:</strong> Winnebago, az Isten osztály (The God Class)<br>
+<strong>Leggyakoribb előfordulási szint:</strong> alkalmazás<br>
+<strong>Újragyártott megoldás neve:</strong> a felelősségek újraosztása<br>
+<strong>Újragyártott megoldás típusa:</strong> szoftver<br>
+<strong>Kiváltó okok:</strong> lustaság, sietség<br>
+<strong>Kiegyensúlyozatlan erők:</strong> a funkcionalitás, a teljesítmény és a bonyolultság kezelése<br>
+<strong>Anekdotaszerű példa:</strong> <em>„Ez az osztály az architektúránk szíve.”</em></p>
+<p><strong>Általános alak:</strong></p>
+<ul>
+<li>A massza olyan tervezésnél fordul elő, ahol a feldolgozást egyetlen osztály sajátítja ki magának, a többi osztály pedig elsősorban adatokat zár egységbe.</li>
+<li>Olyan osztálydiagram jellemzi, mely egyetlen bonyolult vezérlő osztályból és azt körülvevő egyszerű adat osztályokból áll.</li>
+<li>A massza általában procedurális tervezésű, habár reprezentálható objektumokkal és implementálható objektumorientált nyelven.</li>
+<li>Gyakran iteratív fejlesztés eredménye, ahol egy megvalósíthatósági példakódot (proof−of−concept code) fejlesztenek idővel egy prototípussá, végül pedig egy éles rendszerré.</li>
+</ul>
+<p><strong>Tünetek és következmények:</strong></p>
+<ul>
+<li>Egyetlen osztály nagyszámú attribútummal, művelettel vagy mindkettővel. Általában a massza jelenlétét jelzi egy 60-nál több attribútummal és művelettel rendelkező osztály.</li>
+<li>Egymáshoz nem kapcsolódó attribútumok és műveletek bezárása egyetlen osztályba.</li>
+<li>Egy ilyen osztály túl bonyolult újrafelhasználáshoz vagy teszteléshez.</li>
+<li>Költséges lehet egy ilyen osztály a memóriába való betöltése. Még egyszerű műveletekhez is sok erőforrást használ.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<p><strong>Tipikus okok:</strong></p>
+<ul>
+<li>Az objektumorientált architektúra hiánya.</li>
+<li>(Bármilyen) architektúra hiánya.</li>
+<li>Az architektúra kikényszerítésének hiánya.</li>
+<li>Túl korlátozott beavatkozás.</li>
+<li>Kódolt katasztrófa (rossz követelmény specifikáció)</li>
+</ul>
+<p><strong>Ismert kivételek:</strong></p>
+<ul>
+<li>A massza antiminta elfogadható kompatibilitási okokból megtartott korábbi rendszer becsomagolásakor.</li>
+</ul>
+<p><strong>Újragyártott megoldás:</strong></p>
+<ul>
+<li>A megoldás kódújraszervezéssel jár.</li>
+<li>Összetartozó attribútumok és műveletek csoportjainak azonosítása.</li>
+<li>Természetes helyet kell keresni ezen funkcionalitás- csoportok számára és oda kell áthelyezni őket.</li>
+<li>A redundáns asszociációk eltávolítása.</li>
+</ul>
+<p><strong>Változatok:</strong></p>
+<ul>
+<li><strong>Viselkedési forma:</strong> osztály, mely tartalmaz egy központi folyamatot, mely interakcióban van a rendszer legtöbb más részével („központi agy osztály”).</li>
+<li><strong>Adat forma:</strong> osztály, mely tartalmaz olyan adatokat, melyeket a rendszer legtöbb más objektuma használ („globális adat osztály”).</li>
+<li><strong>Alkalmazhatóság más nézőpontokra és szintekre:</strong> Az architekturális és a vezetési nézőpontnak is kulcsszerepe van a massza antiminta megelőzésében.</li>
+<li><strong>Alkalmazhatóság más nézőpontokra és szintekre:</strong> Az architekturális és vezetői nézőpontok is kulcsszerepet játszanak a massza antiminta megelőzésében.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<h4 id="spagetti-kód">spagetti kód </h4>
+<p><strong>Antiminta neve:</strong> spagetti kód (Spaghetti Code)<br>
+<strong>Leggyakoribb előfordulási szint:</strong> alkalmazás<br>
+<strong>Újragyártott megoldás neve:</strong> kódújraszervezés, kódtisztítás<br>
+<strong>Újragyártott megoldás típusa:</strong> szoftver<br>
+<strong>Kiváltó okok:</strong> tudatlanság, lustaság<br>
+<strong>Kiegyensúlyozatlan erők:</strong> a bonyolultság, a változás kezelése<br>
+<strong>Anekdotaszerű példa:</strong></p>
+<ul>
+<li>„Ó! Micsoda zűrzavar!”</li>
+<li>„Könnyebb újraírni ezt a kódot, mint megpróbálni módosítani.”,</li>
+</ul>
+<p><strong>Háttér:</strong> Klasszikus, a leghíresebb antiminta, mely egyidős a programozási nyelvekkel.</p>
+<p><strong>Általános alak:</strong></p>
+<ul>
+<li>Strukturálatlan, nehezen átlátható programkódként jelenik meg.</li>
+<li>Objektumorientált nyelvek esetén kevés osztály jellemzi, melyeknél a metódusok megvalósítása nagyon hosszú.</li>
+</ul>
+<p><strong>Tünetek és következmények:</strong></p>
+<ul>
+<li>A metódusok nagyon folyamat-orientáltak, az objektumokat gyakran folyamatoknak nevezik.</li>
+<li>A végrehajtást az objektum implementáció határozza meg, nem pedig az objektum kliensei.</li>
+<li>Kevés kapcsolat van az objektumok között.</li>
+<li>Sok a paraméter nélküli metódus, melyek osztályszintű és globális változókat használnak.</li>
+<li>Nehéz a kód újrafelhasználása. Sok esetben nem is szempont az újrafelhasználhatóság.</li>
+<li>Elvesznek az objektumorientáltság előnyei, nem kerül felhasználásra az öröklődés és a polimorfizmus.</li>
+<li>A további karbantartási erőfeszítések csak súlyosbítják a problémát.</li>
+<li>Költségesebb a létező kódbázis karbantartása, mint egy új megoldás kifejlesztése a semmiből.</li>
+</ul>
+<p><strong>Tipikus okok:</strong></p>
+<ul>
+<li>Tapasztalatlanság az objektumorientált tervezés terén.</li>
+<li>Nincs mentorálás, nem megfelelő a kódátvizsgálás.</li>
+<li>Nincs az implementálást megelőző tervezés.</li>
+<li>A fejlesztők elszigetelten dolgoznak.</li>
+</ul>
+<p><strong>Ismert kivételek:</strong></p>
+<ul>
+<li>Ésszerűen elfogadható, ha az interfészek következetesek és csak az implementáció spagetti.</li>
+<li>Újragyártott megoldás: A megoldás kódújraszervezés. Kapcsolódó megoldások: analízis-paralízis, lávafolyás</li>
+</ul>
 <hr>
 <div style="page-break-after: always;"></div>
 <h2 id="5-tiszta-kód">5. Tiszta kód </h2>
