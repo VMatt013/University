@@ -26,9 +26,10 @@
       
 <h1 style="text-align:center">Szoftverfejlesztés</h1>
 <h2 style="text-align:center"> II. Zárthelyi Dolgozat</h2>
-<h2 id="tartalom">Tartalom </h2>
-<ul>
-<li><a href="#1-unified-modeling-language-uml">Unified Modeling Language</a>
+<h3 id="tartalom">Tartalom </h3>
+<ol>
+<li><a href="#1-unified-modeling-language-uml">Unified Modeling Language</a></li>
+</ol>
 <ul>
 <li><a href="#uml-modellelemek-oszt%C3%A1lyoz%C3%B3k-csomagok-f%C3%BCgg%C5%91s%C3%A9gek-kulcsszavak-megjegyz%C3%A9sek">UML modellelemek</a></li>
 <li><a href="#oszt%C3%A1lydiagramok-oszt%C3%A1lydiagramok-fajt%C3%A1i">Osztálydiagramok</a></li>
@@ -43,12 +44,40 @@
 <li><a href="#%C3%A1ltal%C3%A1nos%C3%ADt%C3%A1s">Általánosítás</a></li>
 <li><a href="#interf%C3%A9szek">Interfészek</a></li>
 </ul>
-</li>
+<ol start="2">
 <li><a href="#2-szoftvertesztel%C3%A9s">Szoftvertesztelés</a></li>
+</ol>
+<ul>
+<li><a href="#mi-a-szoftvertesztel%C3%A9s">Mi a szoftvertesztelés?</a></li>
+<li><a href="#verifik%C3%A1ci%C3%B3-%C3%A9s-valid%C3%A1ci%C3%B3-fogalma">Verifikáció és validáció fogalma</a></li>
+<li><a href="#hib%C3%A1t-le%C3%ADr%C3%B3-szakkifejez%C3%A9sek-t%C3%A9ved%C3%A9st%C3%A9veszt%C3%A9s-hiba-meghib%C3%A1sod%C3%A1s">Hibát leíró szakkifejezések</a></li>
+<li><a href="#tesztel%C3%A9si-alapelvek">Tesztelési alapelvek</a></li>
+<li><a href="#teszteset-%C3%A9s-tesztadat-fogalma">Teszteset és tesztadat fogalma</a></li>
+<li><a href="#tesztel%C3%A9si-szintek-egys%C3%A9gtesztel%C3%A9s-integr%C3%A1ci%C3%B3s-tesztel%C3%A9s-rendszertesztel%C3%A9s-elfogad%C3%A1si">Tesztelési szintek</a></li>
+<li><a href="#tesztt%C3%ADpusok">Teszttípusok</a></li>
+<li><a href="#a-j%C3%B3-egys%C3%A9gtesztek-ismertet%C5%91jegyei-first">A jó egységteszt ismertetőjegyei: FIRST</a></li>
+<li><a href="#egys%C3%A9gtesztek-szervez%C3%A9se-az-aaa-minta">Egységtesztek szervezése: az AAA minta</a></li>
+<li><a href="#junit">JUnit</a></li>
+<li><a href="#k%C3%B3dlefedetts%C3%A9gi-metrik%C3%A1k">Kódlefedettségi metrikák</a></li>
+<li><a href="#mi-a-tesztvez%C3%A9relt-fejleszt%C3%A9s-tdd">Mi a tesztvezérelt fejlesztés (TDD)</a></li>
+</ul>
+<ol start="3">
 <li><a href="#3-objektumorient%C3%A1lt-tervez%C3%A9si-alapelvek">Objektumorientált tervezési alapelvek</a></li>
+</ol>
+<ul>
+<li><a href="#statikus-k%C3%B3delemz%C3%A9s-fogalma-p%C3%A9ld%C3%A1k-statikus-k%C3%B3delemz%C5%91-eszk%C3%B6z%C3%B6kre">Statikus kódelemtés fogalma</a></li>
+<li><a href="#a-dry-elv">A DRY elv</a></li>
+<li><a href="#a-kiss-elv">A KISS elv</a></li>
+<li><a href="#a-yagni-elv">A YAGNI elv</a></li>
+<li><a href="#csatolts%C3%A1g-laza-%C3%A9s-szoros-csatolts%C3%A1g">Csatoltság, laza és szoros csatoltság</a></li>
+<li><a href="#gof-alapelvek">GoF alapelvek</a></li>
+<li><a href="#solid-alapelvek">SOLID alapelvek</a></li>
+<li><a href="#f%C3%BCgg%C5%91s%C3%A9g-befecskendez%C3%A9s">Függőség befecskendezés</a></li>
+</ul>
+<ol start="4">
 <li><a href="#4-mint%C3%A1k-a-szoftverfejleszt%C3%A9sben">Minták a szoftverfejlesztésben</a></li>
 <li><a href="#5-tiszta-k%C3%B3d">Tiszta kód</a></li>
-</ul>
+</ol>
 <hr>
 <div style="page-break-after: always;"></div>
 <h2 id="1-unified-modeling-language-uml">1. Unified Modeling Language (UML) </h2>
@@ -562,7 +591,8 @@ Vegyük észre, hogy a sor lefedettség függ a forráskód formázástól.</p>
 <span class="token keyword keyword-void">void</span> <span class="token function">testMiddle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">,</span> <span class="token function">middle</span><span class="token punctuation">(</span><span class="token string">"voldemort"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre><p>Vegyük észre, hogy az utasítás/sor lefedettség 100%, noha hibás a <code>middle()</code> metódus implementációja.</p>
+</code></pre><p>Vegyük észre, hogy az utasítás/sor lefedettség 100%, noha hibás a <code>middle()</code> metódus implementációja.<br>
+,</p>
 <div style="page-break-after: always;"></div>
 <h4 id="ág-lefedettség">ág lefedettség </h4>
 <p>Az ág lefedettség (<em>branch coverage</em>) egy lefedettségi mérték, mely az olyan vezérlési szerkezeteken alapul, mint az <code>if</code> és a <code>switch</code>.<br>
@@ -660,14 +690,367 @@ A tesztek maguk is egyfajta dokumentációnak tekinthetők, mely leírja, hogy m
 <div style="page-break-after: always;"></div>
 <h2 id="3-objektumorientált-tervezési-alapelvek">3. Objektumorientált tervezési alapelvek </h2>
 <h3 id="statikus-kódelemzés-fogalma-példák-statikus-kódelemző-eszközökre">Statikus kódelemzés fogalma, példák statikus kódelemző eszközökre </h3>
+<p>A statikus kódelemzés a programkód elemzésének folyamata mely a kód végrehajtása nélkül történik.<br>
+Az elemezés irányulhat hibák észlelésére; annak ellenőrzésére, hogy a kód megfelel-e egy kódolási szabványnak, …</p>
+<p><strong>Statikus kódelemző:</strong> statikus kódelemzést végző automatikus eszköz.</p>
+<table>
+<thead>
+<tr>
+<th>Nyelv</th>
+<th>Kódelemző</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C#</td>
+<td><em>InferSharp</em>, <em>Roslynator</em></td>
+</tr>
+<tr>
+<td>C++</td>
+<td>Cppcheck</td>
+</tr>
+<tr>
+<td>ECMAScript / JavaScript</td>
+<td><em>ESLint</em>, <em>JSHint</em>, <em>JSLint</em>, <em>RSLint</em></td>
+</tr>
+<tr>
+<td>Java</td>
+<td><em>Checkstyle</em>, <em>Error Prone</em>, <em>NullAway</em>, <em>SpotBugs</em></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><em>Prospector</em>, <em>Pylint</em></td>
+</tr>
+<tr>
+<td>Több nyelvet támogató eszközök</td>
+<td><em>Coala</em>, <em>Infer</em>, <em>PMD</em>, <em>Semgrep</em></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
 <h3 id="a-dry-elv">A DRY elv </h3>
-<h3 id="a-kiss-elv">A KISS elv </h3>
+<p>Ne ismételd magad (<em>Don't Repeat Yourself</em>)</p>
+<ul>
+<li>A tudás minden darabkájának egyetlen, egyértelmű, hiteles reprezentációja kell, hogy legyen egy rendszerben.</li>
+<li>Az ellenkezője a <strong>WET</strong>.</li>
+<li><em>„We enjoy typing”, „write everything twice”, „waste everyone's time”</em></li>
+</ul>
+<p><strong>Az ismétlések fajtái:</strong></p>
+<ul>
+<li>
+<p><strong>Kényszerített ismétlés:</strong><br>
+A fejlesztők úgy érzik, hogy nincs választásuk, a környezet láthatólag megköveteli az ismétlést.</p>
+</li>
+<li>
+<p><strong>Nem szándékos ismétlés:</strong><br>
+A fejlesztők nem veszik észre, hogy információkat duplikálnak.</p>
+</li>
+<li>
+<p><strong>Türelmetlen ismétlés:</strong><br>
+A fejlesztők lustaságából fakad, az ismétlés látszik a könnyebb útnak.</p>
+</li>
+<li>
+<p><strong>Fejlesztők közötti ismétlés:</strong><br>
+Egy csapatban vagy különböző csapatokban többen duplikálnak egy információt.</p>
+</li>
+</ul>
+<p><strong>Kapcsolódó fogalom:</strong> kódismétlés (code duplication), copy-and-paste programming</p>
+<p>A kódismétlés azonos (vagy nagyon hasonló) forráskódrész, mely egynél többször fordul elő egy programban.<br>
+Nem minden kódismétlés információ ismétlés!</p>
+<p><strong>PMD támogatás:</strong> Copy/Paste Detector (CPD)</p>
+<ul>
+<li>Finding duplicated code with CPD</li>
+<li>Támogatott programozási nyelvek: C/C++, C#, ECMAScript (JavaScript), Java, Kotlin, Python, …</li>
+</ul>
+<p><strong>IntelliJ IDEA:</strong></p>
+<ul>
+<li>Analyze duplicates</li>
+</ul>
+<p>A DRY elv megsértései nem mindig kódismétlés formájában jelennek meg.<br>
+A DRY elv az információk megismétléséről szól. A tudás egy darabkája két teljesen eltérő módon is kifejezhető két különböző helyen.</p>
+<p><strong>Példa (Thomas &amp; Hunt, 2019):</strong></p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Line</span> <span class="token punctuation">{</span>
+  <span class="token class-name">Point</span> start<span class="token punctuation">;</span>
+  <span class="token class-name">Point</span> end<span class="token punctuation">;</span>
+  <span class="token keyword keyword-double">double</span> length<span class="token punctuation">;</span> <span class="token comment">// a DRY elv megsértése</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Az elv megsértése kiküszöbölhető a length adattag egy <strong>metódusra</strong> való kicserélésével:</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Line</span> <span class="token punctuation">{</span>
+  <span class="token class-name">Point</span> start<span class="token punctuation">;</span>
+  <span class="token class-name">Point</span> end<span class="token punctuation">;</span>
+  <span class="token keyword keyword-double">double</span> <span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> start<span class="token punctuation">.</span><span class="token function">distanceTo</span><span class="token punctuation">(</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div style="page-break-after: always;"></div>
+<p>A jobb teljesítmény érdekében választható a DRY elv megsértése.<br>
+Ilyenkor az elv megszegését ajánlott a külvilág elől elrejteni.</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Line</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token class-name">Point</span> start<span class="token punctuation">;</span>
+  <span class="token keyword keyword-private">private</span> <span class="token class-name">Point</span> end<span class="token punctuation">;</span>
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-double">double</span> length<span class="token punctuation">;</span>
+  
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Line</span><span class="token punctuation">(</span><span class="token class-name">Point</span> start<span class="token punctuation">,</span> <span class="token class-name">Point</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>start <span class="token operator">=</span> start<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>end <span class="token operator">=</span> end<span class="token punctuation">;</span>
+    <span class="token function">calculateLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">setStart</span><span class="token punctuation">(</span><span class="token class-name">Point</span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>start <span class="token operator">=</span> p<span class="token punctuation">;</span>
+    <span class="token function">calculateLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">setEnd</span><span class="token punctuation">(</span><span class="token class-name">Point</span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>end <span class="token operator">=</span> p<span class="token punctuation">;</span>
+    <span class="token function">calculateLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Point</span> <span class="token function">getStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword keyword-return">return</span> start<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">Point</span> <span class="token function">getEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword keyword-return">return</span> end<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword keyword-return">return</span> length<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-void">void</span> <span class="token function">calculateLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>length <span class="token operator">=</span> start<span class="token punctuation">.</span><span class="token function">distanceTo</span><span class="token punctuation">(</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p><strong>Reprezentációs ismétlés (Thomas &amp; Hunt, 2019):</strong><br>
+A kód gyakran függ a külvilágtól, például <em>API</em>-kon keresztül más programkönyvtáraktól, külső adatforrások adataitól, mely mindig a <em>DRY</em> elv valamiféle megsértését vonja maga után, a kódnak olyan tudással kell rendelkeznie, mely a külső dologban is ott van. Ismernie kell az <em>API</em>-t, a sémát, vagy a hibakódok jelentését. Ez az ismétlés elkerülhetetlen. Eszközök, melyek segítenek megbirkózni az ilyen fajta ismétlésekkel: Sémákból kódot generáló eszközök (például <em>JAXB</em>, <em>JPA</em>,<em>OpenAPI</em>)</p>
 <h3 id="a-yagni-elv">A YAGNI elv </h3>
+<p>A „You Aren't Gonna Need It” (<em>„nem lesz rá szükséged”</em>) rövidítése.<br>
+Az extrém programozás (<em>XP</em>) egy alapelve.</p>
+<p><em>„Mindig akkor implementálj valamit, amikor tényleg szükséged van rá, soha ne akkor, amikor csak sejted, hogy kell.”</em></p>
+<p>Egy olyan lehetőség kifejlesztésének költségei, mely jelenleg nem szükséges</p>
+<p><img src="images/yagni.png" alt="Yagni"></p>
+<p>A YAGNI alapelv csak azon képességekre vonatkozik, melyek egy feltételezett lehetőség támogatásához kerülnek beépítésre a szoftverbe, nem vonatkozik a szoftver módosítását könnyítő törekvésekre.</p>
+<p>A YAGNI csak akkor járható stratégia, ha a kód könnyen változtatható.</p>
+<h3 id="a-kiss-elv">A KISS elv </h3>
+<p><strong>Keep it simple, stupid</strong><br>
+Az egyszerűségre való törekvés:</p>
+<p><em>„Everything should be made as simple as possible, but not simpler.”</em></p>
 <h3 id="csatoltság-laza-és-szoros-csatoltság">Csatoltság, laza és szoros csatoltság </h3>
+<p><strong>Csatoltság (coupling):</strong></p>
+<ul>
+<li>Egy szoftvermodul függésének mértéke egy másik szoftvermodultól.</li>
+<li>Más szóval, a szoftvermodulok közötti csatoltság annak mértéke, hogy mennyire szoros a kapcsolatuk.</li>
+<li>A csatoltság laza vagy szoros lehet.</li>
+</ul>
+<p><strong>Szoros csatoltság:</strong></p>
+<ul>
+<li>A bonyolultságot növeli, mely megnehezíti a kód módosítását, tehát a karbantarthatóságot csökkenti.</li>
+<li>Az újrafelhasználhatóságot is csökkenti.</li>
+</ul>
+<p><strong>Laza csatoltság:</strong></p>
+<ul>
+<li>Lehetővé teszi a fejlesztők számára a nyitva zárt elvnek megfelelő kód írását, azaz a kódot kiterjeszthetővé teszi.</li>
+<li>Kiterjeszthetővé teszi a kódot, a kiterjeszthetőség pedig karbantarthatóvá.</li>
+<li>Lehetővé teszi a párhuzamos fejlesztést.</li>
+</ul>
 <h3 id="gof-alapelvek">GoF alapelvek </h3>
-<h3 id="solid-alapelvek-egyszeres-felelősség-elve-nyitva-zárt-elv-liskov-féle-helyettesítési">SOLID alapelvek: egyszeres felelősség elve, nyitva zárt elv, Liskov-féle helyettesítési </h3>
-<h3 id="elv-interfész-szétválasztási-elv-függőség-megfordítási-elv">elv, interfész szétválasztási elv, függőség megfordítási elv </h3>
+<p>A két GoF alapelv:</p>
+<ul>
+<li>Interfészre programozzunk, ne implementációra.</li>
+<li>Lásd például a létrehozási mintákat.</li>
+<li>Részesítsük előnyben az objektum-összetételt az öröklődéssel szemben.</li>
+</ul>
+<h3 id="solid-alapelvek">SOLID alapelvek </h3>
+<ul>
+<li><strong>S</strong>ingle Responsibility Principle (SRP) - Egyszeres felelősség elve</li>
+<li><strong>O</strong>pen/Closed Principle (OCP) - Nyitva zárt elv</li>
+<li><strong>L</strong>iskov Substitution Principle (LSP) - Liskov-féle helyettesítési elv</li>
+<li><strong>I</strong>nterface Segregation Principle (ISP) - Interfész szétválasztási elv</li>
+<li><strong>D</strong>ependency Inversion Principle (DIP) - Függőség megfordítási elv</li>
+</ul>
+<h4 id="egyszeres-felelősség-elve">egyszeres felelősség elve </h4>
+<p>Egy osztálynak csak egy oka legyen a változásra.<br>
+Egy felelősség egy ok a változásra.</p>
+<ul>
+<li>Minden felelősség a változás egy tengelye. Amikor a követelmények változnak, a változás a felelősségben történő változásként nyilvánul meg.</li>
+<li>Ha egy osztálynak egynél több felelőssége van, akkor egynél több oka van a változásra.</li>
+<li>Egynél több felelősség esetén a felelősségek csatolttá válnak. Egy felelősségben történő változások gyengíthetik vagy gátolhatják az osztály azon képességét, hogy eleget tegyen a többi felelősségének.</li>
+</ul>
+<h5 id="példa-az-elv-megsértésére">Példa az elv megsértésére: </h5>
+<p><strong>A Rectangle osztály két felelőssége:</strong></p>
+<ul>
+<li>Egy téglalap geometriájának matematikai modellezése.</li>
+<li>Téglalap megjelenítése a grafikus felhasználói felületen.</li>
+</ul>
+<p><img src="images/solid-s_1.png" alt="SOLID-S-1"></p>
+<p><strong>Problémák:</strong></p>
+<ul>
+<li>A számítógépes geometriai alkalmazásnak tartalmaznia kell a grafikus felhasználói felületet.</li>
+<li>Ha a grafikus alkalmazás miatt változik a <em>Rectangle</em> osztály, az szükségessé teheti a számítógépes geometriai alkalmazás összeállításának, tesztelésének és telepítésének megismétlését (<em>rebuild</em>, <em>retest</em>, <em>redeploy</em>).</li>
+</ul>
+<p><strong>Az előbbi példa az elvnek megfelelő változata:</strong></p>
+<p><img src="images/solid-s_2.png" alt="SOLID-S-2"></p>
+<p><strong>Példa (Robert C. Martin):</strong></p>
+<p>Az alábbi Employee osztály megszegi az egyszeres felelősség elvét, mivel a három metódus nagyon különböző aktoroknak van alávetve:</p>
+<ul>
+<li><code>calculatePay()</code>: a bérosztály határozza meg</li>
+<li><code>reportHours()</code>: a munkaügyi osztály határozza meg</li>
+<li><code>save()</code>: az adatbázis adminisztrátorok határozzák meg</li>
+</ul>
+<p><img src="images/solid-s_3.png" alt="SOLID-S-3"></p>
+<h4 id="nyitva-zárt-elv">nyitva zárt elv </h4>
+<p>A szoftver entitások (<em>osztályok</em>, <em>modulok</em>, <em>függvények</em>, <em>…</em>) legyenek nyitottak a bővítésre, de zártak a módosításra.</p>
+<p><strong>Az elvnek megfelelő modulnak két fő jellemzője van:</strong></p>
+<ul>
+<li>Nyitott a bővítésre: azt jelenti, hogy a modul viselkedése kiterjeszthető.</li>
+<li>Zárt a módosításra: azt jelenti, hogy a modul viselkedésének kiterjesztése nem eredményezi a modul forrás- vagy bináris kódjának változását.</li>
+</ul>
+<p><strong>Példa az elv megsértésére:</strong><br>
+A <em>Client</em> és a <em>Server</em> konkrét osztályok. A <em>Client</em> osztály a <em>Server</em> osztályt használja. Ha azt szeretnénk, hogy egy <em>Client</em> objektum egy különböző szerver objektumot használjon, a  <em>Client</em> osztályban meg kell változtatni a szerver osztály nevét.</p>
+<p><img src="images/solid-o_1.png" alt="SOLID-O-1"></p>
+<p><strong>Az előbbi példa az elvnek megfelelő változata:</strong></p>
+<p><img src="images/solid-o_2.png" alt="SOLID-O-1"></p>
+<h4 id="liskov-féle-helyettesítési-elv">Liskov-féle helyettesítési elv </h4>
+<p>Ha az <em>S</em> típus a <em>T</em> típus altípusa, nem változhat meg egy program működése, ha benne a <em>T</em> típusú objektumokat <em>S</em> típusú objektumokkal helyettesítjük.</p>
+<h4 id="interfész-szétválasztási-elv">interfész szétválasztási elv </h4>
+<p>Nem szabad arra kényszeríteni az osztályokat, hogy olyan metódusoktól függjenek, melyeket nem használnak.</p>
+<p><strong>Vastag interfész (fat interface):</strong></p>
+<ul>
+<li>Az ésszerűen szükségesnél több tagfüggvénnyel és baráttal rendelkező interfész.</li>
+<li>Az interfész szétválasztási elv a vastag interfészekkel foglalkozik.</li>
+<li>A vastag interfészekkel rendelkező osztályok interfészei nem koherensek, melyekben a metódusokat olyan csoportokra lehet felosztani, melyek különböző klienseket szolgálnak ki.</li>
+<li>Az ISP elismeri azt, hogy vannak olyan objektumok, melyekhez nem koherens interfészek szükségesek, de azt javasolja, hogy a kliensek ne egyetlen osztályként ismerjék őket.</li>
+</ul>
+<p><strong>Interfész szennyezés (interface pollution):</strong></p>
+<ul>
+<li>
+<p>Egy interfész szennyezése szükségtelen metódusokkal.</p>
+</li>
+<li>
+<p>Amikor egy kliens egy olyan osztálytól függ, melynek vannak olyan metódusai, melyeket a kliens nem használ, más kliensek azonban igen, akkor a többi kliens által az osztályra kényszerített változások hatással lesznek arra a kliense is.</p>
+</li>
+<li>
+<p>Ez a kliensek közötti nem szándékos csatoltságot eredményez.</p>
+</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<p><img src="images/solid-i_1.png" alt="SOLID-I-1"></p>
+<p><img src="images/solid-i_2.png" alt="SOLID-I-2"></p>
+<h4 id="függőség-megfordítási-elv">függőség megfordítási elv </h4>
+<p>Magas szintű modulok ne függjenek alacsony szintű moduloktól. Mindkettő absztrakcióktól függjön.<br>
+Az absztrakciók ne függjenek a részletektől. A részletek függjenek az absztrakcióktól.</p>
+<p>Az elnevezés onnan jön, hogy a hagyományos szoftverfejlesztési módszerek hajlamosak olyan felépítésű szoftvereket létrehozni, melyekben amagas szintű modulok függenek az alacsony szintű moduloktól.</p>
+<p>A magas szintű modulok tartalmazzák az alkalmazás üzleti logikáját, ők adják az alkalmazás identitását.<br>
+Ha ezek a modulok alacsony szintű moduloktól függenek, akkor az alacsony szintű modulokban történő változásoknak közvetlen hatása lehet a magas szintű modulokra, szükségessé tehetik azok változását is.<br>
+Ez abszurd! A magas szintű modulok azok, melyek meg kellene, hogy határozzák az alacsony szintű modulokat.</p>
+<p>A magas szintű modulokat szeretnénk újrafelhasználni. Az alacsony szintű modulok újrafelhasználására elég jó megoldást jelentenek a programkönyvtárak.<br>
+Ha magas szintű modulok alacsony szintű moduloktól függenek, akkor nagyon nehéz az újrafelhasználásuk különféle helyzetekben.<br>
+Ha azonban a magas szintű modulok függetlenek az alacsony szintű moduloktól, akkor elég egyszerűen újrafelhasználhatók.</p>
+<div style="page-break-after: always;"></div>
+<p><strong>Példa a rétegek architekturális minta hagyományos alkalmazására:</strong></p>
+<p><img src="images/solid-d_1.png" alt="SOLID-D-1"></p>
+<div style="page-break-after: always;"></div>
+<p><strong>Az előbbi példa az elvnek megfelelő változata:</strong></p>
+<ul>
+<li>Minden egyes magasabb szintű interfész deklarál az általa igényelt szolgáltatásokhoz egy interfészt.</li>
+<li>Az alacsonyabb szintű rétegek realizálása ezekből az interfészekből történik.</li>
+<li>Ilyen módon a felsőbb rétegek nem függenek az alsóbb rétegektől, hanem pont fordítva.</li>
+</ul>
+<p><img src="images/solid-d_2.png" alt="SOLID-D-2"></p>
+<ul>
+<li>Nem csupán a függőségek kerültek megfordításra, hanem az interfész tulajdonlás is (inversion of ownership).</li>
+<li><strong>Hollywood elv:</strong> Ne hívj, majd mi hívunk. (Don't call us, we'll call you.)</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<p><strong>Függés absztrakcióktól:</strong></p>
+<ul>
+<li>Ne függjön a program konkrét osztályoktól, hanem inkább csak absztrakt osztályoktól és interfészektől.</li>
+<li>Egyetlen változó se hivatkozzon konkrét osztályra.</li>
+<li>Egyetlen osztály se származzon konkrét osztályból.</li>
+<li>Egyetlen metódus se írjon felül valamely ősosztályában implementált metódust.</li>
+<li>A fenti heurisztikát a legtöbb program legalább egyszer megsérti.</li>
+<li>Nem túl gyakran változó konkrét osztályok esetén (például String) megengedhető a függés.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<p><strong>Példa az elv megsértésére:</strong></p>
+<p><img src="images/solid-d_3.png" alt="SOLID-D-3"></p>
+<p><strong>Az előbbi példa az elvnek megfelelő változata:</strong></p>
+<p><img src="images/solid-d_4.png" alt="SOLID-D-4"></p>
+<div style="page-break-after: always;"></div>
 <h3 id="függőség-befecskendezés">Függőség befecskendezés </h3>
+<p>A vezérlés megfordítása (<em>IoC</em> - <em>inversion of control</em>) nevű architekturális minta alkalmazásának egy speciális esete.</p>
+<p><strong>Definíció (Seemann):</strong></p>
+<ul>
+<li>„Dependency Injection is a set of software design principles and patterns that enable us to develop loosely coupled code.”</li>
+<li>A függőség befecskendezés olyan szoftvertervezési elvek és minták összessége, melyek lazán csatolt kód fejlesztését teszik lehetővé.</li>
+<li>A lazán csatoltság kiterjeszthetővé teszi a kódot, a kiterjeszthetőség pedig karbantarthatóvá.</li>
+</ul>
+<p>Egy objektumra egy olyan szolgáltatásként tekintünk, melyet más objektumok kliensként használnak.</p>
+<ul>
+<li>Az objektumok közötti kliens-szolgáltató kapcsolatot függésnek nevezzük. Ez a kapcsolat tranzitív</li>
+</ul>
+<p><strong>Függőség (<em>dependency</em>):</strong> egy kliens által igényelt szolgáltatást jelent, mely a feladatának ellátásához szükséges.</p>
+<ul>
+<li><strong>Függő (<em>dependent</em>):</strong> egy kliens objektum, melynek egy függőségre vagy függőségekre van szüksége a feladatának ellátásához.</li>
+<li><strong>Objektum gráf (<em>object graph</em>):</strong> függő objektumok és függőségeik egy összessége.</li>
+<li><strong>Befecskendezés (<em>injection</em>):</strong> egy kliens függőségeinek megadását jelenti.</li>
+</ul>
+<p><strong>DI konténer (DI container):</strong></p>
+<ul>
+<li>Függőség befecskendezési funkcionalitást nyújtó programkönyvtár.</li>
+<li>Az Inversion of Control (IoC) container kifejezést is használják rájuk.</li>
+<li>A függőség befecskendezés alkalmazható DI konténer nélkül.</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<p><strong>Tiszta DI:</strong></p>
+<ul>
+<li>Függőség befecskendezés alkalmazásának gyakorlata DI konténer nélkül.</li>
+</ul>
+<p>A függőség befecskendezés objektum gráfok hatékony létrehozásával, ennek mintáival és legjobb gyakorlataival foglalkozik.<br>
+A DI keretrendszerek lehetővé teszik, hogy a kliensek a függőségeik létrehozását és azok befecskendezését külső kódra bízzák.</p>
+<p><strong>Példa:</strong> (nincs függőség befecskendezés)</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">SpellChecker</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-boolean">boolean</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">TextEditor</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token class-name">SpellChecker</span> spellChecker<span class="token punctuation">;</span>
+
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">TextEditor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    spellChecker <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">HungarianSpellChecker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre><p><strong>Példa:</strong> (függőség befecskendezés konstruktorral)</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">TextEditor</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token class-name">SpellChecker</span> spellChecker<span class="token punctuation">;</span>
+
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">TextEditor</span><span class="token punctuation">(</span><span class="token class-name">SpellChecker</span> spellChecker<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>spellChecker <span class="token operator">=</span> spellChecker<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre><div style="page-break-after: always;"></div>
+<p><strong>Példa:</strong> (függőség befecskendezés beállító metódussal) (setter injection):</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">TextEditor</span> <span class="token punctuation">{</span>
+<span class="token keyword keyword-private">private</span> <span class="token class-name">SpellChecker</span> spellChecker<span class="token punctuation">;</span>
+<span class="token keyword keyword-public">public</span> <span class="token class-name">TextEditor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">setSpellChecker</span><span class="token punctuation">(</span><span class="token class-name">SpellChecker</span> spellChecker<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>spellChecker <span class="token operator">=</span> spellChecker<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre><p><strong>Példa:</strong> (függőség befecskendezés interfésszel)</p>
+<pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">SpellCheckerSetter</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-void">void</span> <span class="token function">setSpellChecker</span><span class="token punctuation">(</span><span class="token class-name">SpellChecker</span> spellChecker<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">TextEditor</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">SpellCheckerSetter</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> <span class="token class-name">SpellChecker</span> spellChecker<span class="token punctuation">;</span>
+  
+  <span class="token keyword keyword-public">public</span> <span class="token class-name">TextEditor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">setSpellChecker</span><span class="token punctuation">(</span><span class="token class-name">SpellChecker</span> spellChecker<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>spellChecker <span class="token operator">=</span> spellChecker<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre><p><strong>A függőség befecskendezés előnyei:</strong></p>
+<ul>
+<li>Kiterjeszthetőség</li>
+<li>Karbantarthatóság</li>
+<li>Tesztelhetőség: a függőség befecskendezés támogatja az egységtesztelést.</li>
+<li>Valós függőségek helyet a tesztelt rendszerbe befecskendezhetők „teszt dublőrök” (test doubles).</li>
+</ul>
 <hr>
 <div style="page-break-after: always;"></div>
 <h2 id="4-minták-a-szoftverfejlesztésben">4. Minták a szoftverfejlesztésben </h2>
