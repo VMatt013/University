@@ -1571,11 +1571,308 @@ Egy nagyon hasonló fogalom a tervezési szag (*design smell*).
 
 ## 5. Tiszta kód
 ### Milyen a tiszta kód?
+*Szeretem, ha a kódom elegáns és hatékony. A logikája egyszerű kell, hogy legyen, hogy nehezen bújjanak meg a hibák a kódban. A függőségek legyenek minimálisak a könnyű karbantarthatóság érdekében. A hibakezelés legyen teljes, a teljesítmény pedig közel optimális, hogy ne kísértsen a kódot piszkító optimalizálásra. A tiszta kód egy dolgot csinál, és azt jól.*
+
+*A tiszta kód egyszerű és közvetlen. Olyan a tiszta kódot olvasni, mint a jól megírt prózát. A tiszta kód soha nem homályosítja el a tervezője szándékát, hanem inkább éles absztrakciókkal és egyértelmű sorokkal teli.*
+
+*A tiszta kód egy olyan fejlesztő számára is olvasható, továbbfejleszthető, aki nem az eredeti szerző. Vannak hozzá egység- és elfogadási tesztek. Értelmes nevei vannak. Egy dolog elvégzéséhez egy módot biztosít több helyett. Minimális függőségei vannak, melyek világosan meghatározottak. Tiszta és minimális API-t biztosít. A kód literate kell, hogy legyen, mivel a nyelvtől függően nem minden szükséges információ fejezhető ki világosan pusztán a kódban.*
+
+<div style='page-break-after: always;'></div>
+
 ### értelmes nevek
+Olyan neveket használjunk a kódban, melyekből kiderül a szándék.
+
+**Rossz gyakorlat:**
+
+```java
+int d; // elapsed time in days
+```
+
+**Jó gyakorlat:**
+
+```java
+int elapsedTimeInDays;
+int daysSinceCreation;
+```
+
+Egy nagyon rossz példa:
+
+```java
+public List<int[]> getThem() {
+  List<int[]> list1 = new ArrayList<int[]>();
+  for (int[] x : theList)
+    if (x[0] == 4)
+      list1.add(x);
+  return list1;
+}
+```
+
+Kerüljük a félrevezető neveket. Félrevezető például az ```accountList``` név, ha nem ténylegesen egy listáról van szó. Ha ez a helyzet, sokkal jobb például az ```accountGroup``` vagy az ```accounts``` név.
+
+**Példa nem informatív nevekre:**
+
+```java
+public static void copyChars(char a1[],char a2[]) {
+  for (int i = 0; i < a1.length; i++) {
+    a2[i] = a1[i];
+  }
+}
+```
+
+A fenti kódban használjunk inkább például a source és target neveket az a1 és a2 helyett.
+
 ### Függvények
+A függvények nagyon rövidek kell, hogy legyenek.
+Nem szabad, hogy 100 sorosak legyenek. Nagyon ritkán legyenek 20 sorosak. Legyenek inkább 2–4 sorosak.
+Utasításblokkok (```for```, ```if```, ```while```, …) egyetlen sornyi kódot kell, hogy tartalmazzanak, mely várhatólag egy függvényhívás.
+Ez nem csupán röviden tartja a befoglaló függvényt, hanem dokumentációs értékkel is bír, mivel a meghívott függvény neve beszédes.
+Ez azt is jelenti, hogy a függvények bekezdési szintjeinek (indent level) száma nem lehet több 2-nél. Ez a függvényeket könnyen olvashatóvá és érthetővé teszi.
+
+A függvények csak egy dolgot csináljanak, de azt jól.
+Annak biztosításához, hogy a függvények egy dolgot csináljanak, az utasítások azonos absztrakciós szintűek kell, hogy legyenek bennük.
+Zavaró egy függvényben a különböző absztrakciós szintek keverése, mert az olvasó nem tudja eldönteni egy kifejezésről, hogy az lényeges-e vagy csupán egy technikai részlet.
+Stepdown szabály: felülről lefelé haladva csökkenjen a függvények absztrakciós szintje.
+A kód felülről lefelé haladva olvasható.
+
+<div style='page-break-after: always;'></div>
+
+**Argumentumok:**
+A függvények megkülönböztetése az argumentumok száma szerint:
+- Niladikus (niladic): argumentum nélküli, ez az ideális
+- Monadikus (monadic): egyargumentumú
+- Diadikus (diadic): kétargumentumú
+- Triadikus (triadic): három argumentumú, lehetőleg kerülni kell
+- Poliadikus (polyadic): háromnál több argumentumú, soha ne használjuk
+
+
+Az olvasó számára megnehezítik a kód megértését.
+Más absztrakciós szinten vannak, mint a függvény neve, és egy olyan részlet ismeretére kényszerítenek, mely az adott ponton nem különösebben érdekes.
+A tesztelést is bonyolítják.
+
+Rossz gyakorlat jelző argumentumok használata.
+Egy jelző argumentum egy olyan logikai típusú argumentum, melynek értékétől függ a függvény viselkedése.
+Egy ilyen argumentummal rendelkező függvény egynél több dolgot csinál: egyet akkor, ha az argumentum értéke igaz, egy másikat akkor, ha hamis.
+
+Például ```Point p = new Point(0,0);``` tökéletesen elfogadható, az argumentumok egyetlen érték komponensei, az argumentumok sorrendje pedig a komponensek sorrendjének felel meg.
+Viszont például az ```assertEquals(expected, actual)``` *JUnit* függvénynél nagyon könnyű összekeverni az argumentumokat.
+Példa elfogadható három argumentumú függvényre (*JUnit*): ```assertEquals(double expected, double actual, double epsilon)```
+
+Kettőnél vagy háromnál több argumentum esetén bizonyosakat érdemes lehet becsomagolni egy osztályba.
+**Példa:**
+- Circle ```makeCircle(double x, double y, double radius)```;
+- Circle ```makeCircle(Point center, double radius)```;
+- Változó argumentumszámú függvényekre lista argumentumú függvényekként tekinthetünk.
+- Lásd például: ```java.lang.String.format(String format, Object... args)```
+
+**Mellékhatásmentesség:**
+- A függvények legyenek mellékhatásmentesek.
+- Csak azt csinálják, amit ígérnek.
+- Kerülni kell output argumentumok használatát.
+
+**Parancs-lekérdezés szétválasztás:**
+- Egy függvény vagy csináljon valamit, vagy válaszoljon valamit, de egyszerre mindkettőt ne.
+- Vagy változtassa meg egy objektum állapotát, vagy adjon vissza információt az objektumról.
+
+**Rossz gyakorlat:**
+Az alábbi függvény, mely beállítja egy adott attribútum értékét, sikeres beállítás esetén ```true```-t ad vissza, nem létező attribútum esetén pedig ```false```-t:
+- ```public boolean set(String attribute, String value);```
+
+Az olvasó számára nem világos, hogy mi a kódban például az alábbi utasítás jelentése:
+- ```if (set("username", "unclebob")) { ... }```
+
+Hibakódok visszaadása helyett részesítsük előnyben a kivételeket.
+Így egyszerű további kivételek bevezetése, az új kivételek egy kivételosztály leszármazottai lesznek.
+
+A try/catch blokkokat emeljük ki önálló függvényekbe. Összezavarják a kód szerkezetét, mivel keverik a szabályos feldolgozást és a hibakezelést. A függvények egy dolgot kell hogy csináljanak, a hibakezelés is egy dolog. Egy hibakezelő függvény kizárólag egy try/catch blokkot kell, hogy tartalmazzon.
+
+<div style='page-break-after: always;'></div>
+
+**Példa try/catch blokkok kiemelésére:**
+
+```java
+public void delete(Page page) {
+  try {
+    deletePageAndAllReferences(page);
+  } catch (Exception e) {
+    logError(e);
+  }
+}
+
+private void deletePageAndAllReferences(Page page) throws Exception {
+  deletePage(page);
+  registry.deleteReference(page.name);
+  configKeys.deleteKey(page.name.makeKey());
+}
+
+private void logError(Exception e) {
+  logger.log(e.getMessage());
+}
+```
+
+**Strukturált programozás:**
+Használható egy függvényben akár több return utasítás, ciklusokban break és continue utasítás.
+
+<div style='page-break-after: always;'></div>
+
 ### Mi a baj a megjegyzésekkel? Jó és rossz megjegyzések fajtái
+A legjobb esetben is szükséges rosszak.
+A megjegyzések helyénvaló használata ellensúlyozza hiányosságainkat az önmagunk kóddal történő kifejezésében.
+
+Azért nemkívánatosak a megjegyzések, mert nem mindig, és nem szándékosan, de túl gyakran közölnek pontatlan vagy valótlan információt.
+- A kód változik, fejlődik, melyet nem minden esetben követnek a megjegyzések.
+- Nem életszerű a karbantartásuk.
+- Minél régebbi egy megjegyzés, annál valószínűbb, hogy rossz.
+- A pontatlan megjegyzések még rosszabbak, mint a megjegyzések teljesen hiánya.
+
+A megjegyzések írásának egyik gyakori oka a rossz kód. Érdemesebb inkább rendbe tenni a rossz kódot, mint megjegyzésekkel megtűzdelni.
+
+**Jó megjegyzések fajtái:**
+- Jogi megjegyzések
+- Informatív megjegyzések
+- Szándékot magyarázó megjegyzés
+- Tisztázó megjegyzés
+- Következményekre figyelmeztető megjegyzés
+- TODO megjegyzés
+- Megerősítő megjegyzés
+- Javadoc megjegyzés nyilvános API-ban
+
+<div style='page-break-after: always;'></div>
+
+**rossz megjegyzések fajtái:**
+- **Motyogás:** hanyagul odavetett megjegyzés, mely legfeljebb a szerzőnek jelent valamit
+- **Fölösleges megjegyzés**
+- **Félrevezető megjegyzés:** nem eléggé pontos megjegyzés.
+- **Kötelező megjegyzés**
+- **Napló megjegyzés**
+- **Zaj-megjegyzés:** új információval nem szolgáló magától értetődőt megjegyzés
+- **Pozíciójelző/szalagcím megjegyzés**
+- **Záró kapcsos zárójel megjegyzés**
+- **Szerző neve megjegyzésben**
+- **Megjegyzésbe tett kód**
+- **HTML megjegyzés:** rontja a forráskód olvashatóságát.
+- **Nem lokális megjegyzés:** olyan megjegyzés, mely nem a közvetlen környezetében lévő kódra vonatkozik.
+- **Túl sok információt tartalmazó megjegyzés**
+- **A kódhoz nem nyilvánvalóan kapcsolódó megjegyzés**
+- **Javadoc megjegyzés nem nyilvános kódban**
+
+**Redundáns megjegyzés:** nem szolgál semmiféle plusz információval a kódról, nem könnyebb elolvasni sem, mint magát a kódot.
+
+**Kötelező megjegyzés:** a nyilvánvalót magyarázó megjegyzés, ami csak azért van ott, mert megkövetelik, hogy minden függvényhez, változóhoz tartozzon dokumentációs megjegyzés.
+
+**Napló megjegyzés:** egy modul elején a benne végzett minden egyes módosítást naplószerűen dokumentáló megjegyzés.
+
+**Szerző neve megjegyzésben:** a verziókezelő rendszerek feleslegessé tették.
+
+**Megjegyzésbe tett kód:** a rossz megjegyzések legutálatosabbja, kerülendő. Mások azt fogják gondolni, hogy okkal van ott, fontos, és ezért nem lesz bátorságuk törölni.s
+
 ### Forráskód formázás: vízszintes és függőleges formázás, az újság metafora
+A forráskódot úgy kell formázni, hogy az jól olvasható legyen.
+- Az olvasó első benyomást a kódról a formázás alapján szerez.
+- Egyszerű szabályokat kell választani a formázáshoz és azokat következetesen kell alkalmazni.
+- Csapatban történő fejlesztés esetén meg kell állapodni egy kódolási konvencióban és mindenkinek azt kell követni.
+- Függőleges és vízszintes formázás.
+
+<div style='page-break-after: always;'></div>
+
+#### Függőleges formázás
+Empirikus vizsgálatként tekintsük a forrásállományok méretét az alábbi szoftverekben:
+- Apache Maven 3.8.4
+- Guava 31.0.1 
+- OpenJDK 17.0.1
+- Wildfly 26.0.0.Final
+  
+![Függőleges-Formázás](images/fuggoleges-formazas.png)
+
+Egy-egy üres sor jelöljön minden új fogalmat.
+Válasszuk el egymástól a csomagdeklarációt, az import deklarációkat, a függvényeket, …
+
+A szorosan kapcsolódó programsorok sűrűn kell, hogy megjelenjenek.
+Ne legyenek közöttük megjegyzések vagy üres sorok.
+A szorosan kapcsolódó fogalmakat tartsuk függőlegesen egymáshoz közel.
+Csak nagyon indokolt esetben kerüljenek külön állományokba.
+Függőleges távolságuk tükrözze azt, hogy mennyire fontos az egyik a másik megértéséhez.
+
+A változókat deklaráljuk a használatuk helyéhez a lehető legközelebb.
+Mivel a függvények rövidek, a lokális változókat az elejükön deklaráljuk.
+A ciklusváltozókat lehet a ciklusokban.
+A példányváltozókat az osztályok elején kell deklarálni.
+Ha egy függvény meghív egy másikat, akkor függőlegesen közel kell, hogy legyenek egymáshoz, és ha ez egyáltalán lehetséges, akkor a hívó előzze meg a hívottat.
+
+#### Újság metafora:
+- Egy jól megírt újságcikket felülről lefelé haladva olvasunk.
+- A tetején egy olyan cím van, mely alapján az olvasó eldöntheti, hogy érdekli-e egyáltalán. Az első bekezdés a teljes történet egy összefoglalását adja. Lefelé haladva a bekezdések egyre több és több részletet tartalmaznak.
+- Egy forrásállomány is legyen olyan, mint egy újságcikk.
+- A neve legyen egyszerű és beszédes. Az eleje magas szintű fogalmakat és algoritmusokat tartalmazzon. Lefelé haladva egyre nagyobb hangsúlyt kapnak a részletek. A végén legyenek a legalacsonyabb szintű függvények.
+
+<div style='page-break-after: always;'></div>
+
+#### Vízszintes formázás
+Empirikus vizsgálatként tekintsük a kódsorok hosszának eloszlását:
+- Apache Maven 3.8.4
+- Guava 31.0.1
+- OpenJDK 17.0.1
+- Wildfly 26.0.0.Final
+- A vizsgálat eredményét a következő oldalon látható hisztogram mutatja
+
+![Vízszintes-Formázás](images/vizszintes-fomazas.png)
+
+A sorok ne legyenek túl hosszúak.
+Ne legyenek hosszabbak például 120 karakternél.
+
+Használjunk szóközöket a gyengén összetartozó elemek között.
+Például értékadó operátor két oldalán. 
+Ne tegyünk viszont szóközt például egy függvény neve és az azt követő nyitó zárójel karakter közé.
+
+Nem érdemes a deklarációkban és értékadásokban a neveket és a kifejezéseket igazítani.
+
+Nagyon fontos a megfelelő behúzás.
+Használható szóköz és tabulátor is.
+Ne szegjük meg a behúzási szabályt rövid if utasítások, ciklusok vagy függvények kedvéért sem.
+Kerülendő például:
+- ```public int size() { return size; }```
+
+Ha ```for``` vagy ```while``` ciklus törzseként üres utasítást kell használni, ezt célszerű egy új sorba elhelyezni.
+
+<div style='page-break-after: always;'></div>
+
 ### Hibakezelés, elenőrzött és nem ellenőrzött kivételek
-### null átadása függvényeknek, null visszadása
+Hibakódok visszaadása helyett részesítsük előnyben a kivételeket.
+Használjunk nem ellenőrzött kivételeket.
+Ne adjunk át/vissza *null*-t.
+Java-ban a kivételek ellenőrzöttek (*checked*) vagy nem ellenőrzöttek (*unchecked*).
+
+**Ellenőrzött kivételek:**
+A metódusok deklarálják az ellenőrzött kivételeket, melyek bekövetkezhetnek a végrehajtásuk során, mely lehetővé teszi a fordításidejű ellenőrzést annak biztosításához, hogy a kivételek kezelésre kerüljenek.
+A *throws* záradék szolgál azoknak az ellenőrzött kivételeknek a jelzésére, melyeket egy metódus vagy konstruktor törzs utasításai dobhatnak.
+Az ellenőrzött kivételek arra kényszerítik a programozót, hogy foglalkozzon velük, mivel el kell kapni őket, így a kód megbízhatóságát növelik.
+Kritikus programkönyvtárak számára ajánlott ellenőrzött kivételek dobása
+
+Az ellenőrzött kivételek arra kényszerítik a programozót, hogy foglalkozzon velük, mivel el kell kapni őket, így a kód megbízhatóságát növelik.
+Kritikus programkönyvtárak számára ajánlott ellenőrzött kivételek dobása
+
+Az ellenőrzött kivételek használata megsértheti a nyitva zárt elevet.
+Ha egy alacsony szintű metódust úgy módosítunk, hogy benne egy ellenőrzött kivételen kerüljön dobásra, akkor a metódus szignatúráját is megfelelően kell módosítani.
+A *throws* záradéknak tartalmaznia kell a kivételosztályt.
+Ez azt jelenti, hogy a módosított metódust meghívó minden metódust úgy kell módosítani, hogy kapja el a kivételt vagy hogy a *throws* záradéka tartalmazza a kivételt.
+
+<div style='page-break-after: always;'></div>
+
+### *null* átadása függvényeknek, null visszadása
+A *null* referenciák azért rosszak, mert ```NullPointerException``` kivételeket okoznak
+
+Amikor *null* referenciát adunk vissza, akkor lényegében magunknak csinálunk munkát, mivel a *null*-t speciális esetként kell kezelni a NullPointerException elkerüléséhez.
+Ha kísértést érzünk egy metódusból *null* visszaadására, vegyük helyette fontolóra inkább egy kivétel dobását vagy egy speciális eset objektum (például egy üres lista) visszaadását.
+
+*null* visszaadása metódusokból rossz, de *null* átadása metódusoknak még rosszabb.
+Amikor csak lehetséges, el kell kerülni.
+A legtöbb programozási nyelven nincs jó megoldás a hívó által véletlenül átadott *null* referencia kezelésére.
+Mivel ez a helyzet, az észszerű megközelítés alapértelmezésben megtiltani *null* átadását
+
+*Null*-értékűséget jelző annotációk (például ```@NotNull```, ```@NonNull```, ```@Nullable```)
+
+**Felhasználhatják őket:**
+- Statikus kódelemző eszközök (például *Checker Framework*, *IntelliJ IDEA*)
+- Kódgenerátor eszközök (például *IntelliJ IDEA*, *Lombok*)
+
 
 ---

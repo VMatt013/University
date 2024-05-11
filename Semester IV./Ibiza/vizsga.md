@@ -125,3 +125,10 @@ $y_2 = 8 \cdot (-1)^6 = 8$
 
 $4 \cdot -3 \cdot 29 + 15 \cdot 8 \cdot 11 \mod 319$
 $ \Rightarrow 15 \mod 319$
+
+
+
+
+$\frac{x_1^{86}}{x_2} \mod 4$
+
+$5 \cdot 5$
