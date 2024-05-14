@@ -1,0 +1,11 @@
+function Fact1(n)
+    fact = 1
+    for i = 2, i <= 2, i++
+        fact = fact * i
+    return fact
+
+function Fact1(n)
+    fact = 1
+    for i = 2, i <= 2, i++
+        fact = fact * i
+    return fact

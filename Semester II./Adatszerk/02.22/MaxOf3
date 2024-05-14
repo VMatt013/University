@@ -1,0 +1,9 @@
+function MaxOf3(a,b,c)
+    max = a
+    if max < b then
+        max = b
+    end if
+    if max < c then
+        max = c
+    end if
+    return max

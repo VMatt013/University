@@ -1,0 +1,18 @@
+function lnko(a,b)
+    oszto = 0
+    if b < a
+        tmp = a
+        a = b
+        b = a
+    for(i = 1; i < a)
+        if (a mod i == 0) and (b mod i == 0)
+            oszto = i
+    return (oszto)
+
+
+function lnko2(a,b)
+    while(b != 0)
+        m = (a mod b)
+        a = b
+        b = m
+    return (a)
