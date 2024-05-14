@@ -1,0 +1,1 @@
+dot(A*v,v) / dot(v,v)

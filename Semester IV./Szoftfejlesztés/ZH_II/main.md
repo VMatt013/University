@@ -35,7 +35,7 @@
   - [A YAGNI elv](#a-yagni-elv)
   - [Csatoltság, laza és szoros csatoltság](#csatoltság-laza-és-szoros-csatoltság)
   - [GoF alapelvek](#gof-alapelvek)
-  - [SOLID alapelvek](#solid-alapelvek)
+  - [SOLID alapelvek](#solid-alapelvek-magyarázat)
   - [Függőség befecskendezés](#függőség-befecskendezés)
 4. [Minták a szoftverfejlesztésben](#4-minták-a-szoftverfejlesztésben)
 5. [Tiszta kód](#5-tiszta-kód)
@@ -894,7 +894,7 @@ A két GoF alapelv:
 - Lásd például a létrehozási mintákat.
 - Részesítsük előnyben az objektum-összetételt az öröklődéssel szemben.
 
-### SOLID alapelvek
+### SOLID alapelvek ([magyarázat](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design))
 - **S**ingle Responsibility Principle (SRP) - Egyszeres felelősség elve
 - **O**pen/Closed Principle (OCP) - Nyitva zárt elv
 - **L**iskov Substitution Principle (LSP) - Liskov-féle helyettesítési elv
@@ -953,6 +953,8 @@ A *Client* és a *Server* konkrét osztályok. A *Client* osztály a *Server* os
 
 #### Liskov-féle helyettesítési elv
 Ha az *S* típus a *T* típus altípusa, nem változhat meg egy program működése, ha benne a *T* típusú objektumokat *S* típusú objektumokkal helyettesítjük.
+
+This means that every subclass or derived class should be substitutable for their base or parent class.
 
 #### interfész szétválasztási elv
 Nem szabad arra kényszeríteni az osztályokat, hogy olyan metódusoktól függjenek, melyeket nem használnak.
