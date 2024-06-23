@@ -1,0 +1,11 @@
+.field {
+    -fx-background-color: green;
+    }
+
+.field:hover{
+    -fx-background-color: yellow;
+}
+
+.field.selected{
+    -fx-background-color: red;
+}
